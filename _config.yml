@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: tomorrow,tomorrow,tomorrow,ain`t no such thing as tomorrow
+title: tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！
 subtitle: '谨言、笃行'
 description: '穿梭于前端各个领域'
 keywords: Javascript、Nodejs、Native、微信
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
