@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: tomorrow,tomorrow,tomorrow,ain`t no such thing as tomorrow
+title: 'tomorrow,tomorrow,tomorrow,ain`t no such thing as tomorrow'
 subtitle: '谨言、笃行'
 description: '穿梭于前端各个领域'
 keywords: 'Javascript、Nodejs、Native、微信'
-author: yzy
+author: 'yzy'
 language: zh-CN
 timezone: ''
 
