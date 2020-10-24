@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。 选择合适的打包格式首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于webpack 打包的正确选择">
+<meta property="og:url" content="http://yoursite.com/2019/10/31/four/index.html">
+<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
+<meta property="og:description" content="为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。 选择合适的打包格式首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpac">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-10-31T05:27:46.000Z">
+<meta property="article:modified_time" content="2020-08-26T15:10:45.112Z">
+<meta property="article:author" content="yzy">
+<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2019/10/31/four/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>基于webpack 打包的正确选择 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/31/four/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yzy">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于webpack 打包的正确选择
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-31 13:27:46" itemprop="dateCreated datePublished" datetime="2019-10-31T13:27:46+08:00">2019-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-08-26 23:10:45" itemprop="dateModified" datetime="2020-08-26T23:10:45+08:00">2020-08-26</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。</p>
+<h5 id="选择合适的打包格式"><a href="#选择合适的打包格式" class="headerlink" title="选择合适的打包格式"></a>选择合适的打包格式</h5><h6 id="首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"><a href="#首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。" class="headerlink" title="首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"></a>首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。</h6><h6 id="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有："><a href="#为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有：" class="headerlink" title="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有："></a>为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有：</h6><h6 id="•-“var”-以一个变量形式输出：-var-Library-xxx-default-；"><a href="#•-“var”-以一个变量形式输出：-var-Library-xxx-default-；" class="headerlink" title="• “var” - 以一个变量形式输出： var Library = xxx (default)；"></a>• “var” - 以一个变量形式输出： var Library = xxx (default)；</h6><h6 id="•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；"><a href="#•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；" class="headerlink" title="• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；"></a>• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；</h6><h6 id="•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；"><a href="#•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；" class="headerlink" title="• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；"></a>• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；</h6><h6 id="•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；"><a href="#•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；" class="headerlink" title="• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；"></a>• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；</h6><h6 id="•-“amd”-以-AMD-格式输出；"><a href="#•-“amd”-以-AMD-格式输出；" class="headerlink" title="• “amd” - 以 AMD 格式输出；"></a>• “amd” - 以 AMD 格式输出；</h6><h6 id="•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。"><a href="#•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。" class="headerlink" title="• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。"></a>• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。</h6><blockquote>
+<p>以下是 webpack.config.js 中 output 设置的示例：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;..&#x2F;dist&#39;),</span><br><span class="line">    publicPath: &#39;&#x2F;dist&#x2F;&#39;,</span><br><span class="line">    filename: &#39;iview.js&#39;,</span><br><span class="line">    library: &#39;iview&#39;,       &#x2F;&#x2F; 模块名称</span><br><span class="line">    libraryTarget: &#39;umd&#39;,   &#x2F;&#x2F; 输出格式</span><br><span class="line">    umdNamedDefine: true    &#x2F;&#x2F; 是否将模块名称作为 AMD 输出的命名空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>到此，我们解决了组件库输出的问题。<br>但是，！！！上面output配置libraryName：’Iview’,可能会出现意想不到的问题</p>
+</blockquote>
+<h5 id="如何打包组件依赖"><a href="#如何打包组件依赖" class="headerlink" title="如何打包组件依赖"></a>如何打包组件依赖</h5><h6 id="组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。"><a href="#组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。" class="headerlink" title="组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。"></a>组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</h6><h6 id="在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下："><a href="#在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下：" class="headerlink" title="在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下："></a>在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#39;vue&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！"><a href="#啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！" class="headerlink" title="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！"></a>啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</h6><h6 id="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。"><a href="#事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。" class="headerlink" title="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。"></a>事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</h6><h6 id="为了分析问题，我们将打包的代码前几行拿出来看看："><a href="#为了分析问题，我们将打包的代码前几行拿出来看看：" class="headerlink" title="为了分析问题，我们将打包的代码前几行拿出来看看："></a>为了分析问题，我们将打包的代码前几行拿出来看看：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</span><br><span class="line">    if(typeof exports &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; typeof module &#x3D;&#x3D;&#x3D; &#39;object&#39;)</span><br><span class="line">        module.exports &#x3D; factory(require(&quot;vue&quot;));</span><br><span class="line">    else if(typeof define &#x3D;&#x3D;&#x3D; &#39;function&#39; &amp;&amp; define.amd)</span><br><span class="line">        define(&quot;iview&quot;, [&quot;vue&quot;], factory);</span><br><span class="line">    else if(typeof exports &#x3D;&#x3D;&#x3D; &#39;object&#39;)</span><br><span class="line">        exports[&quot;iview&quot;] &#x3D; factory(require(&quot;vue&quot;));</span><br><span class="line">    else</span><br><span class="line">        root[&quot;iview&quot;] &#x3D; factory(root[&quot;vue&quot;]);</span><br><span class="line">&#125;)(this, function(__WEBPACK_EXTERNAL_MODULE_157__) &#123;</span><br><span class="line">    &#x2F;&#x2F; ....</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我们可以看见，打包后的代码以 4 种形式声明了 Vue 依赖</p>
+</blockquote>
+<h6 id="1-module-exports-factory-require-“vue”-commonjs2-形式；"><a href="#1-module-exports-factory-require-“vue”-commonjs2-形式；" class="headerlink" title="1. module.exports = factory(require(“vue”)) - commonjs2 形式；"></a>1. module.exports = factory(require(“vue”)) - commonjs2 形式；</h6><h6 id="2-define-“iview”-“vue”-factory-AMD-形式；"><a href="#2-define-“iview”-“vue”-factory-AMD-形式；" class="headerlink" title="2.define(“iview”, [“vue”], factory) - AMD 形式；"></a>2.define(“iview”, [“vue”], factory) - AMD 形式；</h6><h6 id="3-exports-“iview”-factory-require-“vue”-commonjs-形式；"><a href="#3-exports-“iview”-factory-require-“vue”-commonjs-形式；" class="headerlink" title="3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；"></a>3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；</h6><h6 id="4-root-“iview”-factory-root-“vue”-全局变量形式。"><a href="#4-root-“iview”-factory-root-“vue”-全局变量形式。" class="headerlink" title="4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。"></a>4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。</h6><h6 id="以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。"><a href="#以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。" class="headerlink" title="以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。"></a>以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。</h6><blockquote>
+<p>幸好，webpack 可以为各种导入形式设置不同名称，设置如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#123;</span><br><span class="line">        root: &#39;Vue&#39;,</span><br><span class="line">        commonjs: &#39;vue&#39;,</span><br><span class="line">        commonjs2: &#39;vue&#39;,</span><br><span class="line">        amd: &#39;vue&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>再次打包，你可以发现打包的组件库不管是 script 标签方式还是后端构建，都可以正常工作了。</p>
+</blockquote>
+<blockquote>
+<p>最后，帖一个打包 iView 组件库的 webpack 配置：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line">var webpack &#x3D; require(&#39;webpack&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#39;.&#x2F;src&#x2F;index.js&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#39;..&#x2F;dist&#39;),</span><br><span class="line">        publicPath: &#39;&#x2F;dist&#x2F;&#39;,</span><br><span class="line">        filename: &#39;iview.js&#39;,</span><br><span class="line">        library: &#39;iview&#39;,</span><br><span class="line">        libraryTarget: &#39;umd&#39;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#39;Vue&#39;,</span><br><span class="line">            commonjs: &#39;vue&#39;,</span><br><span class="line">            commonjs2: &#39;vue&#39;,</span><br><span class="line">            amd: &#39;vue&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.vue&#39;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: &#x2F;\.vue$&#x2F;,</span><br><span class="line">            loader: &#39;vue&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.js$&#x2F;,</span><br><span class="line">            loader: &#39;babel&#39;,</span><br><span class="line">            exclude: &#x2F;node_modules&#x2F;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.css$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!autoprefixer&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.less$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!less&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$&#x2F;,</span><br><span class="line">            loader: &#39;url?limit&#x3D;8192&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(html|tpl)$&#x2F;,</span><br><span class="line">            loader: &#39;vue-html&#39;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#39;process.env&#39;: &#123;</span><br><span class="line">                NODE_ENV: &#39;&quot;development&quot;&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/20/five/" rel="prev" title="React Hooks">
+      <i class="fa fa-chevron-left"></i> React Hooks
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/08/25/one/" rel="next" title="JSON.stringify的魔法">
+      JSON.stringify的魔法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%89%93%E5%8C%85%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">选择合适的打包格式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%A6%96%E5%85%88%EF%BC%8C%E6%88%91%E4%BB%AC%E5%BF%85%E9%A1%BB%E6%98%8E%E7%A1%AE%E7%BB%84%E4%BB%B6%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E3%80%82%E6%9C%89%E4%BA%9B%E5%9C%BA%E6%99%AF%E6%98%AF%E7%9B%B4%E6%8E%A5%E4%BD%BF%E7%94%A8-script-%E5%9C%A8-HTML-%E4%B8%AD%E5%BC%95%E5%85%A5%EF%BC%8C%E6%9C%89%E4%BA%9B%E5%9C%BA%E6%99%AF%E6%98%AF%E4%BD%BF%E7%94%A8%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%9C%A8%E5%90%8E%E5%8F%B0%E6%9E%84%E5%BB%BA%E3%80%82%E4%BD%9C%E4%B8%BA%E7%BB%84%E4%BB%B6%E5%BA%93%EF%BC%8C%E5%BA%94%E8%AF%A5%E5%85%BC%E5%AE%B9%E8%BF%99%E4%BA%9B%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E3%80%82%E7%BB%84%E4%BB%B6%E5%BA%93%E5%BA%94%E8%AF%A5%E4%BF%9D%E6%8C%81%E4%B8%AD%E7%AB%8B%EF%BC%8C%E4%B8%8D%E5%BA%94%E8%AF%A5%E9%99%90%E5%AE%9A%E4%BA%8E%E6%9F%90%E7%A7%8D%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%E6%88%96%E8%80%85%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7%E3%80%82%E4%BE%8B%E5%A6%82%EF%BC%8C%E8%99%BD%E7%84%B6-Webpack-%E5%BE%88%E6%B5%81%E8%A1%8C%EF%BC%8C%E7%BB%84%E4%BB%B6%E5%BA%93%E4%B8%8D%E8%83%BD%E5%A3%B0%E6%98%8E%E5%8F%AA%E6%94%AF%E6%8C%81-Webpack-%E6%96%B9%E5%BC%8F%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%BF%BD%E7%95%A5%E4%BA%86%E5%85%B6%E4%BB%96%E9%80%89%E6%8B%A9%E3%80%82%E5%8E%9F%E5%9B%A0%E5%9C%A8%E4%BA%8E%EF%BC%8C%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7%E5%B9%B6%E4%B8%8D%E5%8F%AA%E6%9C%89-webpack%EF%BC%8C%E8%BF%98%E6%9C%89-browserify%E3%80%81rollup-%E7%AD%89%E3%80%82%E5%8F%A6%E5%A4%96%EF%BC%8C%E5%89%8D%E7%AB%AF%E5%B7%A5%E5%85%B7%E5%8F%91%E5%B1%95%E5%BE%88%E5%BF%AB%EF%BC%8C%E4%BB%8A%E5%B9%B4%E6%B5%81%E8%A1%8C%E7%9A%84%E5%B7%A5%E5%85%B7%E6%98%8E%E5%B9%B4%E5%8F%AF%E8%83%BD%E5%B0%B1%E6%B2%A1%E4%BA%BA%E7%94%A8%E4%BA%86%EF%BC%8C%E4%BD%A0%E8%82%AF%E5%AE%9A%E4%B8%8D%E5%B8%8C%E6%9C%9B%E4%BD%A0%E7%9A%84%E7%BB%84%E4%BB%B6%E5%BA%93%E4%BC%9A%E9%9A%8F%E7%9D%80%E6%9F%90%E4%B8%AA%E5%B7%A5%E5%85%B7%E4%B8%8D%E6%B5%81%E8%A1%8C%E8%80%8C%E6%B6%88%E9%80%9D%E5%90%A7%E3%80%82%E5%9B%9E%E9%A1%BE%E4%B8%8B%E6%9B%BE%E7%BB%8F%E6%B5%81%E8%A1%8C%E7%9A%84-grunt%E3%80%81glup%EF%BC%8C%E4%B8%80%E5%A4%A7%E5%A0%86%E5%9F%BA%E4%BA%8E%E5%AE%83%E4%BB%AC%E7%9A%84%E6%8F%92%E4%BB%B6%E9%9A%8F%E7%9D%80%E5%B7%A5%E5%85%B7%E6%9C%AC%E8%BA%AB%E7%9A%84%E4%B8%8D%E6%B5%81%E8%A1%8C%E8%80%8C%E8%A2%AB%E6%89%94%E8%BF%9B%E4%BA%86%E5%9E%83%E5%9C%BE%E7%AE%B1%E3%80%82"><span class="nav-number">1.1.</span> <span class="nav-text">首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E4%BA%86%E6%94%AF%E6%8C%81%E5%A4%9A%E7%A7%8D%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%8C%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E9%80%89%E6%8B%A9%E5%90%88%E9%80%82%E7%9A%84%E6%89%93%E5%8C%85%E6%A0%BC%E5%BC%8F%E3%80%82%E5%B8%B8%E8%A7%81%E7%9A%84%E6%89%93%E5%8C%85%E6%A0%BC%E5%BC%8F%E6%9C%89-CMD%E3%80%81AMD%E3%80%81UMD%EF%BC%8CCMD%E5%8F%AA%E8%83%BD%E5%9C%A8-Node-%E7%8E%AF%E5%A2%83%E6%89%A7%E8%A1%8C%EF%BC%8CAMD-%E5%8F%AA%E8%83%BD%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%AB%AF%E6%89%A7%E8%A1%8C%EF%BC%8CUMD-%E5%90%8C%E6%97%B6%E6%94%AF%E6%8C%81%E4%B8%A4%E7%A7%8D%E6%89%A7%E8%A1%8C%E7%8E%AF%E5%A2%83%E3%80%82%E6%98%BE%E8%80%8C%E6%98%93%E8%A7%81%EF%BC%8C%E6%88%91%E4%BB%AC%E5%BA%94%E8%AF%A5%E9%80%89%E6%8B%A9-UMD-%E6%A0%BC%E5%BC%8F%E3%80%82Webpack-%E4%B8%AD%E6%8C%87%E5%AE%9A%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F%E7%9A%84%E8%AE%BE%E7%BD%AE%E9%A1%B9%E4%B8%BA-output-libraryTarget%EF%BC%8C%E5%85%B6%E6%94%AF%E6%8C%81%E7%9A%84%E6%A0%BC%E5%BC%8F%E6%9C%89%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Cvar%E2%80%9D-%E4%BB%A5%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%BD%A2%E5%BC%8F%E8%BE%93%E5%87%BA%EF%BC%9A-var-Library-xxx-default-%EF%BC%9B"><span class="nav-number">1.3.</span> <span class="nav-text">• “var” - 以一个变量形式输出： var Library &#x3D; xxx (default)；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Cthis%E2%80%9D-%E4%BB%A5-this-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B1%9E%E6%80%A7%E8%BE%93%E5%87%BA%EF%BC%9A-this-%E2%80%9CLibrary%E2%80%9D-xxx%EF%BC%9B"><span class="nav-number">1.4.</span> <span class="nav-text">• “this” - 以 this 的一个属性输出： this[“Library”] &#x3D; xxx；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Ccommonjs%E2%80%9D-%E4%BB%A5-exports-%E7%9A%84%E4%B8%80%E4%B8%AA%E5%B1%9E%E6%80%A7%E8%BE%93%E5%87%BA%EF%BC%9Aexports-%E2%80%9CLibrary%E2%80%9D-xxx%EF%BC%9B"><span class="nav-number">1.5.</span> <span class="nav-text">• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] &#x3D; xxx；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Ccommonjs2%E2%80%9D-%E4%BB%A5-module-exports-%E5%BD%A2%E5%BC%8F%E8%BE%93%E5%87%BA%EF%BC%9Amodule-exports-xxx%EF%BC%9B"><span class="nav-number">1.6.</span> <span class="nav-text">• “commonjs2” - 以 module.exports 形式输出：module.exports &#x3D; xxx；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Camd%E2%80%9D-%E4%BB%A5-AMD-%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%EF%BC%9B"><span class="nav-number">1.7.</span> <span class="nav-text">• “amd” - 以 AMD 格式输出；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E2%80%A2-%E2%80%9Cumd%E2%80%9D-%E5%90%8C%E6%97%B6%E4%BB%A5-AMD%E3%80%81CommonJS2-%E5%92%8C%E5%85%A8%E5%B1%80%E5%B1%9E%E6%80%A7%E5%BD%A2%E5%BC%8F%E8%BE%93%E5%87%BA%E3%80%82"><span class="nav-number">1.8.</span> <span class="nav-text">• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%89%93%E5%8C%85%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96"><span class="nav-number">2.</span> <span class="nav-text">如何打包组件依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8%E8%80%85%E4%BC%9A%E8%87%AA%E8%A1%8C%E5%AF%BC%E5%85%A5-Vue%EF%BC%8C%E6%89%93%E5%8C%85%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E4%B8%8D%E5%BA%94%E8%AF%A5%E5%B0%86-Vue-%E6%89%93%E5%8C%85%E8%BF%9B%E7%BB%84%E4%BB%B6%E5%BA%93%E3%80%82"><span class="nav-number">2.1.</span> <span class="nav-text">组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%9C%A8-webpack-%E4%B8%AD%EF%BC%8C%E6%88%91%E4%BB%AC%E5%8F%AF%E4%BB%A5%E5%B0%86-Vue-%E8%AE%BE%E7%BD%AE%E4%B8%BA-externals%EF%BC%8C%E4%BB%A5%E9%81%BF%E5%85%8D%E5%B0%86-Vue-%E6%89%93%E5%8C%85%E8%BF%9B%E7%BB%84%E4%BB%B6%E5%BA%93%EF%BC%8C%E7%9B%B8%E5%BA%94%E7%9A%84%E8%AE%BE%E7%BD%AE%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%95%8A%E5%93%88%EF%BC%8C%E6%88%91%E4%BB%AC%E6%90%9E%E5%AE%9A%E4%BA%86%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98%E3%80%82%E8%87%B3%E6%AD%A4%EF%BC%8C%E8%AF%BB%E8%80%85%E5%8F%AF%E8%83%BD%E5%BE%88%E7%9A%B1%E8%B5%B7%E7%9C%89%E5%A4%B4%E5%BC%80%E5%A7%8B%E5%9F%8B%E6%80%A8%E6%88%91%E4%BA%86%EF%BC%9A%E8%BF%99%E4%B9%88%E7%AE%80%E5%8D%95%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%9F%A5%E4%B8%8B-webpack-%E6%96%87%E6%A1%A3%E4%B8%8D%E5%B0%B1%E5%BE%97%E4%BA%86%EF%BC%8C%E8%BF%98%E7%94%A8%E5%BE%97%E7%9D%80%E6%88%91%E5%95%B0%E9%87%8C%E5%95%B0%E5%97%A6%E5%9C%B0%E5%86%99%E8%BF%99%E4%B9%88%E5%A4%9A%EF%BC%81"><span class="nav-number">2.3.</span> <span class="nav-text">啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E5%AE%9E%E4%B8%8A%EF%BC%8C%E9%97%AE%E9%A2%98%E5%BE%80%E5%BE%80%E6%B2%A1%E6%9C%89%E6%88%91%E4%BB%AC%E6%83%B3%E5%BE%97%E9%82%A3%E4%B9%88%E7%AE%80%E5%8D%95%EF%BC%81%E5%A6%82%E6%9E%9C%E4%BD%A0%E5%B0%86%E6%89%93%E5%8C%85%E5%90%8E%E7%9A%84%E7%BB%84%E4%BB%B6%E5%BA%93%E4%BB%A5-script-%E6%A0%87%E7%AD%BE%E5%BD%A2%E5%BC%8F%E7%9B%B4%E6%8E%A5%E5%BC%95%E5%85%A5%EF%BC%8C%E4%BD%A0%E4%BC%9A%E5%8F%91%E7%8E%B0%E5%B9%B6%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E6%89%A7%E8%A1%8C%EF%BC%8C%E6%8F%90%E7%A4%BA-vue-%E6%9C%AA%E5%AE%9A%E4%B9%89%E3%80%82"><span class="nav-number">2.4.</span> <span class="nav-text">事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B8%BA%E4%BA%86%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98%EF%BC%8C%E6%88%91%E4%BB%AC%E5%B0%86%E6%89%93%E5%8C%85%E7%9A%84%E4%BB%A3%E7%A0%81%E5%89%8D%E5%87%A0%E8%A1%8C%E6%8B%BF%E5%87%BA%E6%9D%A5%E7%9C%8B%E7%9C%8B%EF%BC%9A"><span class="nav-number">2.5.</span> <span class="nav-text">为了分析问题，我们将打包的代码前几行拿出来看看：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-module-exports-factory-require-%E2%80%9Cvue%E2%80%9D-commonjs2-%E5%BD%A2%E5%BC%8F%EF%BC%9B"><span class="nav-number">2.6.</span> <span class="nav-text">1. module.exports &#x3D; factory(require(“vue”)) - commonjs2 形式；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-define-%E2%80%9Ciview%E2%80%9D-%E2%80%9Cvue%E2%80%9D-factory-AMD-%E5%BD%A2%E5%BC%8F%EF%BC%9B"><span class="nav-number">2.7.</span> <span class="nav-text">2.define(“iview”, [“vue”], factory) - AMD 形式；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-exports-%E2%80%9Ciview%E2%80%9D-factory-require-%E2%80%9Cvue%E2%80%9D-commonjs-%E5%BD%A2%E5%BC%8F%EF%BC%9B"><span class="nav-number">2.8.</span> <span class="nav-text">3.exports[“iview”] &#x3D; factory(require(“vue”)) - commonjs 形式；</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-root-%E2%80%9Ciview%E2%80%9D-factory-root-%E2%80%9Cvue%E2%80%9D-%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%BD%A2%E5%BC%8F%E3%80%82"><span class="nav-number">2.9.</span> <span class="nav-text">4.root[“iview”] &#x3D; factory(root[“vue”]) - 全局变量形式。</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%A5-script-%E6%A0%87%E7%AD%BE%E5%BD%A2%E5%BC%8F%E4%BD%BF%E7%94%A8%E7%BB%84%E4%BB%B6%E6%97%B6%EF%BC%8C%E4%BC%9A%E5%90%8C%E6%A0%B7%E4%BD%BF%E7%94%A8-script-%E6%A0%87%E7%AD%BE%E5%AF%BC%E5%85%A5-Vue%E3%80%82Vue-%E5%AF%BC%E5%85%A5%E7%9A%84%E5%8F%98%E9%87%8F%E6%98%AF-%E2%80%9Cwindow-Vue%E2%80%9D-%E8%80%8C%E4%B8%8D%E6%98%AF-%E2%80%9Cwindow-vue%E2%80%9D%EF%BC%8C%E5%9B%A0%E6%AD%A4%E4%BC%9A%E5%87%BA%E7%8E%B0-vue-%E6%9C%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E9%94%99%E8%AF%AF%E3%80%82"><span class="nav-number">2.10.</span> <span class="nav-text">以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">yzy</p>
+  <div class="site-description" itemprop="description">穿梭于前端各个领域</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yzy</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
