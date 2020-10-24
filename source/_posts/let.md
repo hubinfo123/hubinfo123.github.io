@@ -60,7 +60,6 @@ console.log(x); // 2
 2.为了实现此效果，Babel 重命名了块级作用域内 let 声明的变量名，也就是可以理解为babel 在解析let 语法糖的时候就是将变量名重命名了。</font>
 
 
-
 <font face="STCAIYUN" size="2">参照:
 https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&spm=1001.2101.3001.4242</font>
 
