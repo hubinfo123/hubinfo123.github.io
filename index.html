@@ -149,7 +149,11 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
+=======
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/let/">
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +167,11 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
+<<<<<<< HEAD
             <a href="/2020/08/25/one/" class="post-title-link" itemprop="url">JSON.stringify的魔法</a>
+=======
+            <a href="/2020/08/28/let/" class="post-title-link" itemprop="url">从Babel 编译理解let const</a>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
         </h2>
 
         <div class="post-meta">
@@ -173,14 +181,22 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
+<<<<<<< HEAD
               <time title="创建时间：2020-08-25 23:27:46" itemprop="dateCreated datePublished" datetime="2020-08-25T23:27:46+08:00">2020-08-25</time>
+=======
+              <time title="创建时间：2020-08-28 23:59:46" itemprop="dateCreated datePublished" datetime="2020-08-28T23:59:46+08:00">2020-08-28</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:38:34" itemprop="dateModified" datetime="2020-08-26T22:38:34+08:00">2020-08-26</time>
+=======
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
               </span>
 
           
@@ -194,6 +210,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -226,6 +243,94 @@
 =======
           <h2 id="master-分支"><a href="#master-分支" class="headerlink" title="master 分支"></a>master 分支</h2><h3 id="没有被更新到部署页面上"><a href="#没有被更新到部署页面上" class="headerlink" title="没有被更新到部署页面上"></a>没有被更新到部署页面上</h3>
 =======
+=======
+          <p><font face="STCAIYUN" size="3">首先let 和 const 是es6 出的，这里就要了解一下，为什么要出新语法，一般是新事物带替旧事物，必然是旧事物满足不了当前，梳理一下es5 里面的变量声明会存在哪些不足，然后再从let 和 const 上去了解他们的优点。</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">es5 变量声明，也就是var 会存在的问题</font></p>
+</blockquote>
+<p><font face="STCAIYUN" size="2">1.内层变量可能会覆盖外层变量</font><br><font face="STCAIYUN" size="2">2.循环中的计数变量可能会泄漏成为全局变量</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">那么立足es5 本身有没有什么办法去解决呢？或者是做个块级作用域，想到作用域，js 里面只有函数存在作用域，那么就可以利用函数来实现</font></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a &#x3D; 2;</span><br><span class="line">  console.log(a); &#x2F;&#x2F;2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);&#x2F;&#x2F;1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">当在es6 中引入了块级作用域，也就是在花括号里面存在let 或者是const 时，花括号所在的区域内就是属于块级作用域了，它的优点是：</font></p>
+</blockquote>
+<p><font face="STCAIYUN" size="2">1.外层作用域无法读取内层作用的变量，也就是es5 的缺点1就不复存在了</font><br><font face="STCAIYUN" size="2">2.外层声明的变量名可以与内层的相同，互不干扰，不用当心会被修改</font><br><font face="STCAIYUN" size="2">3.用函数来模拟或者是立即执行函数就不在需要了</font></p>
+<p><font face="STCAIYUN" size="2">下面来看一组源码示例：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">let y &#x3D; 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  let y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br><span class="line">console.log(y); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x &#x3D; 1;</span><br><span class="line">var y &#x3D; 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  var _y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">上面的示例可以看出2个问题：</font><br><font face="STCAIYUN" size="2">1.由于 let 使花括号提升为块级作用域，使得即使声明了相同的变量名 y 也互不干扰。<br>2.为了实现此效果，Babel 重命名了块级作用域内 let 声明的变量名，也就是可以理解为babel 在解析let 语法糖的时候就是将变量名重命名了。</font></p>
+<p><font face="STCAIYUN" size="2">参照:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242</a></font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yzy">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/08/25/one/" class="post-title-link" itemprop="url">JSON.stringify的魔法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-08-25 23:27:46" itemprop="dateCreated datePublished" datetime="2020-08-25T23:27:46+08:00">2020-08-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
           <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
 <h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth &#x3D; &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#39;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">  name:&#39;yy&#39;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;存入</span><br><span class="line">localStorage.setItem(&#39;auth&#39;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;调用</span><br><span class="line">const currentAuth &#x3D; JSON.parse(localStorage.getItem(&#39;auth&#39;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -295,7 +400,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:10:45" itemprop="dateModified" datetime="2020-08-26T23:10:45+08:00">2020-08-26</time>
+=======
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
               </span>
 
           
@@ -337,10 +446,15 @@
 <p>最后，帖一个打包 iView 组件库的 webpack 配置：</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line">var webpack &#x3D; require(&#39;webpack&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#39;.&#x2F;src&#x2F;index.js&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#39;..&#x2F;dist&#39;),</span><br><span class="line">        publicPath: &#39;&#x2F;dist&#x2F;&#39;,</span><br><span class="line">        filename: &#39;iview.js&#39;,</span><br><span class="line">        library: &#39;iview&#39;,</span><br><span class="line">        libraryTarget: &#39;umd&#39;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#39;Vue&#39;,</span><br><span class="line">            commonjs: &#39;vue&#39;,</span><br><span class="line">            commonjs2: &#39;vue&#39;,</span><br><span class="line">            amd: &#39;vue&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.vue&#39;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: &#x2F;\.vue$&#x2F;,</span><br><span class="line">            loader: &#39;vue&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.js$&#x2F;,</span><br><span class="line">            loader: &#39;babel&#39;,</span><br><span class="line">            exclude: &#x2F;node_modules&#x2F;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.css$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!autoprefixer&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.less$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!less&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$&#x2F;,</span><br><span class="line">            loader: &#39;url?limit&#x3D;8192&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(html|tpl)$&#x2F;,</span><br><span class="line">            loader: &#39;vue-html&#39;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#39;process.env&#39;: &#123;</span><br><span class="line">                NODE_ENV: &#39;&quot;development&quot;&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<<<<<<< HEAD
 >>>>>>> 5d7bf80bdab3af1f4180cb1f6bc36e672e5d02ca
       
     </div>
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
+=======
+      
+    </div>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
 
     
     
@@ -388,7 +502,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:24:55" itemprop="dateModified" datetime="2020-08-26T23:24:55+08:00">2020-08-26</time>
+=======
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
               </span>
 
           
@@ -470,7 +588,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:55:49" itemprop="dateModified" datetime="2020-08-26T22:55:49+08:00">2020-08-26</time>
+=======
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
               </span>
 
           
@@ -539,7 +661,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:51:56" itemprop="dateModified" datetime="2020-08-26T22:51:56+08:00">2020-08-26</time>
+=======
+                <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
               </span>
 
           
@@ -570,6 +696,7 @@
       
     </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <footer class="article-footer">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -589,6 +716,8 @@
 
 =======
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
+=======
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
 
     
     
@@ -635,6 +764,7 @@
           
   
 <<<<<<< HEAD
+<<<<<<< HEAD
     
   
     
@@ -650,16 +780,22 @@
 >>>>>>> 4a9f57ee0cea9b18a9df72c6ddf3c462f9c95c4c
     </div>
 =======
+=======
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
   <div class="toggle sidebar-toggle">
     <span class="toggle-line toggle-line-first"></span>
     <span class="toggle-line toggle-line-middle"></span>
     <span class="toggle-line toggle-line-last"></span>
+<<<<<<< HEAD
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
+=======
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   
     
@@ -672,6 +808,8 @@
     <div class="widget">
       <ul>
 =======
+=======
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
           文章目录
@@ -695,9 +833,14 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
+<<<<<<< HEAD
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
         
           <span class="site-state-item-count">5</span>
+=======
+        
+          <span class="site-state-item-count">6</span>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -745,6 +888,7 @@
 
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <footer id="footer">
   
   <div class="outer">
@@ -759,6 +903,9 @@
 =======
     </footer>
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
+=======
+    </footer>
+>>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
   </div>
 
   
