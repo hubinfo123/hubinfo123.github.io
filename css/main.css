@@ -1170,6 +1170,7 @@ pre .javascript .function {
 .links-of-author span.exturl::before {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   background: #cb0dc8;
 =======
   background: #009ab8;
@@ -1177,6 +1178,9 @@ pre .javascript .function {
 =======
   background: #2fccc1;
 >>>>>>> adf8272aac804d6cb983e70db1d40f72f770f20a
+=======
+  background: #ff81cc;
+>>>>>>> 1c0d1f4c93785241e9ee9258fb30ed70802edcc1
   border-radius: 50%;
   content: ' ';
   display: inline-block;
