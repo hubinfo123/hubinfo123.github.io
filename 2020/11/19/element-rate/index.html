@@ -20,22 +20,24 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="今天在于后端调试一个下载接口是，遇到一个下载不成功，提示’无权限‘操作，绕了一圈发现是此接口做了权限效验，草率了…   原因分析：1.后端提供一个下载接口，接口鉴权走中间件middlewoare ,  2.前端为了方便，使用window.open 直接拼装了链接，进行了下载，  3.2个系统，同一个接口，同一份代码，在a 端就可以正常下载，在b 端就下载不了  导致在2端出现不同的现象是，a 端鉴">
+  <meta name="description" content="项目里面使用了React 与 Vue 进行同时开发，React 对应的使用的是Antd,Vue 则是用Element 这些组件库进行开发，在同一个项目下使用这2种框架，本身就依赖了vuera 来进行相互协作，无论是React 嵌入到Vue 里面，还是Vue 嵌入到React 里面，本来Vue 写得不多，所以这边就没有使用vuera 来完成，一个查看评分功能，在React 模块下用antd 的Rat">
 <meta property="og:type" content="article">
-<meta property="og:title" content="download 下载方式">
-<meta property="og:url" content="http://yoursite.com/2020/10/29/download/index.html">
+<meta property="og:title" content="Element-UI Rate 评分使用自定义icon">
+<meta property="og:url" content="http://yoursite.com/2020/11/19/element-rate/index.html">
 <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:description" content="今天在于后端调试一个下载接口是，遇到一个下载不成功，提示’无权限‘操作，绕了一圈发现是此接口做了权限效验，草率了…   原因分析：1.后端提供一个下载接口，接口鉴权走中间件middlewoare ,  2.前端为了方便，使用window.open 直接拼装了链接，进行了下载，  3.2个系统，同一个接口，同一份代码，在a 端就可以正常下载，在b 端就下载不了  导致在2端出现不同的现象是，a 端鉴">
+<meta property="og:description" content="项目里面使用了React 与 Vue 进行同时开发，React 对应的使用的是Antd,Vue 则是用Element 这些组件库进行开发，在同一个项目下使用这2种框架，本身就依赖了vuera 来进行相互协作，无论是React 嵌入到Vue 里面，还是Vue 嵌入到React 里面，本来Vue 写得不多，所以这边就没有使用vuera 来完成，一个查看评分功能，在React 模块下用antd 的Rat">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/images/download.png">
-<meta property="article:published_time" content="2020-10-29T11:15:00.000Z">
-<meta property="article:modified_time" content="2020-10-29T12:12:46.021Z">
+<meta property="og:image" content="http://yoursite.com/images/iconfont.png">
+<meta property="og:image" content="http://yoursite.com/images/star.png">
+<meta property="og:image" content="http://yoursite.com/images/name.png">
+<meta property="article:published_time" content="2020-11-19T14:20:00.000Z">
+<meta property="article:modified_time" content="2020-11-19T15:13:02.044Z">
 <meta property="article:author" content="yzy">
 <meta property="article:tag" content="Javascript、Nodejs、Native、微信">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/images/download.png">
+<meta name="twitter:image" content="http://yoursite.com/images/iconfont.png">
 
-<link rel="canonical" href="http://yoursite.com/2020/10/29/download/">
+<link rel="canonical" href="http://yoursite.com/2020/11/19/element-rate/">
 
 
 <script id="page-configurations">
@@ -48,7 +50,7 @@
   };
 </script>
 
-  <title>download 下载方式 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+  <title>Element-UI Rate 评分使用自定义icon | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
   
 
 
@@ -154,7 +156,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/download/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/element-rate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -167,7 +169,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          download 下载方式
+          Element-UI Rate 评分使用自定义icon
         </h1>
 
         <div class="post-meta">
@@ -178,7 +180,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-10-29 19:15:00 / 修改时间：20:12:46" itemprop="dateCreated datePublished" datetime="2020-10-29T19:15:00+08:00">2020-10-29</time>
+              <time title="创建时间：2020-11-19 22:20:00 / 修改时间：23:13:02" itemprop="dateCreated datePublished" datetime="2020-11-19T22:20:00+08:00">2020-11-19</time>
             </span>
 
           
@@ -192,23 +194,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><font face="STCAIYUN" size="3">今天在于后端调试一个下载接口是，遇到一个下载不成功，提示’无权限‘操作，绕了一圈发现是此接口做了权限效验，草率了…</font></p>
-<p><img src="/images/download.png"></p>
+        <p><font face="STCAIYUN" size="3">项目里面使用了React 与 Vue 进行同时开发，React 对应的使用的是Antd,Vue 则是用Element 这些组件库进行开发，在同一个项目下使用这2种框架，本身就依赖了vuera 来进行相互协作，无论是React 嵌入到Vue 里面，还是Vue 嵌入到React 里面，本来Vue 写得不多，所以这边就没有使用vuera 来完成，一个查看评分功能，在React 模块下用antd 的Rate 完成，在Vue 下用Element 的Rate 进行开发，想加深一下Vue 的开发。但是最终导致的结果是，查看评分的弹框，里面的星星大小颜色都不一样，需要统一一下。</font></p>
 <blockquote>
-<p><font face="STCAIYUN" size="2">原因分析：<br>1.后端提供一个下载接口，接口鉴权走中间件middlewoare ,<br>  2.前端为了方便，使用window.open 直接拼装了链接，进行了下载，<br>  3.2个系统，同一个接口，同一份代码，在a 端就可以正常下载，在b 端就下载不了</font></p>
+<p><font face="STCAIYUN" size="2">解决思路：<br>1.通过自定义icon ,让星星大小、样色一样 ,<br>  2.antd 的 Rate 使用character、element 的 Rate 使用icon-classes，<br>  3.使用iconfont 配合完成</font></p>
 </blockquote>
-<p><font face="STCAIYUN" size="2">导致在2端出现不同的现象是，a 端鉴权使用Cookie ,b 端鉴权使用 token ,Cookie 情况下无论使用ajax ,还是 window.open 在header 里面默认就被添加，而token 这种就做不到，所以就会导致同样的代码，在不同的鉴权下就现象不同。</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">解决方法：</span><br><span class="line">const downloadOriginalText &#x3D; useCallback(() &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; 接口</span><br><span class="line">    exportDownloadApi(&#123; ct_id:ctId, task_id:taskId, ca_id:caId &#125;).then((&#123; data &#125;) &#x3D;&gt; &#123;</span><br><span class="line">      const url &#x3D; window.URL.createObjectURL(data);</span><br><span class="line">      let a &#x3D; document.createElement(&#39;a&#39;);</span><br><span class="line">      document.body.appendChild(a);</span><br><span class="line">      &#x2F;&#x2F; 可以将 a 标签display 设为none ,以免有所影响</span><br><span class="line">      a.href &#x3D; url;</span><br><span class="line">      a.click();</span><br><span class="line">      window.URL.revokeObjectURL(url);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, [ctId, taskId, caId])</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">antd Rate：</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125;&#x2F;&gt;</span><br><span class="line">  &lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125; character&#x3D;&#123;()&#x3D;&gt;&lt;IconSvg type&#x3D;&quot;iconstar&quot; style&#x3D;&#123;&#123; color: &#39;#ffc300&#39; &#125;&#125; &#x2F;&gt;&#125; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; IconSvg 解析 阿里iconfont </span><br><span class="line">  const IconSvg &#x3D; (props:&#123; type: string, className?:string, style?:any&#125;) &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;svg className&#x3D;&#123;&#96;icon $&#123;props.className || &#39;&#39;&#125;&#96;&#125; aria-hidden&#x3D;&quot;true&quot; style&#x3D;&#123;props.style&#125;&gt;</span><br><span class="line">        &lt;use xlinkHref&#x3D;&#123;&#96;#$&#123;props.type&#125;&#96;&#125;&gt;&lt;&#x2F;use&gt;</span><br><span class="line">      &lt;&#x2F;svg&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  export default IconSvg</span><br><span class="line"></span><br><span class="line">element Rate:</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot;&gt;&lt;&#x2F;el-rate&gt;</span><br><span class="line">  &lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot; :icon-classes&#x3D;&quot;iconClasses&quot; void-icon-class&#x3D;&quot;icon-rate-face-off&quot; :colors&#x3D;&quot;colors&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-rate&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; javascript</span><br><span class="line">  name: &#39;check-rate&#39;,</span><br><span class="line">  props: [&#39;rate&#39;, &#39;mark&#39;],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      iconClasses: [&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;],</span><br><span class="line">      colors:[&#39;#FFC300&#39;,&#39;#FFC300&#39;,&#39;#FFC300&#39;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p><font face="STCAIYUN" size="2">上述方法可能会出现的问题：<br>1.设置responseType ,拿使用axios exportDownloadApi 这个接口的地方要设置responseType ,它是跟Header 同级</font></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export async function exportDownloadApi (data) &#123;</span><br><span class="line">  return requestHelper.get(&#39;&#x2F;exportxxxxxx00000000&#39;, &#123; params: data, responseType: &#39;blob&#39; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><font face="STCAIYUN" size="2">2.在公共处理请求的地方，在header 里面设置token</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">如果不设就会出现，点击下载，浏览器会出现一个下载行为，文件也下载下载下来了，就是无法打开，告知被损坏，正常下载是没有这个下载行为的，直接就打开了（有待验证）</font></p>
-<p><font face="STCAIYUN" size="2">在调试过程中还发生这样一个问题：<br>问题：设置了responseType 也设置了token ,但是修改了Response Header 里面的Content-Type: application/octet-stream,下载下来的也是损坏的，下载动作会有。此时 Response Header 里面是：<br>Content-Disposition: attachment; filename=”translation-55980.zip”<br>Content-Type: application/octet-stream，没有具体去分析，感觉问题是出现在这里，于是又让后端设置为：<br>Content-Type: application/zip，一把过。</font></p>
+<p><font face="STCAIYUN" size="3">antd 的改造很顺利就完成了，但是element 的星星一直不出来，遇到的问题就是iconfont icon 引入后，没有展示出来：</font></p>
+<p><font face="STCAIYUN" size="3">主要是在iconfont 的使用上，先进行引入，如下图，将css js 文件分别在模板html 中进行引入</font></p>
+<p><img src="/images/iconfont.png"></p>
+<p><font face="STCAIYUN" size="3">注意的点是iconClasses 这个里面填入的name 不要是在iconfont 网站上复制得到的，这是显示不出来的,它得到的是：iconstar  ，与at.alicnd.com 引用的对应有欠缺，所以导致显示不出来，它里面实际对应的是 icon iconfont iconstar ，类型+name 的一个组合</font></p>
+<p><img src="/images/star.png"></p>
+<p><img src="/images/name.png"></p>
+<p><font face="STCAIYUN" size="3">对比方式是在iconfont 网站上点击下载本地，打开demo_index.html 后就可以看到span 标签里面的class 就是实际可显示的。</font></p>
 
     </div>
 
@@ -224,13 +222,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/08/28/let/" rel="prev" title="从Babel 编译理解let const">
-      <i class="fa fa-chevron-left"></i> 从Babel 编译理解let const
+    <a href="/2020/10/29/download/" rel="prev" title="download 下载方式">
+      <i class="fa fa-chevron-left"></i> download 下载方式
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/19/element-rate/" rel="next" title="Element-UI Rate 评分使用自定义icon">
-      Element-UI Rate 评分使用自定义icon <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     

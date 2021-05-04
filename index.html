@@ -151,9 +151,83 @@
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
 =======
 =======
+=======
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/element-rate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="yzy">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/19/element-rate/" class="post-title-link" itemprop="url">Element-UI Rate 评分使用自定义icon</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-19 22:20:00 / 修改时间：23:13:02" itemprop="dateCreated datePublished" datetime="2020-11-19T22:20:00+08:00">2020-11-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><font face="STCAIYUN" size="3">项目里面使用了React 与 Vue 进行同时开发，React 对应的使用的是Antd,Vue 则是用Element 这些组件库进行开发，在同一个项目下使用这2种框架，本身就依赖了vuera 来进行相互协作，无论是React 嵌入到Vue 里面，还是Vue 嵌入到React 里面，本来Vue 写得不多，所以这边就没有使用vuera 来完成，一个查看评分功能，在React 模块下用antd 的Rate 完成，在Vue 下用Element 的Rate 进行开发，想加深一下Vue 的开发。但是最终导致的结果是，查看评分的弹框，里面的星星大小颜色都不一样，需要统一一下。</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">解决思路：<br>1.通过自定义icon ,让星星大小、样色一样 ,<br>  2.antd 的 Rate 使用character、element 的 Rate 使用icon-classes，<br>  3.使用iconfont 配合完成</font></p>
+</blockquote>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">antd Rate：</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125;&#x2F;&gt;</span><br><span class="line">  &lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125; character&#x3D;&#123;()&#x3D;&gt;&lt;IconSvg type&#x3D;&quot;iconstar&quot; style&#x3D;&#123;&#123; color: &#39;#ffc300&#39; &#125;&#125; &#x2F;&gt;&#125; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; IconSvg 解析 阿里iconfont </span><br><span class="line">  const IconSvg &#x3D; (props:&#123; type: string, className?:string, style?:any&#125;) &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;svg className&#x3D;&#123;&#96;icon $&#123;props.className || &#39;&#39;&#125;&#96;&#125; aria-hidden&#x3D;&quot;true&quot; style&#x3D;&#123;props.style&#125;&gt;</span><br><span class="line">        &lt;use xlinkHref&#x3D;&#123;&#96;#$&#123;props.type&#125;&#96;&#125;&gt;&lt;&#x2F;use&gt;</span><br><span class="line">      &lt;&#x2F;svg&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  export default IconSvg</span><br><span class="line"></span><br><span class="line">element Rate:</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot;&gt;&lt;&#x2F;el-rate&gt;</span><br><span class="line">  &lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot; :icon-classes&#x3D;&quot;iconClasses&quot; void-icon-class&#x3D;&quot;icon-rate-face-off&quot; :colors&#x3D;&quot;colors&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-rate&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; javascript</span><br><span class="line">  name: &#39;check-rate&#39;,</span><br><span class="line">  props: [&#39;rate&#39;, &#39;mark&#39;],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      iconClasses: [&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;],</span><br><span class="line">      colors:[&#39;#FFC300&#39;,&#39;#FFC300&#39;,&#39;#FFC300&#39;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="3">antd 的改造很顺利就完成了，但是element 的星星一直不出来，遇到的问题就是iconfont icon 引入后，没有展示出来：</font></p>
+<p><font face="STCAIYUN" size="3">主要是在iconfont 的使用上，先进行引入，如下图，将css js 文件分别在模板html 中进行引入</font></p>
+<p><img src="/images/iconfont.png"></p>
+<p><font face="STCAIYUN" size="3">注意的点是iconClasses 这个里面填入的name 不要是在iconfont 网站上复制得到的，这是显示不出来的,它得到的是：iconstar  ，与at.alicnd.com 引用的对应有欠缺，所以导致显示不出来，它里面实际对应的是 icon iconfont iconstar ，类型+name 的一个组合</font></p>
+<p><img src="/images/star.png"></p>
+<p><img src="/images/name.png"></p>
+<p><font face="STCAIYUN" size="3">对比方式是在iconfont 网站上点击下载本地，打开demo_index.html 后就可以看到span 标签里面的class 就是实际可显示的。</font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+>>>>>>> 1c0d1f4c93785241e9ee9258fb30ed70802edcc1
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/download/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -914,6 +988,7 @@
 <<<<<<< HEAD
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
         
+<<<<<<< HEAD
           <span class="site-state-item-count">5</span>
 =======
         
@@ -923,6 +998,9 @@
 =======
           <span class="site-state-item-count">7</span>
 >>>>>>> adf8272aac804d6cb983e70db1d40f72f770f20a
+=======
+          <span class="site-state-item-count">8</span>
+>>>>>>> 1c0d1f4c93785241e9ee9258fb30ed70802edcc1
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
