@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .DS_Store
 Thumbs.db
 db.json
@@ -5,3 +6,6 @@ db.json
 node_modules/
 public/
 .deploy*/
+=======
+/node_modules
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f

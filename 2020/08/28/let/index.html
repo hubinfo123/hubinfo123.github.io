@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<<<<<<< HEAD
 <meta name="generator" content="Hexo 5.1.1">
+=======
+<meta name="generator" content="Hexo 5.4.2">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -28,8 +32,13 @@
 <meta property="og:description" content="首先let 和 const 是es6 出的，这里就要了解一下，为什么要出新语法，一般是新事物带替旧事物，必然是旧事物满足不了当前，梳理一下es5 里面的变量声明会存在哪些不足，然后再从let 和 const 上去了解他们的优点。  es5 变量声明，也就是var 会存在的问题  1.内层变量可能会覆盖外层变量2.循环中的计数变量可能会泄漏成为全局变量  那么立足es5 本身有没有什么办法去解决呢？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-28T15:59:46.000Z">
+<<<<<<< HEAD
 <meta property="article:modified_time" content="2020-10-24T14:35:11.305Z">
 <meta property="article:author" content="yzy">
+=======
+<meta property="article:modified_time" content="2023-01-28T07:13:35.157Z">
+<meta property="article:author" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 <meta property="article:tag" content="Javascript、Nodejs、Native、微信">
 <meta name="twitter:card" content="summary">
 
@@ -156,7 +165,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -182,7 +195,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -204,17 +221,28 @@
 <blockquote>
 <p><font face="STCAIYUN" size="2">那么立足es5 本身有没有什么办法去解决呢？或者是做个块级作用域，想到作用域，js 里面只有函数存在作用域，那么就可以利用函数来实现</font></p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a &#x3D; 2;</span><br><span class="line">  console.log(a); &#x2F;&#x2F;2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);&#x2F;&#x2F;1</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  console.log(a); //2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);//1</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p><font face="STCAIYUN" size="2">当在es6 中引入了块级作用域，也就是在花括号里面存在let 或者是const 时，花括号所在的区域内就是属于块级作用域了，它的优点是：</font></p>
 </blockquote>
 <p><font face="STCAIYUN" size="2">1.外层作用域无法读取内层作用的变量，也就是es5 的缺点1就不复存在了</font><br><font face="STCAIYUN" size="2">2.外层声明的变量名可以与内层的相同，互不干扰，不用当心会被修改</font><br><font face="STCAIYUN" size="2">3.用函数来模拟或者是立即执行函数就不在需要了</font></p>
 <p><font face="STCAIYUN" size="2">下面来看一组源码示例：</font></p>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">let y &#x3D; 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  let y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br><span class="line">console.log(y); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
 
 <p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x &#x3D; 1;</span><br><span class="line">var y &#x3D; 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  var _y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">let y = 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  let y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br><span class="line">console.log(y); // 1</span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x = 1;</span><br><span class="line">var y = 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  var _y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <p><font face="STCAIYUN" size="2">上面的示例可以看出2个问题：</font><br><font face="STCAIYUN" size="2">1.由于 let 使花括号提升为块级作用域，使得即使声明了相同的变量名 y 也互不干扰。<br>2.为了实现此效果，Babel 重命名了块级作用域内 let 声明的变量名，也就是可以理解为babel 在解析let 语法糖的时候就是将变量名重命名了。</font></p>
 <p><font face="STCAIYUN" size="2">参照:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242</a></font></p>
@@ -303,7 +331,11 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+<<<<<<< HEAD
   <p class="site-author-name" itemprop="name">yzy</p>
+=======
+  <p class="site-author-name" itemprop="name">miroku</p>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <div class="site-description" itemprop="description">穿梭于前端各个领域</div>
 </div>
 <div class="site-state-wrap motion-element">
@@ -339,11 +371,19 @@
 <div class="copyright">
   
   &copy; 
+<<<<<<< HEAD
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">yzy</span>
+=======
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miroku</span>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>

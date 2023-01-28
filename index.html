@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<<<<<<< HEAD
 <meta name="generator" content="Hexo 5.1.1">
+=======
+<meta name="generator" content="Hexo 5.4.2">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -27,7 +31,11 @@
 <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
 <meta property="og:description" content="穿梭于前端各个领域">
 <meta property="og:locale" content="zh_CN">
+<<<<<<< HEAD
 <meta property="article:author" content="yzy">
+=======
+<meta property="article:author" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 <meta property="article:tag" content="Javascript、Nodejs、Native、微信">
 <meta name="twitter:card" content="summary">
 
@@ -153,16 +161,23 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
 =======
 =======
 =======
 =======
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/electron1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -189,7 +204,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2021-05-04 09:51:43" itemprop="dateModified" datetime="2021-05-04T09:51:43+08:00">2021-05-04</time>
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -208,7 +227,11 @@
 <p><font face="STCAIYUN" size="2">未修改时可能存在的问题：<br>1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；<br>  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果出现多个变量，那就呵呵了🙃；<br>  3.太不智能,不够自动化。</font></p>
 </blockquote>
 <p><font face="STCAIYUN" size="2">1.解决办法就是在package.json 里面去设置不同环境的命令，来针对不同的环境来执行不同的命令，如下：</font></p>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;concurrently \&quot;yarn build:main\&quot; \&quot;yarn build:renderer\&quot;&quot;,</span><br><span class="line">    &quot;build:main&quot;: &quot;cross-env NODE_ENV&#x3D;production webpack --config .&#x2F;.erb&#x2F;configs&#x2F;webpack.config.main.prod.babel.js&quot;,</span><br><span class="line">    &quot;build:renderer&quot;: &quot;cross-env NODE_ENV&#x3D;production webpack --config .&#x2F;.erb&#x2F;configs&#x2F;webpack.config.renderer.prod.babel.js&quot;,</span><br><span class="line">    &quot;rebuild&quot;: &quot;electron-rebuild --parallel --types prod,dev,optional --module-dir src&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;cross-env NODE_ENV&#x3D;development eslint . --cache --ext .js,.jsx,.ts,.tsx&quot;,</span><br><span class="line">    &quot;package&quot;: &quot;yarn build &amp;&amp; electron-builder build --publish never&quot;,</span><br><span class="line">    &quot;package:dev&quot;: &quot;cross-env ENV&#x3D;dev yarn package&quot;,</span><br><span class="line">    &quot;package:test&quot;: &quot;cross-env ENV&#x3D;test yarn package&quot;,</span><br><span class="line">    &quot;package:test2&quot;: &quot;cross-env ENV&#x3D;test2 yarn package&quot;,</span><br><span class="line">    &quot;package:pre&quot;: &quot;cross-env ENV&#x3D;pre yarn package&quot;,</span><br><span class="line">    &quot;package:product&quot;: &quot;cross-env ENV&#x3D;product yarn package&quot;,</span><br><span class="line">    &quot;postinstall&quot;: &quot;node -r @babel&#x2F;register .erb&#x2F;scripts&#x2F;CheckNativeDep.js &amp;&amp; electron-builder install-app-deps &amp;&amp; yarn cross-env NODE_ENV&#x3D;development webpack --config .&#x2F;.erb&#x2F;configs&#x2F;webpack.config.renderer.dev.dll.babel.js &amp;&amp; opencollective-postinstall &amp;&amp; yarn-deduplicate yarn.lock&quot;,</span><br><span class="line">    &quot;base&quot;: &quot;node -r @babel&#x2F;register .&#x2F;.erb&#x2F;scripts&#x2F;CheckPortInUse.js &amp;&amp; cross-env yarn start:renderer&quot;,</span><br><span class="line">    &quot;start:dev&quot;: &quot;cross-env ENV&#x3D;dev yarn base&quot;,</span><br><span class="line">    &quot;start:test&quot;: &quot;cross-env ENV&#x3D;test yarn base&quot;,</span><br><span class="line">    &quot;start:test2&quot;: &quot;cross-env ENV&#x3D;test2 yarn base&quot;,</span><br><span class="line">    &quot;start:pre&quot;: &quot;cross-env ENV&#x3D;pre yarn base&quot;,</span><br><span class="line">    &quot;start:product&quot;: &quot;cross-env ENV&#x3D;product yarn base&quot;,</span><br><span class="line">    &quot;start:main&quot;: &quot;cross-env NODE_ENV&#x3D;development electron -r .&#x2F;.erb&#x2F;scripts&#x2F;BabelRegister .&#x2F;src&#x2F;main.dev.ts&quot;,</span><br><span class="line">    &quot;start:renderer&quot;: &quot;cross-env NODE_ENV&#x3D;development webpack serve --config .&#x2F;.erb&#x2F;configs&#x2F;webpack.config.renderer.dev.babel.js&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;concurrently \&quot;yarn build:main\&quot; \&quot;yarn build:renderer\&quot;&quot;,</span><br><span class="line">    &quot;build:main&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js&quot;,</span><br><span class="line">    &quot;build:renderer&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.renderer.prod.babel.js&quot;,</span><br><span class="line">    &quot;rebuild&quot;: &quot;electron-rebuild --parallel --types prod,dev,optional --module-dir src&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx&quot;,</span><br><span class="line">    &quot;package&quot;: &quot;yarn build &amp;&amp; electron-builder build --publish never&quot;,</span><br><span class="line">    &quot;package:dev&quot;: &quot;cross-env ENV=dev yarn package&quot;,</span><br><span class="line">    &quot;package:test&quot;: &quot;cross-env ENV=test yarn package&quot;,</span><br><span class="line">    &quot;package:test2&quot;: &quot;cross-env ENV=test2 yarn package&quot;,</span><br><span class="line">    &quot;package:pre&quot;: &quot;cross-env ENV=pre yarn package&quot;,</span><br><span class="line">    &quot;package:product&quot;: &quot;cross-env ENV=product yarn package&quot;,</span><br><span class="line">    &quot;postinstall&quot;: &quot;node -r @babel/register .erb/scripts/CheckNativeDep.js &amp;&amp; electron-builder install-app-deps &amp;&amp; yarn cross-env NODE_ENV=development webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.babel.js &amp;&amp; opencollective-postinstall &amp;&amp; yarn-deduplicate yarn.lock&quot;,</span><br><span class="line">    &quot;base&quot;: &quot;node -r @babel/register ./.erb/scripts/CheckPortInUse.js &amp;&amp; cross-env yarn start:renderer&quot;,</span><br><span class="line">    &quot;start:dev&quot;: &quot;cross-env ENV=dev yarn base&quot;,</span><br><span class="line">    &quot;start:test&quot;: &quot;cross-env ENV=test yarn base&quot;,</span><br><span class="line">    &quot;start:test2&quot;: &quot;cross-env ENV=test2 yarn base&quot;,</span><br><span class="line">    &quot;start:pre&quot;: &quot;cross-env ENV=pre yarn base&quot;,</span><br><span class="line">    &quot;start:product&quot;: &quot;cross-env ENV=product yarn base&quot;,</span><br><span class="line">    &quot;start:main&quot;: &quot;cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts&quot;,</span><br><span class="line">    &quot;start:renderer&quot;: &quot;cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 
 
@@ -222,7 +245,11 @@
 3."inquirer:package":"TYPE=production node ./scripts/inquirer.js",</font>
 </blockquote>
 <br/>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;inquirer.js</span><br><span class="line">const inquirer &#x3D; require(&#39;inquirer&#39;);</span><br><span class="line">const spawn &#x3D; require(&#39;cross-spawn&#39;);</span><br><span class="line">const promptList &#x3D; [</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#39;list&#39;,</span><br><span class="line">    message: &#39;请选择一种环境:&#39;,</span><br><span class="line">    name: &#39;fruit&#39;,</span><br><span class="line">    choices: [&#39;dev&#39;, &#39;test&#39;, &#39;test2&#39;, &#39;pre&#39;, &#39;product&#39;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      &#x2F;&#x2F; 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#39;list&#39;,</span><br><span class="line">    message: &#39;请选择打包平台:&#39;,</span><br><span class="line">    name: &#39;platform&#39;,</span><br><span class="line">    choices: [&#39;--win&#39;, &#39;--mac&#39;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      &#x2F;&#x2F; 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">if(process.env.TYPE &#x3D;&#x3D;&#x3D; &#39;development&#39;)&#123;</span><br><span class="line">  promptList.pop();</span><br><span class="line">&#125;</span><br><span class="line">inquirer.prompt(promptList).then((answers) &#x3D;&gt; &#123;</span><br><span class="line">  const spawnType &#x3D; process.env.TYPE &#x3D;&#x3D;&#x3D; &#39;development&#39;?&#39;start&#39;:&#39;package&#39;;</span><br><span class="line">  const args &#x3D; process.env.TYPE &#x3D;&#x3D;&#x3D;&#39;development&#39;?[spawnType]:[spawnType,answers.platform];</span><br><span class="line">  console.log(args,&#39;args&#39;)</span><br><span class="line">  spawn(&#96;yarn&#96;,args, &#123;</span><br><span class="line">    stdio: &#39;inherit&#39;,</span><br><span class="line">    &#x2F;&#x2F; 仅在当前运行环境为 Windows 时，才使用 shell</span><br><span class="line">    shell: [&#39;win32&#39;,&#39;win64&#39;].includes(process.platform) ,</span><br><span class="line">    env:&#123;</span><br><span class="line">      ...process.env,</span><br><span class="line">      ENV:answers.fruit</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  console.log(answers); &#x2F;&#x2F; 返回的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//inquirer.js</span><br><span class="line">const inquirer = require(&#x27;inquirer&#x27;);</span><br><span class="line">const spawn = require(&#x27;cross-spawn&#x27;);</span><br><span class="line">const promptList = [</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择一种环境:&#x27;,</span><br><span class="line">    name: &#x27;fruit&#x27;,</span><br><span class="line">    choices: [&#x27;dev&#x27;, &#x27;test&#x27;, &#x27;test2&#x27;, &#x27;pre&#x27;, &#x27;product&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择打包平台:&#x27;,</span><br><span class="line">    name: &#x27;platform&#x27;,</span><br><span class="line">    choices: [&#x27;--win&#x27;, &#x27;--mac&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">if(process.env.TYPE === &#x27;development&#x27;)&#123;</span><br><span class="line">  promptList.pop();</span><br><span class="line">&#125;</span><br><span class="line">inquirer.prompt(promptList).then((answers) =&gt; &#123;</span><br><span class="line">  const spawnType = process.env.TYPE === &#x27;development&#x27;?&#x27;start&#x27;:&#x27;package&#x27;;</span><br><span class="line">  const args = process.env.TYPE ===&#x27;development&#x27;?[spawnType]:[spawnType,answers.platform];</span><br><span class="line">  console.log(args,&#x27;args&#x27;)</span><br><span class="line">  spawn(`yarn`,args, &#123;</span><br><span class="line">    stdio: &#x27;inherit&#x27;,</span><br><span class="line">    // 仅在当前运行环境为 Windows 时，才使用 shell</span><br><span class="line">    shell: [&#x27;win32&#x27;,&#x27;win64&#x27;].includes(process.platform) ,</span><br><span class="line">    env:&#123;</span><br><span class="line">      ...process.env,</span><br><span class="line">      ENV:answers.fruit</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  console.log(answers); // 返回的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
       
     </div>
@@ -242,12 +269,19 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+<<<<<<< HEAD
 >>>>>>> 8f4b68f38752419ed982747047d7ff741f2f8d4b
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/element-rate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -266,10 +300,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+<<<<<<< HEAD
               
 
               <time title="创建时间：2020-11-19 22:20:00 / 修改时间：23:13:02" itemprop="dateCreated datePublished" datetime="2020-11-19T22:20:00+08:00">2020-11-19</time>
             </span>
+=======
+
+              <time title="创建时间：2020-11-19 22:20:00" itemprop="dateCreated datePublished" datetime="2020-11-19T22:20:00+08:00">2020-11-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+              </span>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
           
 
@@ -286,7 +333,11 @@
 <blockquote>
 <p><font face="STCAIYUN" size="2">解决思路：<br>1.通过自定义icon ,让星星大小、样色一样 ,<br>  2.antd 的 Rate 使用character、element 的 Rate 使用icon-classes，<br>  3.使用iconfont 配合完成</font></p>
 </blockquote>
+<<<<<<< HEAD
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">antd Rate：</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125;&#x2F;&gt;</span><br><span class="line">  &lt;Rate value&#x3D;&#123;subItem.value&#125; disabled count&#x3D;&#123;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&#125; character&#x3D;&#123;()&#x3D;&gt;&lt;IconSvg type&#x3D;&quot;iconstar&quot; style&#x3D;&#123;&#123; color: &#39;#ffc300&#39; &#125;&#125; &#x2F;&gt;&#125; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; IconSvg 解析 阿里iconfont </span><br><span class="line">  const IconSvg &#x3D; (props:&#123; type: string, className?:string, style?:any&#125;) &#x3D;&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;svg className&#x3D;&#123;&#96;icon $&#123;props.className || &#39;&#39;&#125;&#96;&#125; aria-hidden&#x3D;&quot;true&quot; style&#x3D;&#123;props.style&#125;&gt;</span><br><span class="line">        &lt;use xlinkHref&#x3D;&#123;&#96;#$&#123;props.type&#125;&#96;&#125;&gt;&lt;&#x2F;use&gt;</span><br><span class="line">      &lt;&#x2F;svg&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  export default IconSvg</span><br><span class="line"></span><br><span class="line">element Rate:</span><br><span class="line">  &#x2F;&#x2F; 非自定义：&lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot;&gt;&lt;&#x2F;el-rate&gt;</span><br><span class="line">  &lt;el-rate v-model&#x3D;&quot;subItem.value&quot; disabled :max&#x3D;&quot;item.name &#x3D;&#x3D;&#x3D; &#39;增值评分&#39;?3:5&quot; :icon-classes&#x3D;&quot;iconClasses&quot; void-icon-class&#x3D;&quot;icon-rate-face-off&quot; :colors&#x3D;&quot;colors&quot;&gt;</span><br><span class="line">  &lt;&#x2F;el-rate&gt;</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; javascript</span><br><span class="line">  name: &#39;check-rate&#39;,</span><br><span class="line">  props: [&#39;rate&#39;, &#39;mark&#39;],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      iconClasses: [&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;,&#39;icon iconfont iconstar&#39;],</span><br><span class="line">      colors:[&#39;#FFC300&#39;,&#39;#FFC300&#39;,&#39;#FFC300&#39;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+=======
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">antd Rate：</span><br><span class="line">  // 非自定义：&lt;Rate value=&#123;subItem.value&#125; disabled count=&#123;item.name === &#x27;增值评分&#x27;?3:5&#125;/&gt;</span><br><span class="line">  &lt;Rate value=&#123;subItem.value&#125; disabled count=&#123;item.name === &#x27;增值评分&#x27;?3:5&#125; character=&#123;()=&gt;&lt;IconSvg type=&quot;iconstar&quot; style=&#123;&#123; color: &#x27;#ffc300&#x27; &#125;&#125; /&gt;&#125; /&gt;</span><br><span class="line"></span><br><span class="line">  // IconSvg 解析 阿里iconfont </span><br><span class="line">  const IconSvg = (props:&#123; type: string, className?:string, style?:any&#125;) =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;svg className=&#123;`icon $&#123;props.className || &#x27;&#x27;&#125;`&#125; aria-hidden=&quot;true&quot; style=&#123;props.style&#125;&gt;</span><br><span class="line">        &lt;use xlinkHref=&#123;`#$&#123;props.type&#125;`&#125;&gt;&lt;/use&gt;</span><br><span class="line">      &lt;/svg&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  export default IconSvg</span><br><span class="line"></span><br><span class="line">element Rate:</span><br><span class="line">  // 非自定义：&lt;el-rate v-model=&quot;subItem.value&quot; disabled :max=&quot;item.name === &#x27;增值评分&#x27;?3:5&quot;&gt;&lt;/el-rate&gt;</span><br><span class="line">  &lt;el-rate v-model=&quot;subItem.value&quot; disabled :max=&quot;item.name === &#x27;增值评分&#x27;?3:5&quot; :icon-classes=&quot;iconClasses&quot; void-icon-class=&quot;icon-rate-face-off&quot; :colors=&quot;colors&quot;&gt;</span><br><span class="line">  &lt;/el-rate&gt;</span><br><span class="line"></span><br><span class="line">  // javascript</span><br><span class="line">  name: &#x27;check-rate&#x27;,</span><br><span class="line">  props: [&#x27;rate&#x27;, &#x27;mark&#x27;],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      iconClasses: [&#x27;icon iconfont iconstar&#x27;,&#x27;icon iconfont iconstar&#x27;,&#x27;icon iconfont iconstar&#x27;],</span><br><span class="line">      colors:[&#x27;#FFC300&#x27;,&#x27;#FFC300&#x27;,&#x27;#FFC300&#x27;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <p><font face="STCAIYUN" size="3">antd 的改造很顺利就完成了，但是element 的星星一直不出来，遇到的问题就是iconfont icon 引入后，没有展示出来：</font></p>
 <p><font face="STCAIYUN" size="3">主要是在iconfont 的使用上，先进行引入，如下图，将css js 文件分别在模板html 中进行引入</font></p>
@@ -314,12 +365,19 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+<<<<<<< HEAD
 >>>>>>> 1c0d1f4c93785241e9ee9258fb30ed70802edcc1
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/download/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -338,10 +396,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+<<<<<<< HEAD
               
 
               <time title="创建时间：2020-10-29 19:15:00 / 修改时间：20:12:46" itemprop="dateCreated datePublished" datetime="2020-10-29T19:15:00+08:00">2020-10-29</time>
             </span>
+=======
+
+              <time title="创建时间：2020-10-29 19:15:00" itemprop="dateCreated datePublished" datetime="2020-10-29T19:15:00+08:00">2020-10-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+              </span>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
           
 
@@ -360,12 +431,20 @@
 <p><font face="STCAIYUN" size="2">原因分析：<br>1.后端提供一个下载接口，接口鉴权走中间件middlewoare ,<br>  2.前端为了方便，使用window.open 直接拼装了链接，进行了下载，<br>  3.2个系统，同一个接口，同一份代码，在a 端就可以正常下载，在b 端就下载不了</font></p>
 </blockquote>
 <p><font face="STCAIYUN" size="2">导致在2端出现不同的现象是，a 端鉴权使用Cookie ,b 端鉴权使用 token ,Cookie 情况下无论使用ajax ,还是 window.open 在header 里面默认就被添加，而token 这种就做不到，所以就会导致同样的代码，在不同的鉴权下就现象不同。</font></p>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">解决方法：</span><br><span class="line">const downloadOriginalText &#x3D; useCallback(() &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; 接口</span><br><span class="line">    exportDownloadApi(&#123; ct_id:ctId, task_id:taskId, ca_id:caId &#125;).then((&#123; data &#125;) &#x3D;&gt; &#123;</span><br><span class="line">      const url &#x3D; window.URL.createObjectURL(data);</span><br><span class="line">      let a &#x3D; document.createElement(&#39;a&#39;);</span><br><span class="line">      document.body.appendChild(a);</span><br><span class="line">      &#x2F;&#x2F; 可以将 a 标签display 设为none ,以免有所影响</span><br><span class="line">      a.href &#x3D; url;</span><br><span class="line">      a.click();</span><br><span class="line">      window.URL.revokeObjectURL(url);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, [ctId, taskId, caId])</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">解决方法：</span><br><span class="line">const downloadOriginalText = useCallback(() =&gt; &#123;</span><br><span class="line">    // 接口</span><br><span class="line">    exportDownloadApi(&#123; ct_id:ctId, task_id:taskId, ca_id:caId &#125;).then((&#123; data &#125;) =&gt; &#123;</span><br><span class="line">      const url = window.URL.createObjectURL(data);</span><br><span class="line">      let a = document.createElement(&#x27;a&#x27;);</span><br><span class="line">      document.body.appendChild(a);</span><br><span class="line">      // 可以将 a 标签display 设为none ,以免有所影响</span><br><span class="line">      a.href = url;</span><br><span class="line">      a.click();</span><br><span class="line">      window.URL.revokeObjectURL(url);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, [ctId, taskId, caId])</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p><font face="STCAIYUN" size="2">上述方法可能会出现的问题：<br>1.设置responseType ,拿使用axios exportDownloadApi 这个接口的地方要设置responseType ,它是跟Header 同级</font></p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export async function exportDownloadApi (data) &#123;</span><br><span class="line">  return requestHelper.get(&#39;&#x2F;exportxxxxxx00000000&#39;, &#123; params: data, responseType: &#39;blob&#39; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export async function exportDownloadApi (data) &#123;</span><br><span class="line">  return requestHelper.get(&#x27;/exportxxxxxx00000000&#x27;, &#123; params: data, responseType: &#x27;blob&#x27; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 <blockquote>
 <p><font face="STCAIYUN" size="2">2.在公共处理请求的地方，在header 里面设置token</font></p>
 </blockquote>
@@ -390,6 +469,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+<<<<<<< HEAD
 >>>>>>> adf8272aac804d6cb983e70db1d40f72f770f20a
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/let/">
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
@@ -397,6 +477,13 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="yzy">
+=======
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/let/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -407,10 +494,14 @@
         <h2 class="post-title" itemprop="name headline">
           
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="/2020/08/25/one/" class="post-title-link" itemprop="url">JSON.stringify的魔法</a>
 =======
             <a href="/2020/08/28/let/" class="post-title-link" itemprop="url">从Babel 编译理解let const</a>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+            <a href="/2020/08/28/let/" class="post-title-link" itemprop="url">从Babel 编译理解let const</a>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
         </h2>
 
         <div class="post-meta">
@@ -421,10 +512,14 @@
               <span class="post-meta-item-text">发表于</span>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
               <time title="创建时间：2020-08-25 23:27:46" itemprop="dateCreated datePublished" datetime="2020-08-25T23:27:46+08:00">2020-08-25</time>
 =======
               <time title="创建时间：2020-08-28 23:59:46" itemprop="dateCreated datePublished" datetime="2020-08-28T23:59:46+08:00">2020-08-28</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+              <time title="创建时间：2020-08-28 23:59:46" itemprop="dateCreated datePublished" datetime="2020-08-28T23:59:46+08:00">2020-08-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -432,10 +527,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:38:34" itemprop="dateModified" datetime="2020-08-26T22:38:34+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -449,6 +548,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -483,6 +583,8 @@
           <h2 id="master-分支"><a href="#master-分支" class="headerlink" title="master 分支"></a>master 分支</h2><h3 id="没有被更新到部署页面上"><a href="#没有被更新到部署页面上" class="headerlink" title="没有被更新到部署页面上"></a>没有被更新到部署页面上</h3>
 =======
 =======
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
           <p><font face="STCAIYUN" size="3">首先let 和 const 是es6 出的，这里就要了解一下，为什么要出新语法，一般是新事物带替旧事物，必然是旧事物满足不了当前，梳理一下es5 里面的变量声明会存在哪些不足，然后再从let 和 const 上去了解他们的优点。</font></p>
 <blockquote>
 <p><font face="STCAIYUN" size="2">es5 变量声明，也就是var 会存在的问题</font></p>
@@ -491,17 +593,28 @@
 <blockquote>
 <p><font face="STCAIYUN" size="2">那么立足es5 本身有没有什么办法去解决呢？或者是做个块级作用域，想到作用域，js 里面只有函数存在作用域，那么就可以利用函数来实现</font></p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a &#x3D; 2;</span><br><span class="line">  console.log(a); &#x2F;&#x2F;2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);&#x2F;&#x2F;1</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  console.log(a); //2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);//1</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p><font face="STCAIYUN" size="2">当在es6 中引入了块级作用域，也就是在花括号里面存在let 或者是const 时，花括号所在的区域内就是属于块级作用域了，它的优点是：</font></p>
 </blockquote>
 <p><font face="STCAIYUN" size="2">1.外层作用域无法读取内层作用的变量，也就是es5 的缺点1就不复存在了</font><br><font face="STCAIYUN" size="2">2.外层声明的变量名可以与内层的相同，互不干扰，不用当心会被修改</font><br><font face="STCAIYUN" size="2">3.用函数来模拟或者是立即执行函数就不在需要了</font></p>
 <p><font face="STCAIYUN" size="2">下面来看一组源码示例：</font></p>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x &#x3D; 1;</span><br><span class="line">let y &#x3D; 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  let y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br><span class="line">console.log(y); &#x2F;&#x2F; 1</span><br></pre></td></tr></table></figure>
 
 <p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x &#x3D; 1;</span><br><span class="line">var y &#x3D; 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x &#x3D; 2;</span><br><span class="line">  var _y &#x3D; 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">let y = 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  let y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br><span class="line">console.log(y); // 1</span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x = 1;</span><br><span class="line">var y = 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  var _y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <p><font face="STCAIYUN" size="2">上面的示例可以看出2个问题：</font><br><font face="STCAIYUN" size="2">1.由于 let 使花括号提升为块级作用域，使得即使声明了相同的变量名 y 也互不干扰。<br>2.为了实现此效果，Babel 重命名了块级作用域内 let 声明的变量名，也就是可以理解为babel 在解析let 语法糖的时候就是将变量名重命名了。</font></p>
 <p><font face="STCAIYUN" size="2">参照:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242</a></font></p>
@@ -528,7 +641,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -555,7 +672,11 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
+<<<<<<< HEAD
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -569,6 +690,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
+<<<<<<< HEAD
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
           <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
 <h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth &#x3D; &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#39;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">  name:&#39;yy&#39;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F;存入</span><br><span class="line">localStorage.setItem(&#39;auth&#39;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;调用</span><br><span class="line">const currentAuth &#x3D; JSON.parse(localStorage.getItem(&#39;auth&#39;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -582,6 +704,20 @@
 <h6 id="5-数据处理"><a href="#5-数据处理" class="headerlink" title="5.数据处理"></a>5.数据处理</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;处理前的对象</span><br><span class="line">const todayILearn &#x3D; &#123;</span><br><span class="line">  _id: 1,</span><br><span class="line">  content: &#39;今天学习 JSON.stringify()，我很开心！&#39;,</span><br><span class="line">  created_at: &#39;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">  updated_at: &#39;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#39;</span><br><span class="line">&#125;;</span><br><span class="line">&#x2F;&#x2F;处理后的对象</span><br><span class="line">const todayILearn &#x3D; &#123;</span><br><span class="line">  id: 1,</span><br><span class="line">  content: &#39;今天学习 JSON.stringify()，我很开心！&#39;,</span><br><span class="line">  createdAt: &#39;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">  updatedAt: &#39;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;实现方法</span><br><span class="line">1.创建新的对象 + 遍历实现</span><br><span class="line">&#x2F;&#x2F; 多一个变量存储</span><br><span class="line">const todayILearnTemp &#x3D; &#123;&#125;;</span><br><span class="line">for (const [key, value] of Object.entries(todayILearn)) &#123;</span><br><span class="line">  if (key &#x3D;&#x3D;&#x3D; &quot;_id&quot;) todayILearnTemp[&quot;id&quot;] &#x3D; value;</span><br><span class="line">  else if (key &#x3D;&#x3D;&#x3D; &quot;created_at&quot;) todayILearnTemp[&quot;createdAt&quot;] &#x3D; value;</span><br><span class="line">  else if (key &#x3D;&#x3D;&#x3D; &quot;updatedAt&quot;) todayILearnTemp[&quot;updatedAt&quot;] &#x3D; value;</span><br><span class="line">  else todayILearnTemp[key] &#x3D; value;</span><br><span class="line">&#125;</span><br><span class="line">console.log(todayILearnTemp);</span><br><span class="line">&#x2F;&#x2F; 结果：</span><br><span class="line">&#x2F;&#x2F; &#123; id: 1,</span><br><span class="line">&#x2F;&#x2F;  content: &#39;今天学习 JSON.stringify()，我很开心！&#39;,</span><br><span class="line">&#x2F;&#x2F;  createdAt: &#39;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">&#x2F;&#x2F;  updated_at: &#39;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#39;</span><br><span class="line">&#x2F;&#x2F; &#125;</span><br><span class="line">缺点：多声明了一个变量，加了层循环，多个if else 判断</span><br><span class="line"></span><br><span class="line">2.先delete 属性，再增加属性</span><br><span class="line">todayILearn.id &#x3D; todayILearn._id;</span><br><span class="line">todayILearn.createdAt &#x3D; todayILearn.created_at;</span><br><span class="line">todayILearn.updatedAt &#x3D; todayILearn.updated_at;</span><br><span class="line">delete todayILearn._id;</span><br><span class="line">delete todayILearn.created_at;</span><br><span class="line">delete todayILearn.updated_at;</span><br><span class="line">console.log(todayILearn);</span><br><span class="line">&#x2F;&#x2F;     太暴力😢</span><br><span class="line">&#x2F;&#x2F;&#123;</span><br><span class="line">&#x2F;&#x2F;  content: &#39;今天学习 JSON.stringify()，我很开心！&#39;,</span><br><span class="line">&#x2F;&#x2F;  id: 1,</span><br><span class="line">&#x2F;&#x2F;  createdAt: &#39;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">&#x2F;&#x2F;  updatedAt: &#39;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#39;</span><br><span class="line">&#x2F;&#x2F;&#125;</span><br><span class="line">缺点：属性的顺序发生了改变</span><br><span class="line"></span><br><span class="line">3.序列化 + replace</span><br><span class="line">const mapObj &#x3D; &#123;</span><br><span class="line">  _id: &quot;id&quot;,</span><br><span class="line">  created_at: &quot;createdAt&quot;,</span><br><span class="line">  updated_at: &quot;updatedAt&quot;</span><br><span class="line">&#125;;</span><br><span class="line">JSON.parse(</span><br><span class="line">  JSON.stringify(todayILearn).replace(</span><br><span class="line">    &#x2F;_id|created_at|updated_at&#x2F;gi,</span><br><span class="line">    matched &#x3D;&gt; mapObj[matched])</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; &#123;</span><br><span class="line">&#x2F;&#x2F; id: 1,</span><br><span class="line">&#x2F;&#x2F;  content: &#39;今天学习 JSON.stringify()，我很开心！&#39;,</span><br><span class="line">&#x2F;&#x2F;  createdAt: &#39;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#39;,</span><br><span class="line">&#x2F;&#x2F;  updatedAt: &#39;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#39;</span><br><span class="line">&#x2F;&#x2F; &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h5 id="JSON-stringify-与-toString-的区别"><a href="#JSON-stringify-与-toString-的区别" class="headerlink" title="JSON.stringify 与 toString 的区别"></a>JSON.stringify 与 toString 的区别</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a &#x3D; [1,2,3];</span><br><span class="line">console.log(JSON.stringify(a));&#x2F;&#x2F;&quot;[1,2,3]&quot;</span><br><span class="line">console.log(a.toString());&#x2F;&#x2F;&quot;1,2,3&quot;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+=======
+          <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
+<h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth = &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#x27;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  name:&#x27;yy&#x27;</span><br><span class="line">&#125;</span><br><span class="line">//存入</span><br><span class="line">localStorage.setItem(&#x27;auth&#x27;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">const currentAuth = JSON.parse(localStorage.getItem(&#x27;auth&#x27;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="2-判断数组中是否包含某个对象"><a href="#2-判断数组中是否包含某个对象" class="headerlink" title="2.判断数组中是否包含某个对象"></a>2.判断数组中是否包含某个对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const data = [</span><br><span class="line">  &#123;type:&#x27;javascript&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;html&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;css&#x27;&#125;</span><br><span class="line">];</span><br><span class="line">JSON.stringify(data).includes(JSON.stringify(&#123;type:&#x27;css&#x27;&#125;));//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="3-判断数组-对象是否相等"><a href="#3-判断数组-对象是否相等" class="headerlink" title="3.判断数组/对象是否相等"></a>3.判断数组/对象是否相等</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">const b = [1,2,3];</span><br><span class="line">JSON.stringify(a) == JSON.stringify(b);//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="4-数据深拷贝"><a href="#4-数据深拷贝" class="headerlink" title="4.数据深拷贝"></a>4.数据深拷贝</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">const b = JSON.parse(JSON.stringify(a));</span><br><span class="line">b[0] = 0;</span><br><span class="line">console.log(a,b);//[1,2,3] [0,2,3]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="5-数据处理"><a href="#5-数据处理" class="headerlink" title="5.数据处理"></a>5.数据处理</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">//处理前的对象</span><br><span class="line">const todayILearn = &#123;</span><br><span class="line">  _id: 1,</span><br><span class="line">  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">  created_at: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  updated_at: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">//处理后的对象</span><br><span class="line">const todayILearn = &#123;</span><br><span class="line">  id: 1,</span><br><span class="line">  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//实现方法</span><br><span class="line">1.创建新的对象 + 遍历实现</span><br><span class="line">// 多一个变量存储</span><br><span class="line">const todayILearnTemp = &#123;&#125;;</span><br><span class="line">for (const [key, value] of Object.entries(todayILearn)) &#123;</span><br><span class="line">  if (key === &quot;_id&quot;) todayILearnTemp[&quot;id&quot;] = value;</span><br><span class="line">  else if (key === &quot;created_at&quot;) todayILearnTemp[&quot;createdAt&quot;] = value;</span><br><span class="line">  else if (key === &quot;updatedAt&quot;) todayILearnTemp[&quot;updatedAt&quot;] = value;</span><br><span class="line">  else todayILearnTemp[key] = value;</span><br><span class="line">&#125;</span><br><span class="line">console.log(todayILearnTemp);</span><br><span class="line">// 结果：</span><br><span class="line">// &#123; id: 1,</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updated_at: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">// &#125;</span><br><span class="line">缺点：多声明了一个变量，加了层循环，多个if else 判断</span><br><span class="line"></span><br><span class="line">2.先delete 属性，再增加属性</span><br><span class="line">todayILearn.id = todayILearn._id;</span><br><span class="line">todayILearn.createdAt = todayILearn.created_at;</span><br><span class="line">todayILearn.updatedAt = todayILearn.updated_at;</span><br><span class="line">delete todayILearn._id;</span><br><span class="line">delete todayILearn.created_at;</span><br><span class="line">delete todayILearn.updated_at;</span><br><span class="line">console.log(todayILearn);</span><br><span class="line">//     太暴力😢</span><br><span class="line">//&#123;</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  id: 1,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">//&#125;</span><br><span class="line">缺点：属性的顺序发生了改变</span><br><span class="line"></span><br><span class="line">3.序列化 + replace</span><br><span class="line">const mapObj = &#123;</span><br><span class="line">  _id: &quot;id&quot;,</span><br><span class="line">  created_at: &quot;createdAt&quot;,</span><br><span class="line">  updated_at: &quot;updatedAt&quot;</span><br><span class="line">&#125;;</span><br><span class="line">JSON.parse(</span><br><span class="line">  JSON.stringify(todayILearn).replace(</span><br><span class="line">    /_id|created_at|updated_at/gi,</span><br><span class="line">    matched =&gt; mapObj[matched])</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">// &#123;</span><br><span class="line">// id: 1,</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="JSON-stringify-与-toString-的区别"><a href="#JSON-stringify-与-toString-的区别" class="headerlink" title="JSON.stringify 与 toString 的区别"></a>JSON.stringify 与 toString 的区别</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">console.log(JSON.stringify(a));//&quot;[1,2,3]&quot;</span><br><span class="line">console.log(a.toString());//&quot;1,2,3&quot;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p>二者虽然都是转成了字符串，但是本质上还是有区别的，JSON.stringify 主要是将javascript 对象转换成字符串，偏向于操作对象类型，而toString 更偏向于数字类型转换为字符串类型</p>
@@ -589,7 +725,11 @@
 <blockquote>
 <p>下面来看看JSON.stringify 的几大特性</p>
 </blockquote>
+<<<<<<< HEAD
 <h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data &#x3D; &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); &#x2F;&#x2F; 输出：？</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#39;dd&#39;)])  &#x2F;&#x2F; 输出：？</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#39;a&#39;)&#125;)</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line">JSON.stringify(Symbol(&#39;dd&#39;))</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+=======
+<h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data = &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#x27;dd&#x27;)])  // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#x27;a&#x27;)&#125;)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(Symbol(&#x27;dd&#x27;))</span><br><span class="line">// undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       
     </div>
 
@@ -612,7 +752,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -640,10 +784,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:10:45" itemprop="dateModified" datetime="2020-08-26T23:10:45+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -661,14 +809,24 @@
 <h5 id="选择合适的打包格式"><a href="#选择合适的打包格式" class="headerlink" title="选择合适的打包格式"></a>选择合适的打包格式</h5><h6 id="首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"><a href="#首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。" class="headerlink" title="首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"></a>首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。</h6><h6 id="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有："><a href="#为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有：" class="headerlink" title="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有："></a>为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有：</h6><h6 id="•-“var”-以一个变量形式输出：-var-Library-xxx-default-；"><a href="#•-“var”-以一个变量形式输出：-var-Library-xxx-default-；" class="headerlink" title="• “var” - 以一个变量形式输出： var Library = xxx (default)；"></a>• “var” - 以一个变量形式输出： var Library = xxx (default)；</h6><h6 id="•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；"><a href="#•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；" class="headerlink" title="• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；"></a>• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；</h6><h6 id="•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；"><a href="#•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；" class="headerlink" title="• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；"></a>• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；</h6><h6 id="•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；"><a href="#•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；" class="headerlink" title="• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；"></a>• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；</h6><h6 id="•-“amd”-以-AMD-格式输出；"><a href="#•-“amd”-以-AMD-格式输出；" class="headerlink" title="• “amd” - 以 AMD 格式输出；"></a>• “amd” - 以 AMD 格式输出；</h6><h6 id="•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。"><a href="#•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。" class="headerlink" title="• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。"></a>• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。</h6><blockquote>
 <p>以下是 webpack.config.js 中 output 设置的示例：</p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;..&#x2F;dist&#39;),</span><br><span class="line">    publicPath: &#39;&#x2F;dist&#x2F;&#39;,</span><br><span class="line">    filename: &#39;iview.js&#39;,</span><br><span class="line">    library: &#39;iview&#39;,       &#x2F;&#x2F; 模块名称</span><br><span class="line">    libraryTarget: &#39;umd&#39;,   &#x2F;&#x2F; 输出格式</span><br><span class="line">    umdNamedDefine: true    &#x2F;&#x2F; 是否将模块名称作为 AMD 输出的命名空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">    publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">    filename: &#x27;iview.js&#x27;,</span><br><span class="line">    library: &#x27;iview&#x27;,       // 模块名称</span><br><span class="line">    libraryTarget: &#x27;umd&#x27;,   // 输出格式</span><br><span class="line">    umdNamedDefine: true    // 是否将模块名称作为 AMD 输出的命名空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p>到此，我们解决了组件库输出的问题。<br>但是，！！！上面output配置libraryName：’Iview’,可能会出现意想不到的问题</p>
 </blockquote>
+<<<<<<< HEAD
 <h5 id="如何打包组件依赖"><a href="#如何打包组件依赖" class="headerlink" title="如何打包组件依赖"></a>如何打包组件依赖</h5><h6 id="组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。"><a href="#组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。" class="headerlink" title="组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。"></a>组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</h6><h6 id="在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下："><a href="#在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下：" class="headerlink" title="在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下："></a>在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#39;vue&#39;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h6 id="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！"><a href="#啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！" class="headerlink" title="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！"></a>啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</h6><h6 id="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。"><a href="#事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。" class="headerlink" title="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。"></a>事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</h6><h6 id="为了分析问题，我们将打包的代码前几行拿出来看看："><a href="#为了分析问题，我们将打包的代码前几行拿出来看看：" class="headerlink" title="为了分析问题，我们将打包的代码前几行拿出来看看："></a>为了分析问题，我们将打包的代码前几行拿出来看看：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</span><br><span class="line">    if(typeof exports &#x3D;&#x3D;&#x3D; &#39;object&#39; &amp;&amp; typeof module &#x3D;&#x3D;&#x3D; &#39;object&#39;)</span><br><span class="line">        module.exports &#x3D; factory(require(&quot;vue&quot;));</span><br><span class="line">    else if(typeof define &#x3D;&#x3D;&#x3D; &#39;function&#39; &amp;&amp; define.amd)</span><br><span class="line">        define(&quot;iview&quot;, [&quot;vue&quot;], factory);</span><br><span class="line">    else if(typeof exports &#x3D;&#x3D;&#x3D; &#39;object&#39;)</span><br><span class="line">        exports[&quot;iview&quot;] &#x3D; factory(require(&quot;vue&quot;));</span><br><span class="line">    else</span><br><span class="line">        root[&quot;iview&quot;] &#x3D; factory(root[&quot;vue&quot;]);</span><br><span class="line">&#125;)(this, function(__WEBPACK_EXTERNAL_MODULE_157__) &#123;</span><br><span class="line">    &#x2F;&#x2F; ....</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+=======
+<h5 id="如何打包组件依赖"><a href="#如何打包组件依赖" class="headerlink" title="如何打包组件依赖"></a>如何打包组件依赖</h5><h6 id="组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。"><a href="#组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。" class="headerlink" title="组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。"></a>组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</h6><h6 id="在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下："><a href="#在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下：" class="headerlink" title="在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下："></a>在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#x27;vue&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！"><a href="#啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！" class="headerlink" title="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！"></a>啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</h6><h6 id="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。"><a href="#事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。" class="headerlink" title="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。"></a>事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</h6><h6 id="为了分析问题，我们将打包的代码前几行拿出来看看："><a href="#为了分析问题，我们将打包的代码前几行拿出来看看：" class="headerlink" title="为了分析问题，我们将打包的代码前几行拿出来看看："></a>为了分析问题，我们将打包的代码前几行拿出来看看：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</span><br><span class="line">    if(typeof exports === &#x27;object&#x27; &amp;&amp; typeof module === &#x27;object&#x27;)</span><br><span class="line">        module.exports = factory(require(&quot;vue&quot;));</span><br><span class="line">    else if(typeof define === &#x27;function&#x27; &amp;&amp; define.amd)</span><br><span class="line">        define(&quot;iview&quot;, [&quot;vue&quot;], factory);</span><br><span class="line">    else if(typeof exports === &#x27;object&#x27;)</span><br><span class="line">        exports[&quot;iview&quot;] = factory(require(&quot;vue&quot;));</span><br><span class="line">    else</span><br><span class="line">        root[&quot;iview&quot;] = factory(root[&quot;vue&quot;]);</span><br><span class="line">&#125;)(this, function(__WEBPACK_EXTERNAL_MODULE_157__) &#123;</span><br><span class="line">    // ....</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p>我们可以看见，打包后的代码以 4 种形式声明了 Vue 依赖</p>
@@ -676,7 +834,11 @@
 <h6 id="1-module-exports-factory-require-“vue”-commonjs2-形式；"><a href="#1-module-exports-factory-require-“vue”-commonjs2-形式；" class="headerlink" title="1. module.exports = factory(require(“vue”)) - commonjs2 形式；"></a>1. module.exports = factory(require(“vue”)) - commonjs2 形式；</h6><h6 id="2-define-“iview”-“vue”-factory-AMD-形式；"><a href="#2-define-“iview”-“vue”-factory-AMD-形式；" class="headerlink" title="2.define(“iview”, [“vue”], factory) - AMD 形式；"></a>2.define(“iview”, [“vue”], factory) - AMD 形式；</h6><h6 id="3-exports-“iview”-factory-require-“vue”-commonjs-形式；"><a href="#3-exports-“iview”-factory-require-“vue”-commonjs-形式；" class="headerlink" title="3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；"></a>3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；</h6><h6 id="4-root-“iview”-factory-root-“vue”-全局变量形式。"><a href="#4-root-“iview”-factory-root-“vue”-全局变量形式。" class="headerlink" title="4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。"></a>4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。</h6><h6 id="以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。"><a href="#以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。" class="headerlink" title="以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。"></a>以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。</h6><blockquote>
 <p>幸好，webpack 可以为各种导入形式设置不同名称，设置如下：</p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#123;</span><br><span class="line">        root: &#39;Vue&#39;,</span><br><span class="line">        commonjs: &#39;vue&#39;,</span><br><span class="line">        commonjs2: &#39;vue&#39;,</span><br><span class="line">        amd: &#39;vue&#39;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#123;</span><br><span class="line">        root: &#x27;Vue&#x27;,</span><br><span class="line">        commonjs: &#x27;vue&#x27;,</span><br><span class="line">        commonjs2: &#x27;vue&#x27;,</span><br><span class="line">        amd: &#x27;vue&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p>再次打包，你可以发现打包的组件库不管是 script 标签方式还是后端构建，都可以正常工作了。</p>
@@ -684,6 +846,7 @@
 <blockquote>
 <p>最后，帖一个打包 iView 组件库的 webpack 配置：</p>
 </blockquote>
+<<<<<<< HEAD
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line">var webpack &#x3D; require(&#39;webpack&#39;);</span><br><span class="line"></span><br><span class="line">module.exports &#x3D; &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#39;.&#x2F;src&#x2F;index.js&#39;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#39;..&#x2F;dist&#39;),</span><br><span class="line">        publicPath: &#39;&#x2F;dist&#x2F;&#39;,</span><br><span class="line">        filename: &#39;iview.js&#39;,</span><br><span class="line">        library: &#39;iview&#39;,</span><br><span class="line">        libraryTarget: &#39;umd&#39;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#39;Vue&#39;,</span><br><span class="line">            commonjs: &#39;vue&#39;,</span><br><span class="line">            commonjs2: &#39;vue&#39;,</span><br><span class="line">            amd: &#39;vue&#39;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.vue&#39;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: &#x2F;\.vue$&#x2F;,</span><br><span class="line">            loader: &#39;vue&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.js$&#x2F;,</span><br><span class="line">            loader: &#39;babel&#39;,</span><br><span class="line">            exclude: &#x2F;node_modules&#x2F;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.css$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!autoprefixer&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.less$&#x2F;,</span><br><span class="line">            loader: &#39;style!css!less&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$&#x2F;,</span><br><span class="line">            loader: &#39;url?limit&#x3D;8192&#39;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: &#x2F;\.(html|tpl)$&#x2F;,</span><br><span class="line">            loader: &#39;vue-html&#39;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#39;process.env&#39;: &#123;</span><br><span class="line">                NODE_ENV: &#39;&quot;development&quot;&#39;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <<<<<<< HEAD
 >>>>>>> 5d7bf80bdab3af1f4180cb1f6bc36e672e5d02ca
@@ -694,6 +857,11 @@
       
     </div>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path = require(&#x27;path&#x27;);</span><br><span class="line">var webpack = require(&#x27;webpack&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#x27;./src/index.js&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">        publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">        filename: &#x27;iview.js&#x27;,</span><br><span class="line">        library: &#x27;iview&#x27;,</span><br><span class="line">        libraryTarget: &#x27;umd&#x27;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#x27;Vue&#x27;,</span><br><span class="line">            commonjs: &#x27;vue&#x27;,</span><br><span class="line">            commonjs2: &#x27;vue&#x27;,</span><br><span class="line">            amd: &#x27;vue&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#x27;&#x27;, &#x27;.js&#x27;, &#x27;.vue&#x27;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: /\.vue$/,</span><br><span class="line">            loader: &#x27;vue&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.js$/,</span><br><span class="line">            loader: &#x27;babel&#x27;,</span><br><span class="line">            exclude: /node_modules/</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            loader: &#x27;style!css!autoprefixer&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.less$/,</span><br><span class="line">            loader: &#x27;style!css!less&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,</span><br><span class="line">            loader: &#x27;url?limit=8192&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(html|tpl)$/,</span><br><span class="line">            loader: &#x27;vue-html&#x27;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#x27;process.env&#x27;: &#123;</span><br><span class="line">                NODE_ENV: &#x27;&quot;development&quot;&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
     
     
@@ -714,7 +882,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -742,10 +914,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:24:55" itemprop="dateModified" datetime="2020-08-26T23:24:55+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -764,7 +940,11 @@
 <li>类组件的不足</li>
 </ol>
 </blockquote>
+<<<<<<< HEAD
 <h6 id="•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护"><a href="#•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护" class="headerlink" title="• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护"></a>• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护</h6><h6 id="•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）"><a href="#•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）" class="headerlink" title="• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）"></a>• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）</h6><h6 id="•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"><a href="#•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件" class="headerlink" title="• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"></a>• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件</h6><h6 id="•-this-指向问题：父组件给子组件传递函数时，必须绑定-this"><a href="#•-this-指向问题：父组件给子组件传递函数时，必须绑定-this" class="headerlink" title="• this 指向问题：父组件给子组件传递函数时，必须绑定 this"></a>• this 指向问题：父组件给子组件传递函数时，必须绑定 this</h6><h6 id="•-react-中的组件四种绑定-this-方法的区别"><a href="#•-react-中的组件四种绑定-this-方法的区别" class="headerlink" title="• react 中的组件四种绑定 this 方法的区别"></a>• react 中的组件四种绑定 this 方法的区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class App extends React.Component&lt;any, any&gt; &#123;</span><br><span class="line">    handleClick2;</span><br><span class="line"></span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            num: 1,</span><br><span class="line">            title: &#39; react study&#39;</span><br><span class="line">        &#125;;</span><br><span class="line">        this.handleClick2 &#x3D; this.handleClick1.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick1() &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick3 &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (&lt;div&gt;</span><br><span class="line">            &lt;h2&gt;Ann, &#123;this.state.num&#125;&lt;&#x2F;h2&gt;</span><br><span class="line">            &lt;button onClick&#x3D;&#123;this.handleClick2&#125;&gt;btn1&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;button onClick&#x3D;&#123;this.handleClick1.bind(this)&#125;&gt;btn2&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;button onClick&#x3D;&#123;() &#x3D;&gt; this.handleClick1()&#125;&gt;btn3&lt;&#x2F;button&gt;</span><br><span class="line">            &lt;button onClick&#x3D;&#123;this.handleClick3&#125;&gt;btn4&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+=======
+<h6 id="•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护"><a href="#•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护" class="headerlink" title="• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护"></a>• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护</h6><h6 id="•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）"><a href="#•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）" class="headerlink" title="• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）"></a>• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）</h6><h6 id="•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"><a href="#•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件" class="headerlink" title="• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"></a>• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件</h6><h6 id="•-this-指向问题：父组件给子组件传递函数时，必须绑定-this"><a href="#•-this-指向问题：父组件给子组件传递函数时，必须绑定-this" class="headerlink" title="• this 指向问题：父组件给子组件传递函数时，必须绑定 this"></a>• this 指向问题：父组件给子组件传递函数时，必须绑定 this</h6><h6 id="•-react-中的组件四种绑定-this-方法的区别"><a href="#•-react-中的组件四种绑定-this-方法的区别" class="headerlink" title="• react 中的组件四种绑定 this 方法的区别"></a>• react 中的组件四种绑定 this 方法的区别</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class App extends React.Component&lt;any, any&gt; &#123;</span><br><span class="line">    handleClick2;</span><br><span class="line"></span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state = &#123;</span><br><span class="line">            num: 1,</span><br><span class="line">            title: &#x27; react study&#x27;</span><br><span class="line">        &#125;;</span><br><span class="line">        this.handleClick2 = this.handleClick1.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick1() &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick3 = () =&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (&lt;div&gt;</span><br><span class="line">            &lt;h2&gt;Ann, &#123;this.state.num&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick2&#125;&gt;btn1&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick1.bind(this)&#125;&gt;btn2&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;() =&gt; this.handleClick1()&#125;&gt;btn3&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick3&#125;&gt;btn4&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <blockquote>
 <p>子组件内部做了性能优化，如（React.PureComponent）</p>
@@ -800,7 +980,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -828,10 +1012,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:55:49" itemprop="dateModified" datetime="2020-08-26T22:55:49+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -846,7 +1034,11 @@
 
       
           <h5 id="1-盒模型的概念"><a href="#1-盒模型的概念" class="headerlink" title="1.盒模型的概念"></a>1.盒模型的概念</h5><p>css盒模型是指所有HTML元素都可以做看作是一个盒子，从内到外由内容（content），内边距（padding），边框（border），外边距（margin）组成</p>
+<<<<<<< HEAD
 <h5 id="2-盒模型的种类"><a href="#2-盒模型的种类" class="headerlink" title="2.盒模型的种类"></a>2.盒模型的种类</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing&#x3D;conten-box; &#x2F;&#x2F;标准盒子模型</span><br><span class="line">box-sizing&#x3D;border-box; &#x2F;&#x2F;IE盒子模型</span><br></pre></td></tr></table></figure>
+=======
+<h5 id="2-盒模型的种类"><a href="#2-盒模型的种类" class="headerlink" title="2.盒模型的种类"></a>2.盒模型的种类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing=conten-box; //标准盒子模型</span><br><span class="line">box-sizing=border-box; //IE盒子模型</span><br></pre></td></tr></table></figure>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
 <p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2311579/1596783142768-cc4728ce-8829-419a-a18c-db9199d608ea.jpeg"><br>• 标准盒模型，设置的width或height是对实际内容（content）的width或height进行设置，内容周围的border和padding另外设置，即盒子模型的width（height）=设置的content的宽高+padding+border+margin<br>注：除内容content外，其他为上下左右都有<br>• IE盒子模型，设置的width或height是对 实际内容（content）+内边距（padding）+边框（border）之和的width和height进行设置的，其盒模型的width（height）=设置的width（height）+外边距margin</p>
 <h5 id="3、box-sizing的应用"><a href="#3、box-sizing的应用" class="headerlink" title="3、box-sizing的应用"></a>3、box-sizing的应用</h5><p>box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素（个人认为可以理解为指定盒模型的类型，即上述两种类型）<br>• box-sizing值为content-box时：宽度和高度分别应用到元素的内容框，在宽度和高度之外绘制元素的内边距和边框（即标准盒模型）<br>• box-sizing值为border-box时：为元素设定的宽度和高度决定了元素的边框盒，就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制，通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度（即 IE盒模型）<br>• box-sizing值为inherit时：规定应从父元素继承 box-sizing 属性的值</p>
@@ -873,7 +1065,11 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
+<<<<<<< HEAD
       <meta itemprop="name" content="yzy">
+=======
+      <meta itemprop="name" content="miroku">
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <meta itemprop="description" content="穿梭于前端各个领域">
     </span>
 
@@ -901,10 +1097,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:51:56" itemprop="dateModified" datetime="2020-08-26T22:51:56+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
               </span>
 
           
@@ -936,6 +1136,7 @@
     </div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <footer class="article-footer">
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -957,6 +1158,8 @@
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
 =======
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
     
     
@@ -1004,6 +1207,7 @@
   
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     
   
     
@@ -1021,19 +1225,25 @@
 =======
 =======
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <div class="toggle sidebar-toggle">
     <span class="toggle-line toggle-line-first"></span>
     <span class="toggle-line toggle-line-middle"></span>
     <span class="toggle-line toggle-line-last"></span>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
 =======
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   </div>
 
   <aside class="sidebar">
     <div class="sidebar-inner">
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   
@@ -1049,6 +1259,8 @@
 =======
 =======
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
           文章目录
@@ -1065,13 +1277,18 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+<<<<<<< HEAD
   <p class="site-author-name" itemprop="name">yzy</p>
+=======
+  <p class="site-author-name" itemprop="name">miroku</p>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <div class="site-description" itemprop="description">穿梭于前端各个领域</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> a7651bae406eacb44f3ad361d34fbec18a84f5bc
         
@@ -1092,6 +1309,10 @@
 =======
           <span class="site-state-item-count">9</span>
 >>>>>>> 8f4b68f38752419ed982747047d7ff741f2f8d4b
+=======
+        
+          <span class="site-state-item-count">9</span>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1119,11 +1340,19 @@
 <div class="copyright">
   
   &copy; 
+<<<<<<< HEAD
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">yzy</span>
+=======
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miroku</span>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1138,6 +1367,7 @@
 
 
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <footer id="footer">
@@ -1157,6 +1387,9 @@
 =======
     </footer>
 >>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
+=======
+    </footer>
+>>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   </div>
 
   
