@@ -162,6 +162,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
 =======
 =======
@@ -169,6 +170,100 @@
 =======
 =======
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/28/my-flat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/28/my-flat/" class="post-title-link" itemprop="url">数组扁平化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-28 19:30:00 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2023-01-28T19:30:00+08:00">2023-01-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><font face="STCAIYUN" size="2">新年伊始，第一天上班，依旧打卡比较早，习惯性的看看文章，于是看到了这样一篇文章《手写—数组扁平化》，过年在家休息了 10 多天，也想看看自己忘记了没有，于是将自己当时看到这篇文章时，自己的个人想法记录下来。</font></p>
+<p><font face="STCAIYUN" size="2">遇到这样的题目时，首先不能基于就想方法解题，方法可能会有多种，但是出题者的目的是什么也可以稍微思考一下，然后在根据自己的思考，进行解答，我当时的理解就是首先要考的就是对常用 API 的使用和理解，其次就是不用 API 自己实现，最后就是如果出现多种实现方式，对不同实现方式的一个理解。</font></p>
+<p><font face="STCAIYUN" size="4"><p>试题：[1, [2, [3, [4, 5]]]] ，将其扁平化输出[1,2,3,4,5]</p></font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">1. 从常用API 的使用来解：</span><br><span class="line">首选es6 自带的flat 方法，flat(depth) 方法会按照一个可指定的递归深度递归遍历数组，</span><br><span class="line">并将所有的元素与遍历的子数组中的元素进行合并，最后返回一个新的数组；</span><br><span class="line">const arr = [1, [2, [3, [4, 5]]]];</span><br><span class="line">arr.flat(4)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">depth 是可选参数，默认为1层，指要提取嵌套数组的结构深度；</span><br><span class="line"></span><br><span class="line">arr.flat()</span><br><span class="line">输出：[1,2,[3,[4,5]]]</span><br><span class="line"></span><br><span class="line">如果数组深度未知，那么可以使用关键字进行无限递归，Infinity</span><br><span class="line">arr.flat(Infinity)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">2. 手写数组扁平化</span><br><span class="line">function myFlat(arr,depth)&#123;</span><br><span class="line">  let result = [];</span><br><span class="line">  if(!arr.length )&#123;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  for(let i = 0; i&lt;arr.length;i++)&#123;</span><br><span class="line">    if(Array.isArray(arr[i]) &amp;&amp; depth&gt;0 )&#123;</span><br><span class="line">      result = result.concat(myFlat(arr[i],depth-1))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat(arr,4);</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line">思考：这里如何去实现Infinity</span><br><span class="line"></span><br><span class="line">3.使用非递归的方式实现：</span><br><span class="line">function myFlat2(arr)&#123;</span><br><span class="line">  if(!arr.length)&#123;</span><br><span class="line">    return []</span><br><span class="line">  &#125;</span><br><span class="line">  const result = [];</span><br><span class="line">  let stack = [...arr]</span><br><span class="line">  while(stack.length)&#123;</span><br><span class="line">    const next = stack.pop();</span><br><span class="line">    if(Array.isArray(next))&#123;</span><br><span class="line">      stack.push(...next);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(next);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.reverse();</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat2(arr)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">在上面的解法中，我们使用了常用的递归与迭代循环，二者的区别是：<br>编程之美：“迭代是人，递归是神！”</p>
+<p>递归：重复调用函数自身实现循环；<br>迭代：利用变量的原值推出新值，或着说迭代是函数内某段代码实现循环。<br>递推：是一种用若干步可重复的简运算（规律）来描述复杂问题的方法</p>
+<p>我理解迭代和递推是一样的</p>
+<p>递归实际上是不断地深层调用函数，直到函数有返回才会逐层的返回。递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，因此，递归涉及到运行时的堆栈开销（参数必须压入堆栈保存，直到该层函数调用返回为止，才出栈），所以有可能导致堆栈溢出的错误；但是递归编程所体现的思想正是人们追求简洁、将问题交给计算机，以及将大问题分解为相同小问题从而解决大问题的动机。</p>
+<p>迭代大部分时候需要人为的对问题进行剖析，分析问题的规律所在，将问题转变为一次次的迭代来逼近答案。迭代不像递归那样对堆栈有一定的要求，另外一旦问题剖析完毕，就可以很容易的通过循环加以实现。迭代的效率高，但却不太容易理解，当遇到数据结构的设计时，比如图表、二叉树、网格等问题时，使用就比较困难，而是用递归就能省掉人工思考解法的过程，只需要不断的将问题分解直到返回就可以了。</p>
+<p>两者关系：所有的迭代可以转换为递归，但递归不一定可以转换成迭代。</font></p>
+<table>
+    <th>
+        </th><td>定义</td>
+        <td>优点</td>
+        <td>缺点</td>
+    </th>
+    <tr>
+        <td>递归</td>
+        <td>重复调用函数自身实现循环</td>
+        <td> 1.用有限的循环语句实现无限集合；<br> 2.易读。</td>
+        <td> 1.递归不断调用函数，浪费空间；<br> 2.容易造成堆栈溢出。</td>
+    </tr>
+    <tr>
+        <td>迭代</td>
+        <td>利用变量的原值推出新值<br>函数内某段代码实现循环</td>
+        <td>1.效率高，运行时间值随循环的增加而增加；<br>2.无额外的开销。</td>
+        <td>1.代码难理解；<br>2.不如递归简洁。</td>
+    </tr>
+    <tr>
+        <td>二者关系</td>
+        <td colspan="4"> 1.递归中一定有迭代，迭代中不一定有递归；大部分都可以相互转换；<br>2.相对递归的缺点来说，能用迭代不用递归（不断调用函数，浪费空间，容易造成堆栈溢出）。</td>
+    </tr>
+</table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/electron1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -205,10 +300,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2021-05-04 09:51:43" itemprop="dateModified" datetime="2021-05-04T09:51:43+08:00">2021-05-04</time>
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -314,7 +413,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
               </span>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
@@ -410,7 +509,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
               </span>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
@@ -528,6 +627,7 @@
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:38:34" itemprop="dateModified" datetime="2020-08-26T22:38:34+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
@@ -535,6 +635,9 @@
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -673,10 +776,14 @@
                 </span>
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -785,6 +892,7 @@
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:10:45" itemprop="dateModified" datetime="2020-08-26T23:10:45+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
@@ -792,6 +900,9 @@
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -915,6 +1026,7 @@
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 23:24:55" itemprop="dateModified" datetime="2020-08-26T23:24:55+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
@@ -922,6 +1034,9 @@
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -1013,6 +1128,7 @@
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:55:49" itemprop="dateModified" datetime="2020-08-26T22:55:49+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
@@ -1020,6 +1136,9 @@
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -1098,6 +1217,7 @@
                 <span class="post-meta-item-text">更新于</span>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <time title="修改时间：2020-08-26 22:51:56" itemprop="dateModified" datetime="2020-08-26T22:51:56+08:00">2020-08-26</time>
 =======
                 <time title="修改时间：2020-10-24 22:35:11" itemprop="dateModified" datetime="2020-10-24T22:35:11+08:00">2020-10-24</time>
@@ -1105,6 +1225,9 @@
 =======
                 <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
           
@@ -1311,8 +1434,12 @@
 >>>>>>> 8f4b68f38752419ed982747047d7ff741f2f8d4b
 =======
         
+<<<<<<< HEAD
           <span class="site-state-item-count">9</span>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
+=======
+          <span class="site-state-item-count">10</span>
+>>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
