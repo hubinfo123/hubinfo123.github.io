@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="新年伊始，第一天上班，依旧打卡比较早，习惯性的看看文章，于是看到了这样一篇文章《手写—数组扁平化》，过年在家休息了 10 多天，也想看看自己忘记了没有，于是将自己当时看到这篇文章时，自己的个人想法记录下来。 遇到这样的题目时，首先不能基于就想方法解题，方法可能会有多种，但是出题者的目的是什么也可以稍微思考一下，然后在根据自己的思考，进行解答，我当时的理解就是首先要考的就是对常用 API 的使用和理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组扁平化">
+<meta property="og:url" content="http://yoursite.com/2023/01/28/my-flat/index.html">
+<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
+<meta property="og:description" content="新年伊始，第一天上班，依旧打卡比较早，习惯性的看看文章，于是看到了这样一篇文章《手写—数组扁平化》，过年在家休息了 10 多天，也想看看自己忘记了没有，于是将自己当时看到这篇文章时，自己的个人想法记录下来。 遇到这样的题目时，首先不能基于就想方法解题，方法可能会有多种，但是出题者的目的是什么也可以稍微思考一下，然后在根据自己的思考，进行解答，我当时的理解就是首先要考的就是对常用 API 的使用和理">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-28T11:30:00.000Z">
+<meta property="article:modified_time" content="2023-01-28T10:06:06.439Z">
+<meta property="article:author" content="miroku">
+<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2023/01/28/my-flat/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数组扁平化 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/28/my-flat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数组扁平化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-28 19:30:00 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2023-01-28T19:30:00+08:00">2023-01-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><font face="STCAIYUN" size="2">新年伊始，第一天上班，依旧打卡比较早，习惯性的看看文章，于是看到了这样一篇文章《手写—数组扁平化》，过年在家休息了 10 多天，也想看看自己忘记了没有，于是将自己当时看到这篇文章时，自己的个人想法记录下来。</font></p>
+<p><font face="STCAIYUN" size="2">遇到这样的题目时，首先不能基于就想方法解题，方法可能会有多种，但是出题者的目的是什么也可以稍微思考一下，然后在根据自己的思考，进行解答，我当时的理解就是首先要考的就是对常用 API 的使用和理解，其次就是不用 API 自己实现，最后就是如果出现多种实现方式，对不同实现方式的一个理解。</font></p>
+<p><font face="STCAIYUN" size="4"><p>试题：[1, [2, [3, [4, 5]]]] ，将其扁平化输出[1,2,3,4,5]</p></font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">1. 从常用API 的使用来解：</span><br><span class="line">首选es6 自带的flat 方法，flat(depth) 方法会按照一个可指定的递归深度递归遍历数组，</span><br><span class="line">并将所有的元素与遍历的子数组中的元素进行合并，最后返回一个新的数组；</span><br><span class="line">const arr = [1, [2, [3, [4, 5]]]];</span><br><span class="line">arr.flat(4)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">depth 是可选参数，默认为1层，指要提取嵌套数组的结构深度；</span><br><span class="line"></span><br><span class="line">arr.flat()</span><br><span class="line">输出：[1,2,[3,[4,5]]]</span><br><span class="line"></span><br><span class="line">如果数组深度未知，那么可以使用关键字进行无限递归，Infinity</span><br><span class="line">arr.flat(Infinity)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">2. 手写数组扁平化</span><br><span class="line">function myFlat(arr,depth)&#123;</span><br><span class="line">  let result = [];</span><br><span class="line">  if(!arr.length )&#123;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  for(let i = 0; i&lt;arr.length;i++)&#123;</span><br><span class="line">    if(Array.isArray(arr[i]) &amp;&amp; depth&gt;0 )&#123;</span><br><span class="line">      result = result.concat(myFlat(arr[i],depth-1))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat(arr,4);</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line">思考：这里如何去实现Infinity</span><br><span class="line"></span><br><span class="line">3.使用非递归的方式实现：</span><br><span class="line">function myFlat2(arr)&#123;</span><br><span class="line">  if(!arr.length)&#123;</span><br><span class="line">    return []</span><br><span class="line">  &#125;</span><br><span class="line">  const result = [];</span><br><span class="line">  let stack = [...arr]</span><br><span class="line">  while(stack.length)&#123;</span><br><span class="line">    const next = stack.pop();</span><br><span class="line">    if(Array.isArray(next))&#123;</span><br><span class="line">      stack.push(...next);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(next);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.reverse();</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat2(arr)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><font face="STCAIYUN" size="2">在上面的解法中，我们使用了常用的递归与迭代循环，二者的区别是：<br>编程之美：“迭代是人，递归是神！”</p>
+<p>递归：重复调用函数自身实现循环；<br>迭代：利用变量的原值推出新值，或着说迭代是函数内某段代码实现循环。<br>递推：是一种用若干步可重复的简运算（规律）来描述复杂问题的方法</p>
+<p>我理解迭代和递推是一样的</p>
+<p>递归实际上是不断地深层调用函数，直到函数有返回才会逐层的返回。递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，因此，递归涉及到运行时的堆栈开销（参数必须压入堆栈保存，直到该层函数调用返回为止，才出栈），所以有可能导致堆栈溢出的错误；但是递归编程所体现的思想正是人们追求简洁、将问题交给计算机，以及将大问题分解为相同小问题从而解决大问题的动机。</p>
+<p>迭代大部分时候需要人为的对问题进行剖析，分析问题的规律所在，将问题转变为一次次的迭代来逼近答案。迭代不像递归那样对堆栈有一定的要求，另外一旦问题剖析完毕，就可以很容易的通过循环加以实现。迭代的效率高，但却不太容易理解，当遇到数据结构的设计时，比如图表、二叉树、网格等问题时，使用就比较困难，而是用递归就能省掉人工思考解法的过程，只需要不断的将问题分解直到返回就可以了。</p>
+<p>两者关系：所有的迭代可以转换为递归，但递归不一定可以转换成迭代。</font></p>
+<table>
+    <th>
+        </th><td>定义</td>
+        <td>优点</td>
+        <td>缺点</td>
+    </th>
+    <tr>
+        <td>递归</td>
+        <td>重复调用函数自身实现循环</td>
+        <td> 1.用有限的循环语句实现无限集合；<br> 2.易读。</td>
+        <td> 1.递归不断调用函数，浪费空间；<br> 2.容易造成堆栈溢出。</td>
+    </tr>
+    <tr>
+        <td>迭代</td>
+        <td>利用变量的原值推出新值<br>函数内某段代码实现循环</td>
+        <td>1.效率高，运行时间值随循环的增加而增加；<br>2.无额外的开销。</td>
+        <td>1.代码难理解；<br>2.不如递归简洁。</td>
+    </tr>
+    <tr>
+        <td>二者关系</td>
+        <td colspan="4"> 1.递归中一定有迭代，迭代中不一定有递归；大部分都可以相互转换；<br>2.相对递归的缺点来说，能用迭代不用递归（不断调用函数，浪费空间，容易造成堆栈溢出）。</td>
+    </tr>
+</table>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/20/electron1/" rel="prev" title="Electron 开发第一篇：启动不同环境及打包不同环境">
+      <i class="fa fa-chevron-left"></i> Electron 开发第一篇：启动不同环境及打包不同环境
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">miroku</p>
+  <div class="site-description" itemprop="description">穿梭于前端各个领域</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miroku</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
