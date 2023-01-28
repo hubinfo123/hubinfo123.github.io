@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。  未修改时可能存在的问题：1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron 开发第一篇：启动不同环境及打包不同环境">
+<meta property="og:url" content="http://yoursite.com/2021/01/20/electron1/index.html">
+<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
+<meta property="og:description" content="最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。  未修改时可能存在的问题：1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/images/electron1.png">
+<meta property="article:published_time" content="2021-01-20T03:29:00.000Z">
+<meta property="article:modified_time" content="2023-01-28T07:13:35.156Z">
+<meta property="article:author" content="miroku">
+<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/images/electron1.png">
+
+<link rel="canonical" href="http://yoursite.com/2021/01/20/electron1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Electron 开发第一篇：启动不同环境及打包不同环境 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/electron1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="穿梭于前端各个领域">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Electron 开发第一篇：启动不同环境及打包不同环境
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-01-20 11:29:00" itemprop="dateCreated datePublished" datetime="2021-01-20T11:29:00+08:00">2021-01-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-28 15:13:35" itemprop="dateModified" datetime="2023-01-28T15:13:35+08:00">2023-01-28</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><font face="STCAIYUN" size="2">最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">未修改时可能存在的问题：<br>1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；<br>  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果出现多个变量，那就呵呵了🙃；<br>  3.太不智能,不够自动化。</font></p>
+</blockquote>
+<p><font face="STCAIYUN" size="2">1.解决办法就是在package.json 里面去设置不同环境的命令，来针对不同的环境来执行不同的命令，如下：</font></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;concurrently \&quot;yarn build:main\&quot; \&quot;yarn build:renderer\&quot;&quot;,</span><br><span class="line">    &quot;build:main&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js&quot;,</span><br><span class="line">    &quot;build:renderer&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.renderer.prod.babel.js&quot;,</span><br><span class="line">    &quot;rebuild&quot;: &quot;electron-rebuild --parallel --types prod,dev,optional --module-dir src&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx&quot;,</span><br><span class="line">    &quot;package&quot;: &quot;yarn build &amp;&amp; electron-builder build --publish never&quot;,</span><br><span class="line">    &quot;package:dev&quot;: &quot;cross-env ENV=dev yarn package&quot;,</span><br><span class="line">    &quot;package:test&quot;: &quot;cross-env ENV=test yarn package&quot;,</span><br><span class="line">    &quot;package:test2&quot;: &quot;cross-env ENV=test2 yarn package&quot;,</span><br><span class="line">    &quot;package:pre&quot;: &quot;cross-env ENV=pre yarn package&quot;,</span><br><span class="line">    &quot;package:product&quot;: &quot;cross-env ENV=product yarn package&quot;,</span><br><span class="line">    &quot;postinstall&quot;: &quot;node -r @babel/register .erb/scripts/CheckNativeDep.js &amp;&amp; electron-builder install-app-deps &amp;&amp; yarn cross-env NODE_ENV=development webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.babel.js &amp;&amp; opencollective-postinstall &amp;&amp; yarn-deduplicate yarn.lock&quot;,</span><br><span class="line">    &quot;base&quot;: &quot;node -r @babel/register ./.erb/scripts/CheckPortInUse.js &amp;&amp; cross-env yarn start:renderer&quot;,</span><br><span class="line">    &quot;start:dev&quot;: &quot;cross-env ENV=dev yarn base&quot;,</span><br><span class="line">    &quot;start:test&quot;: &quot;cross-env ENV=test yarn base&quot;,</span><br><span class="line">    &quot;start:test2&quot;: &quot;cross-env ENV=test2 yarn base&quot;,</span><br><span class="line">    &quot;start:pre&quot;: &quot;cross-env ENV=pre yarn base&quot;,</span><br><span class="line">    &quot;start:product&quot;: &quot;cross-env ENV=product yarn base&quot;,</span><br><span class="line">    &quot;start:main&quot;: &quot;cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts&quot;,</span><br><span class="line">    &quot;start:renderer&quot;: &quot;cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<p><font face="STCAIYUN" size="2">在修改过程中发生的问题：<br>1.node 环境下可以正常拿到环境变量，在electron 中是拿不到的</font></p>
+<p><img src="/images/electron1.png"></p>
+<p><font face="STCAIYUN" size="2">2.方法1可以看出写了很多相同的代码，下面就借助inquirer 命令行工具进行简化，可以针对不同的环境进行选择不同的启动命令，如下：</font></p>
+<blockquote>
+<font face="STCAIYUN" size="2">
+1.启动或者打包；   <br/>
+2."inquirer":"TYPE=development node ./scripts/inquirer.js",<br/>
+3."inquirer:package":"TYPE=production node ./scripts/inquirer.js",</font>
+</blockquote>
+<br/>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//inquirer.js</span><br><span class="line">const inquirer = require(&#x27;inquirer&#x27;);</span><br><span class="line">const spawn = require(&#x27;cross-spawn&#x27;);</span><br><span class="line">const promptList = [</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择一种环境:&#x27;,</span><br><span class="line">    name: &#x27;fruit&#x27;,</span><br><span class="line">    choices: [&#x27;dev&#x27;, &#x27;test&#x27;, &#x27;test2&#x27;, &#x27;pre&#x27;, &#x27;product&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择打包平台:&#x27;,</span><br><span class="line">    name: &#x27;platform&#x27;,</span><br><span class="line">    choices: [&#x27;--win&#x27;, &#x27;--mac&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">if(process.env.TYPE === &#x27;development&#x27;)&#123;</span><br><span class="line">  promptList.pop();</span><br><span class="line">&#125;</span><br><span class="line">inquirer.prompt(promptList).then((answers) =&gt; &#123;</span><br><span class="line">  const spawnType = process.env.TYPE === &#x27;development&#x27;?&#x27;start&#x27;:&#x27;package&#x27;;</span><br><span class="line">  const args = process.env.TYPE ===&#x27;development&#x27;?[spawnType]:[spawnType,answers.platform];</span><br><span class="line">  console.log(args,&#x27;args&#x27;)</span><br><span class="line">  spawn(`yarn`,args, &#123;</span><br><span class="line">    stdio: &#x27;inherit&#x27;,</span><br><span class="line">    // 仅在当前运行环境为 Windows 时，才使用 shell</span><br><span class="line">    shell: [&#x27;win32&#x27;,&#x27;win64&#x27;].includes(process.platform) ,</span><br><span class="line">    env:&#123;</span><br><span class="line">      ...process.env,</span><br><span class="line">      ENV:answers.fruit</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  console.log(answers); // 返回的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/19/element-rate/" rel="prev" title="Element-UI Rate 评分使用自定义icon">
+      <i class="fa fa-chevron-left"></i> Element-UI Rate 评分使用自定义icon
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">miroku</p>
+  <div class="site-description" itemprop="description">穿梭于前端各个领域</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">miroku</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
