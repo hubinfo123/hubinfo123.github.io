@@ -147,6 +147,116 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/29/nextjs-modify-host/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/29/nextjs-modify-host/" class="post-title-link" itemprop="url">NextJS 项目配置host、浏览器自动访问链接</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-29 19:30:00 / 修改时间：18:34:38" itemprop="dateCreated datePublished" datetime="2023-01-29T19:30:00+08:00">2023-01-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p><font face="STCAIYUN" size="2">项目使用 nextjs 框架，一直以来项目启动后，都是手动输入访问链接，而且项目启动后，终端输出的访问链接还是默认的 localhost， 这里就将这 2 个问题一并解决掉，为开发提效…</font></p>
+</blockquote>
+<font face="STCAIYUN" size="2">
+1. 配置正确的host想到该项目里面有部分webpack 的配置，就以为按照webpack 的配置应该就很方便的解决上面的问题，在devServer 处进行了如下修改：<br/>
+  devServer：{host: 'local.meet.cn',open: true}<br/>
+2. 重新启动，无任何反应，以为是配置参数写错误了，打开webpack 文档，核实了参数，重新运行发现无任何反应，通过webpack 这样去修改，是行不通的，于是在各种找.....<br/></font>
+
+<p><font face="STCAIYUN" size="2">打开 nextjs 的开发文档，上面也是没有详细提到这样的配置，转到 github nextjs 仓库查看有无类似的 examples ， 几乎翻完了所有自己认为有的 next.config.js 配置文件的目录，还是没有找到，没有办法了，只能自己搞。</font></p>
+ <font face="STCAIYUN" size="2">
+1. 进入node_moduels 下的.bin 目录，找到next 启动文件，查看里面的运行方式，找到这一条：<br/>
+// dev: ()=>Promise.resolve(require('../cli/next-dev').nextDev)<br/>
+2. 进入node_modules 先的next 目录的dist/cli/next-dev.js 文件， 看到了startServer 这个函数在执行:<br/>
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const host = args[&#x27;--hostname&#x27;];</span><br><span class="line">    (0, _startServer).startServer(&#123;</span><br><span class="line">        allowRetry,</span><br><span class="line">        dev: true,</span><br><span class="line">        dir,</span><br><span class="line">        hostname: host,</span><br><span class="line">        isNextDevCommand: true,</span><br><span class="line">        port</span><br><span class="line">    &#125;).then(async (app)=&gt;&#123;</span><br><span class="line">        const appUrl = `http://$&#123;app.hostname&#125;:$&#123;app.port&#125;`;</span><br><span class="line">        (0, _output).startedDevelopmentServer(appUrl, `$&#123;host || &#x27;0.0.0.0&#x27;&#125;:$&#123;app.port&#125;`); // 这里是可以传host 的，那么在需要在哪里传呢？</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">接着再看这个文件，上面验证的是的以下 3 个命令：</font></p>
+</blockquote>
+<font face="STCAIYUN" size="2">
+<p>
+ <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> const validArgs = &#123;</span><br><span class="line">   // Types</span><br><span class="line">   &#x27;--help&#x27;: Boolean,</span><br><span class="line">   &#x27;--port&#x27;: Number,</span><br><span class="line">   &#x27;--hostname&#x27;: String,</span><br><span class="line">   // Aliases</span><br><span class="line">   &#x27;-h&#x27;: &#x27;--help&#x27;,</span><br><span class="line">   &#x27;-p&#x27;: &#x27;--port&#x27;,</span><br><span class="line">   &#x27;-H&#x27;: &#x27;--hostname&#x27;</span><br><span class="line">  &#125;;</span><br><span class="line">   这几个命令可以在启动命令进行测试，将 package.json 里面的启动命令改成如下测试：</span><br><span class="line">   &quot;start&quot;: &quot;next start -p 8000 -h&quot;,</span><br><span class="line">   此时重新启动，终端不会执行，执行到 help 后就结束了，打印如下：</span><br><span class="line"></span><br><span class="line">Options</span><br><span class="line">--port, -p A port number on which to start the application</span><br><span class="line">--hostname, -H Hostname on which to start the application (default: 0.0.0.0)</span><br><span class="line">--help, -h Displays this message</span><br><span class="line"></span><br><span class="line">从这里可以看出，增加 host 在这里可以用--hostname 的方式，实际项目启动脚本修改如下：</span><br><span class="line">&quot;next&quot;: &quot;node scripts/setEnv.js &amp;&amp; next -p 8000 --hostname=local.meet.cn&quot;</span><br><span class="line">再次启动, 发现终端的打印不在是 0.0.0.0 和 localhost 了， 变成 started server on local.meet.cn:8000 和</span><br><span class="line">url333: http://local.meet.cn:8000</span><br><span class="line">// url333 是为了测试后面的自动打开浏览器的断点调试，原本打印的是 url:</span><br><span class="line">至此，第一个问题修改 hostname 已经完成了，至少在项目启动后，手动去点击这个地方，也总比去地址栏手动输入要快一些。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">接下来解决第二个问题：</font></p>
+</blockquote>
+<font face="STCAIYUN" size="2">
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">刚开始在 node_moduels 下面去搜 url: 没有搜到，于是就想在自定义 server 那块看能不能实现， </span><br><span class="line">上面的启动是走的 next 内置的 server, 当时为了使用 https 项目里面也进行了自定义 server 的支持，里面是手动进行输出：</span><br><span class="line">  console.log(`&gt; Ready on https://local.meet.cn:$&#123;port&#125;`) // 在终端输出就是这个，很明显打开浏览器是需要手动实现</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<font face="STCAIYUN" size="2">
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在自定义 server 的基础上手动实现打开浏览器</span><br><span class="line">  按照 node 环境打开浏览器的第三方库 yarn add open --save-dev</span><br><span class="line">  增加命令：open(`https://local.meet.cn:$&#123;port&#125;`, &#123;app: &#123;name: &#x27;firefox&#x27;&#125;&#125;) // 第二个参数去掉，就使用电脑默认设置的浏览器进行打开</span><br><span class="line">  // 在自定义 server 的启动命令上执行，项目启动后，浏览器会自动新开 tab 自动进行链接的访问</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">继续解决不使用自定义server 启动命令，就是next 自带启动命令，如何打开呢？在 node_modules/next/dist/server/lib/start-server.js 下面是next 维护的一份启动配置：    </font><br><img src="/images/nextjs-modify-host-1.png"></p>
+</blockquote>
+<blockquote>
+<p><font face="STCAIYUN" size="2">于是再将url: 进行了搜索，发现vscode 上有一个筛选条件被使用，去掉，就搜索出来了，有多个，333 是为了验证执行的文件：    </font><br><img src="/images/nextjs-modify-host-2.png"></p>
+</blockquote>
+<p> <font face="STCAIYUN" size="2">其实，到这里就可以看出，通过next内置的启动方式，是无法进行浏览器自动自动打开的，因为nextjs 框架没有去做这个事，而我们的项目里面也一直都是采用https 的方式（nextjs 开启需自定义server.js ）,那就在server.js 里面手动去打开浏览器吧。<br></font></p>
+<p><font face="STCAIYUN" size="4"><p>~~ 完毕！！！</p></font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/28/my-flat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -888,85 +998,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/06/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-06-01 23:27:46" itemprop="dateCreated datePublished" datetime="2018-06-01T23:27:46+08:00">2018-06-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1031,7 +1067,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
