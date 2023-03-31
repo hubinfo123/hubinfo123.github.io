@@ -147,6 +147,217 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/17/nextjs-SSG/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/17/nextjs-SSG/" class="post-title-link" itemprop="url">nextjs SSG 使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-03-17 18:00:00 / 修改时间：19:35:33" itemprop="dateCreated datePublished" datetime="2023-03-17T18:00:00+08:00">2023-03-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;在当前需求开发进入测试阶段，新需求还未进入评审阶段，如是想优化一下当前系统，如预渲染机制使用起来，于是就用到了 nextjs 的 SSG（静态生成），使用方式也还算比较简单，参照文档既可进行将现有页面进行改造，这里主要是将过程中遇到的问题进行记录。</font></p>
+<font face="STCAIYUN" size="2">
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 在首页上进行改造，改页面数据几乎不会随意变动，符合SSG 要求;</span><br><span class="line"></span><br><span class="line"># 1. 在首页增加getStaticProps 方法</span><br><span class="line">export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">  let hotList = []</span><br><span class="line">  try &#123;</span><br><span class="line">    const &#123;data&#125; = await getTemplateList(&#123;</span><br><span class="line">      ...params // 接口需要的参数</span><br><span class="line">    &#125;)</span><br><span class="line">    hotList = get(data, &#x27;result.items&#x27;, []) || []</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    console.log(error,&#x27;打印error&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  return &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">      hotList,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 2. 去掉之前在CSR 端获取数据方法</span><br><span class="line"></span><br><span class="line"># 3. 启动本地开发环境，首页可以正常访问，打开调试器，浏览器ajax 中是没有请求了，在node 端打印，可以看到请求派发，</span><br><span class="line">     本地调整完毕，发版测试验证；</span><br><span class="line"></span><br><span class="line">//本地开发环境</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">发版报错：</font><br><font face="STCAIYUN" size="2"></p>
+</blockquote>
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 1. 带有ajax 请求的代码提交后，部署报错：</span><br><span class="line">  Error occurred prerendering page &quot;/&quot;. Read more: https://nextjs.org/docs/messages/prerender-error</span><br><span class="line">  Error: connect EAFNOSUPPORT ::1:80 - Local (undefined:undefined)</span><br><span class="line">      at internalConnect (net.js:934:16)</span><br><span class="line">      at defaultTriggerAsyncIdScope (internal/async_hooks.js:452:18)</span><br><span class="line">      at net.js:1022:9</span><br><span class="line">      at processTicksAndRejections (internal/process/task_queues.js:77:11)</span><br><span class="line">  [0minfo  - Generating static pages (1/1)</span><br><span class="line">  [91m</span><br><span class="line">  [0m[91m&gt; Build error occurred</span><br><span class="line">  [0m[91mError: Export encountered errors on following paths:</span><br><span class="line">    /</span><br><span class="line">    at /app/node_modules/next/dist/export/index.js:423:19</span><br><span class="line"></span><br><span class="line">  出现这个错误，以为是写入方式有问题，搜索了很多文档，没有类似问题，尝试将其他顶部文件里面的生命周期如getInitialProps 替换getServerSideProps 、</span><br><span class="line">  是否需要配合getStaticPaths （这个是没有仔细阅读文档的猜测，这个是动态路由需要使用的）均未解决</span><br><span class="line"></span><br><span class="line"># 2. 尝试其他方法，不进行 ajax ，直接返回，如下是可以的，部署能成功</span><br><span class="line">  export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">    return &#123; props: &#123; initialState: &#123; lastUpdate: Date.now() &#125; &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"># 3. 接着断点调试，在ajax 处打印config、response 处进行打印，发现是代码里面写了一处throw error 导致部署终端（问题不在这），于是调整了ajax 请求，直接打印错误，报如下问题：</span><br><span class="line">info  - Linting and checking validity of types...</span><br><span class="line">[91mwarn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config</span><br><span class="line">[0m[91mFailed to compile.</span><br><span class="line"></span><br><span class="line">./src/pages/index.tsx:53:10</span><br><span class="line">Type error: Property &#x27;forEach&#x27; does not exist on type &#x27;void | [unknown, unknown]&#x27;.</span><br><span class="line">  Property &#x27;forEach&#x27; does not exist on type &#x27;void&#x27;.</span><br><span class="line"></span><br><span class="line">[0m [90m 51 | [39m  console[33m.[39mlog(values[33m,[39m [32m&#x27;values&#x27;[39m[33m,[39m hotResult[33m,[39m clickResult)[0m</span><br><span class="line">[0m [90m 52 | [39m  [90m// 处理promiseAll 的401[39m[0m</span><br><span class="line"></span><br><span class="line">这个报错是因为拿不到结果，直接对结果进行forEach 导致的，主要问题还是开发环境请求可以成功，build 时发现请求失败，接着排查错误...</span><br><span class="line"></span><br><span class="line"># 4. 验证一下线上的请求配置同本地的请求配置是否一样，对比一下差异点，结果发现baseUrl 在构建的时候丢失，这个同项目搭建有关系，</span><br><span class="line">     项目是打包后再注入环境变量，打包是是没有环境变量的，所以构建时获取不到环境对应的后端接口地址，如是在请求的地方兼容了一下：</span><br><span class="line">// SSG 先build 发送请求是取不到baseUrl</span><br><span class="line">  if(!config.baseURL)&#123;</span><br><span class="line">    config.baseURL = envToHost[process.env.APP_ENV]</span><br><span class="line">  &#125;</span><br><span class="line">// envToHost 为各个环境的枚举</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;重新发版，请求成功，数据正常显示，调试查看浏览器ajax 未发，在node 端打包编译时进行了请求，页面切换不会等待数据，提升了部分渲染速度。</font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/08/nextjs-v12-upgrade-to-v13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/08/nextjs-v12-upgrade-to-v13/" class="post-title-link" itemprop="url">nextjs v12 升级到v13 版本</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-08 06:00:00" itemprop="dateCreated datePublished" datetime="2023-03-08T06:00:00+08:00">2023-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-17 18:02:12" itemprop="dateModified" datetime="2023-03-17T18:02:12+08:00">2023-03-17</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font></p>
+<p><font face="STCAIYUN" size="2">待完善</font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/06/using-cookies-in-nextjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="miroku">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/06/using-cookies-in-nextjs/" class="post-title-link" itemprop="url">cookie 在nextjs 中的使用</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-06 19:30:00" itemprop="dateCreated datePublished" datetime="2023-03-06T19:30:00+08:00">2023-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-07 21:18:21" itemprop="dateModified" datetime="2023-03-07T21:18:21+08:00">2023-03-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">实现方式：<br>借助 js-cookie npm 包，进行设置、删除；<br>key: 字符串,这里指要设置的 token；<br>token: 项目使用 token 鉴权，登录后会返回 token；<br>expires: cookie 失效时间，在 js-cookie 中时间是以天为单位开始；</font></p>
+</blockquote>
+<p><font face="STCAIYUN" size="2">1. 页面登录成功后，执行<br>Cookies.set(‘token’,token,{expires:1})<br>在_app.js 的 getInitialProps 中派发 ajax 是，需要使用 token 进行鉴权，此时则可以在<br>appContext.ctx?.req?.cookies?.token 中获取，然后正常使用。</font></p>
+<p><font face="STCAIYUN" size="2">2. 注意事项：退出登录、token 失效时执行退出登录逻辑时，需要将 token 给手动清除掉<br>Cookies.remove(‘token’)</font></p>
+<p><font face="STCAIYUN" size="2">3.expires 是需要设置的，如果不设置会出现一个问题：服务端返回的 token 的失效时间是 24 小时，那么在用户登录后，使用完，不点击退出登录直接关闭浏览器，隔几个小时再次访问页面，此时是直接处于登录态，可以正常使用的，但是手动刷新或者因某些操作触发了页面刷新导致了 getInitialProps 的触发，这个时候 token 是获取不到的，这里涉及一个知识点，就是 cookie 如果不设置失效时间，它的类型为：session，会随浏览器的关闭而清空，如果设置了时间，则会按照时间进行倒计时清空，这里只需要将时间设置为大于等于服务器的时间，因为失效后去访问接口，会提示 token 失效，引导登录。</font></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/29/nextjs-modify-host/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -756,248 +967,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/31/four/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/31/four/" class="post-title-link" itemprop="url">基于webpack 打包的正确选择</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-31 13:27:46" itemprop="dateCreated datePublished" datetime="2019-10-31T13:27:46+08:00">2019-10-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。</p>
-<h5 id="选择合适的打包格式"><a href="#选择合适的打包格式" class="headerlink" title="选择合适的打包格式"></a>选择合适的打包格式</h5><h6 id="首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"><a href="#首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。" class="headerlink" title="首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"></a>首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。</h6><h6 id="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有："><a href="#为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有：" class="headerlink" title="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有："></a>为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有：</h6><h6 id="•-“var”-以一个变量形式输出：-var-Library-xxx-default-；"><a href="#•-“var”-以一个变量形式输出：-var-Library-xxx-default-；" class="headerlink" title="• “var” - 以一个变量形式输出： var Library = xxx (default)；"></a>• “var” - 以一个变量形式输出： var Library = xxx (default)；</h6><h6 id="•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；"><a href="#•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；" class="headerlink" title="• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；"></a>• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；</h6><h6 id="•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；"><a href="#•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；" class="headerlink" title="• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；"></a>• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；</h6><h6 id="•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；"><a href="#•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；" class="headerlink" title="• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；"></a>• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；</h6><h6 id="•-“amd”-以-AMD-格式输出；"><a href="#•-“amd”-以-AMD-格式输出；" class="headerlink" title="• “amd” - 以 AMD 格式输出；"></a>• “amd” - 以 AMD 格式输出；</h6><h6 id="•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。"><a href="#•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。" class="headerlink" title="• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。"></a>• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。</h6><blockquote>
-<p>以下是 webpack.config.js 中 output 设置的示例：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">    publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">    filename: &#x27;iview.js&#x27;,</span><br><span class="line">    library: &#x27;iview&#x27;,       // 模块名称</span><br><span class="line">    libraryTarget: &#x27;umd&#x27;,   // 输出格式</span><br><span class="line">    umdNamedDefine: true    // 是否将模块名称作为 AMD 输出的命名空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>到此，我们解决了组件库输出的问题。<br>但是，！！！上面output配置libraryName：’Iview’,可能会出现意想不到的问题</p>
-</blockquote>
-<h5 id="如何打包组件依赖"><a href="#如何打包组件依赖" class="headerlink" title="如何打包组件依赖"></a>如何打包组件依赖</h5><h6 id="组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。"><a href="#组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。" class="headerlink" title="组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。"></a>组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</h6><h6 id="在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下："><a href="#在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下：" class="headerlink" title="在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下："></a>在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#x27;vue&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h6 id="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！"><a href="#啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！" class="headerlink" title="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！"></a>啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</h6><h6 id="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。"><a href="#事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。" class="headerlink" title="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。"></a>事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</h6><h6 id="为了分析问题，我们将打包的代码前几行拿出来看看："><a href="#为了分析问题，我们将打包的代码前几行拿出来看看：" class="headerlink" title="为了分析问题，我们将打包的代码前几行拿出来看看："></a>为了分析问题，我们将打包的代码前几行拿出来看看：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</span><br><span class="line">    if(typeof exports === &#x27;object&#x27; &amp;&amp; typeof module === &#x27;object&#x27;)</span><br><span class="line">        module.exports = factory(require(&quot;vue&quot;));</span><br><span class="line">    else if(typeof define === &#x27;function&#x27; &amp;&amp; define.amd)</span><br><span class="line">        define(&quot;iview&quot;, [&quot;vue&quot;], factory);</span><br><span class="line">    else if(typeof exports === &#x27;object&#x27;)</span><br><span class="line">        exports[&quot;iview&quot;] = factory(require(&quot;vue&quot;));</span><br><span class="line">    else</span><br><span class="line">        root[&quot;iview&quot;] = factory(root[&quot;vue&quot;]);</span><br><span class="line">&#125;)(this, function(__WEBPACK_EXTERNAL_MODULE_157__) &#123;</span><br><span class="line">    // ....</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>我们可以看见，打包后的代码以 4 种形式声明了 Vue 依赖</p>
-</blockquote>
-<h6 id="1-module-exports-factory-require-“vue”-commonjs2-形式；"><a href="#1-module-exports-factory-require-“vue”-commonjs2-形式；" class="headerlink" title="1. module.exports = factory(require(“vue”)) - commonjs2 形式；"></a>1. module.exports = factory(require(“vue”)) - commonjs2 形式；</h6><h6 id="2-define-“iview”-“vue”-factory-AMD-形式；"><a href="#2-define-“iview”-“vue”-factory-AMD-形式；" class="headerlink" title="2.define(“iview”, [“vue”], factory) - AMD 形式；"></a>2.define(“iview”, [“vue”], factory) - AMD 形式；</h6><h6 id="3-exports-“iview”-factory-require-“vue”-commonjs-形式；"><a href="#3-exports-“iview”-factory-require-“vue”-commonjs-形式；" class="headerlink" title="3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；"></a>3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；</h6><h6 id="4-root-“iview”-factory-root-“vue”-全局变量形式。"><a href="#4-root-“iview”-factory-root-“vue”-全局变量形式。" class="headerlink" title="4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。"></a>4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。</h6><h6 id="以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。"><a href="#以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。" class="headerlink" title="以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。"></a>以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。</h6><blockquote>
-<p>幸好，webpack 可以为各种导入形式设置不同名称，设置如下：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#123;</span><br><span class="line">        root: &#x27;Vue&#x27;,</span><br><span class="line">        commonjs: &#x27;vue&#x27;,</span><br><span class="line">        commonjs2: &#x27;vue&#x27;,</span><br><span class="line">        amd: &#x27;vue&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>再次打包，你可以发现打包的组件库不管是 script 标签方式还是后端构建，都可以正常工作了。</p>
-</blockquote>
-<blockquote>
-<p>最后，帖一个打包 iView 组件库的 webpack 配置：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path = require(&#x27;path&#x27;);</span><br><span class="line">var webpack = require(&#x27;webpack&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#x27;./src/index.js&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">        publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">        filename: &#x27;iview.js&#x27;,</span><br><span class="line">        library: &#x27;iview&#x27;,</span><br><span class="line">        libraryTarget: &#x27;umd&#x27;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#x27;Vue&#x27;,</span><br><span class="line">            commonjs: &#x27;vue&#x27;,</span><br><span class="line">            commonjs2: &#x27;vue&#x27;,</span><br><span class="line">            amd: &#x27;vue&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#x27;&#x27;, &#x27;.js&#x27;, &#x27;.vue&#x27;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: /\.vue$/,</span><br><span class="line">            loader: &#x27;vue&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.js$/,</span><br><span class="line">            loader: &#x27;babel&#x27;,</span><br><span class="line">            exclude: /node_modules/</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            loader: &#x27;style!css!autoprefixer&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.less$/,</span><br><span class="line">            loader: &#x27;style!css!less&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,</span><br><span class="line">            loader: &#x27;url?limit=8192&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(html|tpl)$/,</span><br><span class="line">            loader: &#x27;vue-html&#x27;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#x27;process.env&#x27;: &#123;</span><br><span class="line">                NODE_ENV: &#x27;&quot;development&quot;&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/five/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/20/five/" class="post-title-link" itemprop="url">React Hooks</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-20 10:27:46" itemprop="dateCreated datePublished" datetime="2019-08-20T10:27:46+08:00">2019-08-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="1-什么是-Hooks"><a href="#1-什么是-Hooks" class="headerlink" title="1.什么是 Hooks"></a>1.什么是 Hooks</h6><h6 id="•-React-一直都提倡使用函数组件，但是有时候需要使用-state-或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有"><a href="#•-React-一直都提倡使用函数组件，但是有时候需要使用-state-或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有" class="headerlink" title="• React 一直都提倡使用函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有"></a>• React 一直都提倡使用函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有</h6><h6 id="•-Hooks-是-React-16-8-新增的特性，它可以让你在不编写-class-的情况下使用-state-以及其他的-React-特性"><a href="#•-Hooks-是-React-16-8-新增的特性，它可以让你在不编写-class-的情况下使用-state-以及其他的-React-特性" class="headerlink" title="• Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性"></a>• Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</h6><h6 id="•-如果你在编写函数组件并意识到需要向其添加一些-state，以前的做法是必须将其它转化为-class。现在你可以直接在现有的函数组件中使用-Hooks"><a href="#•-如果你在编写函数组件并意识到需要向其添加一些-state，以前的做法是必须将其它转化为-class。现在你可以直接在现有的函数组件中使用-Hooks" class="headerlink" title="• 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks"></a>• 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks</h6><h6 id="•-凡是-use-开头的-React-API-都是-Hooks"><a href="#•-凡是-use-开头的-React-API-都是-Hooks" class="headerlink" title="• 凡是 use 开头的 React API  都是 Hooks"></a>• 凡是 use 开头的 React API  都是 Hooks</h6><h6 id="2-Hooks-解决的问题"><a href="#2-Hooks-解决的问题" class="headerlink" title="2.Hooks 解决的问题"></a>2.Hooks 解决的问题</h6><blockquote>
-<ol>
-<li>类组件的不足</li>
-</ol>
-</blockquote>
-<h6 id="•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护"><a href="#•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护" class="headerlink" title="• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护"></a>• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护</h6><h6 id="•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）"><a href="#•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）" class="headerlink" title="• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）"></a>• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）</h6><h6 id="•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"><a href="#•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件" class="headerlink" title="• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"></a>• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件</h6><h6 id="•-this-指向问题：父组件给子组件传递函数时，必须绑定-this"><a href="#•-this-指向问题：父组件给子组件传递函数时，必须绑定-this" class="headerlink" title="• this 指向问题：父组件给子组件传递函数时，必须绑定 this"></a>• this 指向问题：父组件给子组件传递函数时，必须绑定 this</h6><h6 id="•-react-中的组件四种绑定-this-方法的区别"><a href="#•-react-中的组件四种绑定-this-方法的区别" class="headerlink" title="• react 中的组件四种绑定 this 方法的区别"></a>• react 中的组件四种绑定 this 方法的区别</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class App extends React.Component&lt;any, any&gt; &#123;</span><br><span class="line">    handleClick2;</span><br><span class="line"></span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state = &#123;</span><br><span class="line">            num: 1,</span><br><span class="line">            title: &#x27; react study&#x27;</span><br><span class="line">        &#125;;</span><br><span class="line">        this.handleClick2 = this.handleClick1.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick1() &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick3 = () =&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (&lt;div&gt;</span><br><span class="line">            &lt;h2&gt;Ann, &#123;this.state.num&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick2&#125;&gt;btn1&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick1.bind(this)&#125;&gt;btn2&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;() =&gt; this.handleClick1()&#125;&gt;btn3&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick3&#125;&gt;btn4&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>子组件内部做了性能优化，如（React.PureComponent）</p>
-</blockquote>
-<h6 id="•-第一种是在构造函数中绑定-this：那么每次父组件刷新的时候，如果传递给子组件其他的-props-值不变，那么子组件就不会刷新；"><a href="#•-第一种是在构造函数中绑定-this：那么每次父组件刷新的时候，如果传递给子组件其他的-props-值不变，那么子组件就不会刷新；" class="headerlink" title="• 第一种是在构造函数中绑定 this：那么每次父组件刷新的时候，如果传递给子组件其他的 props 值不变，那么子组件就不会刷新；"></a>• 第一种是在构造函数中绑定 this：那么每次父组件刷新的时候，如果传递给子组件其他的 props 值不变，那么子组件就不会刷新；</h6><h6 id="•-第二种是在-render-函数里面绑定-this：因为-bind-函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的-props-值不变，子组件每次都会刷新；"><a href="#•-第二种是在-render-函数里面绑定-this：因为-bind-函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的-props-值不变，子组件每次都会刷新；" class="headerlink" title="• 第二种是在 render() 函数里面绑定 this：因为 bind 函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的 props 值不变，子组件每次都会刷新；"></a>• 第二种是在 render() 函数里面绑定 this：因为 bind 函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的 props 值不变，子组件每次都会刷新；</h6><h6 id="•-第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；"><a href="#•-第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；" class="headerlink" title="• 第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；"></a>• 第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；</h6><h6 id="•-第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁"><a href="#•-第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁" class="headerlink" title="• 第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁"></a>• 第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁</h6><blockquote>
-<p>综上所述，如果不注意的话，很容易写成第三种写法，导致性能上有所损耗。</p>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>Hooks 优势</li>
-</ol>
-</blockquote>
-<h6 id="•-能优化类组件的三大问题"><a href="#•-能优化类组件的三大问题" class="headerlink" title="• 能优化类组件的三大问题"></a>• 能优化类组件的三大问题</h6><h6 id="•-能在无需修改组件结构的情况下复用状态逻辑（自定义-Hooks-）"><a href="#•-能在无需修改组件结构的情况下复用状态逻辑（自定义-Hooks-）" class="headerlink" title="• 能在无需修改组件结构的情况下复用状态逻辑（自定义 Hooks ）"></a>• 能在无需修改组件结构的情况下复用状态逻辑（自定义 Hooks ）</h6><h6 id="•-能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）"><a href="#•-能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）" class="headerlink" title="• 能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）"></a>• 能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）</h6><h6 id="•-副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如-ajax-请求、访问原生-dom-元素、本地持久化缓存、绑定-解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而-useEffect-在全部渲染完毕后才会执行，useLayoutEffect-会在浏览器-layout-之后，painting-之前执行。"><a href="#•-副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如-ajax-请求、访问原生-dom-元素、本地持久化缓存、绑定-解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而-useEffect-在全部渲染完毕后才会执行，useLayoutEffect-会在浏览器-layout-之后，painting-之前执行。" class="headerlink" title="• 副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如 ajax 请求、访问原生 dom 元素、本地持久化缓存、绑定/解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而 useEffect 在全部渲染完毕后才会执行，useLayoutEffect 会在浏览器 layout 之后，painting 之前执行。"></a>• 副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如 ajax 请求、访问原生 dom 元素、本地持久化缓存、绑定/解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而 useEffect 在全部渲染完毕后才会执行，useLayoutEffect 会在浏览器 layout 之后，painting 之前执行。</h6>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/two/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/24/two/" class="post-title-link" itemprop="url">CSS盒模型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-24 23:27:46" itemprop="dateCreated datePublished" datetime="2018-07-24T23:27:46+08:00">2018-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="1-盒模型的概念"><a href="#1-盒模型的概念" class="headerlink" title="1.盒模型的概念"></a>1.盒模型的概念</h5><p>css盒模型是指所有HTML元素都可以做看作是一个盒子，从内到外由内容（content），内边距（padding），边框（border），外边距（margin）组成</p>
-<h5 id="2-盒模型的种类"><a href="#2-盒模型的种类" class="headerlink" title="2.盒模型的种类"></a>2.盒模型的种类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing=conten-box; //标准盒子模型</span><br><span class="line">box-sizing=border-box; //IE盒子模型</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2311579/1596783142768-cc4728ce-8829-419a-a18c-db9199d608ea.jpeg"><br>• 标准盒模型，设置的width或height是对实际内容（content）的width或height进行设置，内容周围的border和padding另外设置，即盒子模型的width（height）=设置的content的宽高+padding+border+margin<br>注：除内容content外，其他为上下左右都有<br>• IE盒子模型，设置的width或height是对 实际内容（content）+内边距（padding）+边框（border）之和的width和height进行设置的，其盒模型的width（height）=设置的width（height）+外边距margin</p>
-<h5 id="3、box-sizing的应用"><a href="#3、box-sizing的应用" class="headerlink" title="3、box-sizing的应用"></a>3、box-sizing的应用</h5><p>box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素（个人认为可以理解为指定盒模型的类型，即上述两种类型）<br>• box-sizing值为content-box时：宽度和高度分别应用到元素的内容框，在宽度和高度之外绘制元素的内边距和边框（即标准盒模型）<br>• box-sizing值为border-box时：为元素设定的宽度和高度决定了元素的边框盒，就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制，通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度（即 IE盒模型）<br>• box-sizing值为inherit时：规定应从父元素继承 box-sizing 属性的值</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1067,7 +1036,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
