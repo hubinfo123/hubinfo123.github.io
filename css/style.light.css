@@ -567,7 +567,8 @@ h6 {
 }
 .post-item-wrapper:hover {
   transform: translateY(-8px);
-  background: #a99c98;
+  background: #f6f6f6;
+  border: 1px solid #f9b800;
 }
 .post-item-wrapper .post-title {
   display: inline-block;
