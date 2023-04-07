@@ -1,7 +1,9 @@
 ---
 title: nextjs SSG 使用
 date: 2023-03-17 18:00
-tags:
+tags: [nextjs,ssr]
+categories: react
+excerpt: 在项目中使用ssg .
 ---
 
 <font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;在当前需求开发进入测试阶段，新需求还未进入评审阶段，如是想优化一下当前系统，如预渲染机制使用起来，于是就用到了 nextjs 的 SSG（静态生成），使用方式也还算比较简单，参照文档既可进行将现有页面进行改造，这里主要是将过程中遇到的问题进行记录。</font>

@@ -1,7 +1,9 @@
 ---
 title: Electron 开发第一篇：启动不同环境及打包不同环境
 date: 2021-01-20 11:29
-tags:
+tags: [Electron]
+categories: 桌面端
+excerpt: 桌面端优化调试不同环境启动命令、及打包构建命令。
 ---
 
 

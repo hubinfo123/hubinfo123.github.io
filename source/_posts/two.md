@@ -1,7 +1,9 @@
 ---
 title: CSS盒模型
 date: 2018-07-24 23:27:46
-tags:
+tags: [CSS]
+categories: css 基础
+excerpt: 盒模型学习。
 ---
 
 ##### 1.盒模型的概念
