@@ -1,202 +1,132 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用； 日常工作中常用的场合如下：1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象1234567891011const auth &#x3D; &amp;#123;	id:001,  crea">
-<meta property="og:type" content="article">
-<meta property="og:title" content="JSON.stringify的魔法">
-<meta property="og:url" content="http://yoursite.com/2020/08/25/one/index.html">
-<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:description" content="JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用； 日常工作中常用的场合如下：1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象1234567891011const auth &#x3D; &amp;#123;	id:001,  crea">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-08-25T15:27:46.000Z">
-<meta property="article:modified_time" content="2023-01-28T09:46:49.864Z">
-<meta property="article:author" content="miroku">
-<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/2020/08/25/one/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>JSON.stringify的魔法 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="JSON.stringify的魔法"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
   
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
+    <link rel="icon" href="/favicon.png">
+  
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
+  <!-- Site Title -->
+  <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          JSON.stringify的魔法
-        </h1>
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
 
-              <time title="创建时间：2020-08-25 23:27:46" itemprop="dateCreated datePublished" datetime="2020-08-25T23:27:46+08:00">2020-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
 
-          
+  <!-- Google Analytics -->
+  
 
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">JSON.stringify的魔法</p>
+          <p class="subtitle"></p>
         </div>
-      </header>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By miroku</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-08-25</span>
+            <span class="time">23:00:33</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
-      
-        <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/JS/">#JS</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
 <h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth = &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#x27;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  name:&#x27;yy&#x27;</span><br><span class="line">&#125;</span><br><span class="line">//存入</span><br><span class="line">localStorage.setItem(&#x27;auth&#x27;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">const currentAuth = JSON.parse(localStorage.getItem(&#x27;auth&#x27;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h6 id="2-判断数组中是否包含某个对象"><a href="#2-判断数组中是否包含某个对象" class="headerlink" title="2.判断数组中是否包含某个对象"></a>2.判断数组中是否包含某个对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const data = [</span><br><span class="line">  &#123;type:&#x27;javascript&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;html&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;css&#x27;&#125;</span><br><span class="line">];</span><br><span class="line">JSON.stringify(data).includes(JSON.stringify(&#123;type:&#x27;css&#x27;&#125;));//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -216,186 +146,44 @@
 <p>下面来看看JSON.stringify 的几大特性</p>
 </blockquote>
 <h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data = &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#x27;dd&#x27;)])  // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#x27;a&#x27;)&#125;)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(Symbol(&#x27;dd&#x27;))</span><br><span class="line">// undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        </div>
+      </div>
     </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
+  </div>
+</article>
 
 
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2019/10/31/four/" rel="prev" title="基于webpack 打包的正确选择">
-      <i class="fa fa-chevron-left"></i> 基于webpack 打包的正确选择
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/08/28/let/" rel="next" title="从Babel 编译理解let const">
-      从Babel 编译理解let const <i class="fa fa-chevron-right"></i>
-    </a></div>
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
+      </div>
     </div>
-      </footer>
-    
-  </article>
-  
-  
-  
+  </div>
+</footer>
 
 
+    <!-- After Footer Scripts -->
 
-          </div>
-          
+<script src="/js/highlight.pack.js"></script>
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E5%9C%BA%E5%90%88%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.</span> <span class="nav-text">日常工作中常用的场合如下：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E5%9C%A8%E4%BD%BF%E7%94%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E5%85%88%E8%A6%81%E5%B0%86%E7%BC%93%E5%AD%98%E7%9A%84%E5%AF%B9%E8%B1%A1%E8%BD%AC%E6%8D%A2%E6%88%90JSON%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%8C%E5%8F%96%E5%87%BA%E7%9A%84%E6%97%B6%E5%80%99%E5%86%8D%E5%B0%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84%E4%B8%AD%E6%98%AF%E5%90%A6%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">2.判断数组中是否包含某个对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-%E5%88%A4%E6%96%AD%E6%95%B0%E7%BB%84-%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-number">1.3.</span> <span class="nav-text">3.判断数组&#x2F;对象是否相等</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-%E6%95%B0%E6%8D%AE%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-number">1.4.</span> <span class="nav-text">4.数据深拷贝</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-number">1.5.</span> <span class="nav-text">5.数据处理</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#JSON-stringify-%E4%B8%8E-toString-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.</span> <span class="nav-text">JSON.stringify 与 toString 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%89%B9%E6%80%A71%EF%BC%9A%E5%AF%B9%E4%BA%8Eundefined-%E4%BB%BB%E6%84%8F%E7%B1%BB%E5%9E%8B%E5%87%BD%E6%95%B0%EF%BC%8Csymbol%E7%B1%BB%E5%9E%8B%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%88%86%E5%88%AB%E4%BD%9C%E4%B8%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%EF%BC%8C%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%85%83%E7%B4%A0%EF%BC%8C%E5%8D%95%E7%8B%AC%E7%9A%84%E5%80%BC%E6%97%B6%EF%BC%8CJSON-stringify-%E5%B0%86%E8%BF%94%E5%9B%9E%E4%B8%8D%E5%90%8C%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="nav-number">2.1.</span> <span class="nav-text">特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">miroku</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">14</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">miroku</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+

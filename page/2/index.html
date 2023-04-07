@@ -1,623 +1,289 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="miroku">
-<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/page/2/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
+  <!-- Site Title -->
   <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
   
 
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
 
 
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</p>
+          <p class="subtitle">谨言、笃行</p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/31/four/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/31/four/" class="post-title-link" itemprop="url">基于webpack 打包的正确选择</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-31 13:27:46" itemprop="dateCreated datePublished" datetime="2019-10-31T13:27:46+08:00">2019-10-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。</p>
-<h5 id="选择合适的打包格式"><a href="#选择合适的打包格式" class="headerlink" title="选择合适的打包格式"></a>选择合适的打包格式</h5><h6 id="首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"><a href="#首先，我们必须明确组件库的使用场景。有些场景是直接使用-script-在-HTML-中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然-Webpack-很流行，组件库不能声明只支持-Webpack-方式使用，忽略了其他选择。原因在于，打包工具并不只有-webpack，还有-browserify、rollup-等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的-grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。" class="headerlink" title="首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。"></a>首先，我们必须明确组件库的使用场景。有些场景是直接使用 script 在 HTML 中引入，有些场景是使用打包工具在后台构建。作为组件库，应该兼容这些使用场景。组件库应该保持中立，不应该限定于某种使用方式或者打包工具。例如，虽然 Webpack 很流行，组件库不能声明只支持 Webpack 方式使用，忽略了其他选择。原因在于，打包工具并不只有 webpack，还有 browserify、rollup 等。另外，前端工具发展很快，今年流行的工具明年可能就没人用了，你肯定不希望你的组件库会随着某个工具不流行而消逝吧。回顾下曾经流行的 grunt、glup，一大堆基于它们的插件随着工具本身的不流行而被扔进了垃圾箱。</h6><h6 id="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有："><a href="#为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有-CMD、AMD、UMD，CMD只能在-Node-环境执行，AMD-只能在浏览器端执行，UMD-同时支持两种执行环境。显而易见，我们应该选择-UMD-格式。Webpack-中指定输出格式的设置项为-output-libraryTarget，其支持的格式有：" class="headerlink" title="为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有："></a>为了支持多种使用场景，我们需要选择合适的打包格式。常见的打包格式有 CMD、AMD、UMD，CMD只能在 Node 环境执行，AMD 只能在浏览器端执行，UMD 同时支持两种执行环境。显而易见，我们应该选择 UMD 格式。Webpack 中指定输出格式的设置项为 output.libraryTarget，其支持的格式有：</h6><h6 id="•-“var”-以一个变量形式输出：-var-Library-xxx-default-；"><a href="#•-“var”-以一个变量形式输出：-var-Library-xxx-default-；" class="headerlink" title="• “var” - 以一个变量形式输出： var Library = xxx (default)；"></a>• “var” - 以一个变量形式输出： var Library = xxx (default)；</h6><h6 id="•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；"><a href="#•-“this”-以-this-的一个属性输出：-this-“Library”-xxx；" class="headerlink" title="• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；"></a>• “this” - 以 this 的一个属性输出： this[“Library”] = xxx；</h6><h6 id="•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；"><a href="#•-“commonjs”-以-exports-的一个属性输出：exports-“Library”-xxx；" class="headerlink" title="• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；"></a>• “commonjs” - 以 exports 的一个属性输出：exports[“Library”] = xxx；</h6><h6 id="•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；"><a href="#•-“commonjs2”-以-module-exports-形式输出：module-exports-xxx；" class="headerlink" title="• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；"></a>• “commonjs2” - 以 module.exports 形式输出：module.exports = xxx；</h6><h6 id="•-“amd”-以-AMD-格式输出；"><a href="#•-“amd”-以-AMD-格式输出；" class="headerlink" title="• “amd” - 以 AMD 格式输出；"></a>• “amd” - 以 AMD 格式输出；</h6><h6 id="•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。"><a href="#•-“umd”-同时以-AMD、CommonJS2-和全局属性形式输出。" class="headerlink" title="• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。"></a>• “umd” - 同时以 AMD、CommonJS2 和全局属性形式输出。</h6><blockquote>
-<p>以下是 webpack.config.js 中 output 设置的示例：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">    publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">    filename: &#x27;iview.js&#x27;,</span><br><span class="line">    library: &#x27;iview&#x27;,       // 模块名称</span><br><span class="line">    libraryTarget: &#x27;umd&#x27;,   // 输出格式</span><br><span class="line">    umdNamedDefine: true    // 是否将模块名称作为 AMD 输出的命名空间</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>到此，我们解决了组件库输出的问题。<br>但是，！！！上面output配置libraryName：’Iview’,可能会出现意想不到的问题</p>
-</blockquote>
-<h5 id="如何打包组件依赖"><a href="#如何打包组件依赖" class="headerlink" title="如何打包组件依赖"></a>如何打包组件依赖</h5><h6 id="组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。"><a href="#组件库的使用者会自行导入-Vue，打包的时候，不应该将-Vue-打包进组件库。" class="headerlink" title="组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。"></a>组件库的使用者会自行导入 Vue，打包的时候，不应该将 Vue 打包进组件库。</h6><h6 id="在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下："><a href="#在-webpack-中，我们可以将-Vue-设置为-externals，以避免将-Vue-打包进组件库，相应的设置如下：" class="headerlink" title="在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下："></a>在 webpack 中，我们可以将 Vue 设置为 externals，以避免将 Vue 打包进组件库，相应的设置如下：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#x27;vue&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h6 id="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！"><a href="#啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下-webpack-文档不就得了，还用得着我啰里啰嗦地写这么多！" class="headerlink" title="啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！"></a>啊哈，我们搞定了组件依赖问题。至此，读者可能很皱起眉头开始埋怨我了：这么简单的问题，查下 webpack 文档不就得了，还用得着我啰里啰嗦地写这么多！</h6><h6 id="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。"><a href="#事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以-script-标签形式直接引入，你会发现并不能正常执行，提示-vue-未定义。" class="headerlink" title="事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。"></a>事实上，问题往往没有我们想得那么简单！如果你将打包后的组件库以 script 标签形式直接引入，你会发现并不能正常执行，提示 vue 未定义。</h6><h6 id="为了分析问题，我们将打包的代码前几行拿出来看看："><a href="#为了分析问题，我们将打包的代码前几行拿出来看看：" class="headerlink" title="为了分析问题，我们将打包的代码前几行拿出来看看："></a>为了分析问题，我们将打包的代码前几行拿出来看看：</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">(function webpackUniversalModuleDefinition(root, factory) &#123;</span><br><span class="line">    if(typeof exports === &#x27;object&#x27; &amp;&amp; typeof module === &#x27;object&#x27;)</span><br><span class="line">        module.exports = factory(require(&quot;vue&quot;));</span><br><span class="line">    else if(typeof define === &#x27;function&#x27; &amp;&amp; define.amd)</span><br><span class="line">        define(&quot;iview&quot;, [&quot;vue&quot;], factory);</span><br><span class="line">    else if(typeof exports === &#x27;object&#x27;)</span><br><span class="line">        exports[&quot;iview&quot;] = factory(require(&quot;vue&quot;));</span><br><span class="line">    else</span><br><span class="line">        root[&quot;iview&quot;] = factory(root[&quot;vue&quot;]);</span><br><span class="line">&#125;)(this, function(__WEBPACK_EXTERNAL_MODULE_157__) &#123;</span><br><span class="line">    // ....</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>我们可以看见，打包后的代码以 4 种形式声明了 Vue 依赖</p>
-</blockquote>
-<h6 id="1-module-exports-factory-require-“vue”-commonjs2-形式；"><a href="#1-module-exports-factory-require-“vue”-commonjs2-形式；" class="headerlink" title="1. module.exports = factory(require(“vue”)) - commonjs2 形式；"></a>1. module.exports = factory(require(“vue”)) - commonjs2 形式；</h6><h6 id="2-define-“iview”-“vue”-factory-AMD-形式；"><a href="#2-define-“iview”-“vue”-factory-AMD-形式；" class="headerlink" title="2.define(“iview”, [“vue”], factory) - AMD 形式；"></a>2.define(“iview”, [“vue”], factory) - AMD 形式；</h6><h6 id="3-exports-“iview”-factory-require-“vue”-commonjs-形式；"><a href="#3-exports-“iview”-factory-require-“vue”-commonjs-形式；" class="headerlink" title="3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；"></a>3.exports[“iview”] = factory(require(“vue”)) - commonjs 形式；</h6><h6 id="4-root-“iview”-factory-root-“vue”-全局变量形式。"><a href="#4-root-“iview”-factory-root-“vue”-全局变量形式。" class="headerlink" title="4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。"></a>4.root[“iview”] = factory(root[“vue”]) - 全局变量形式。</h6><h6 id="以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。"><a href="#以-script-标签形式使用组件时，会同样使用-script-标签导入-Vue。Vue-导入的变量是-“window-Vue”-而不是-“window-vue”，因此会出现-vue-未定义的错误。" class="headerlink" title="以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。"></a>以 script 标签形式使用组件时，会同样使用 script 标签导入 Vue。Vue 导入的变量是 “window.Vue” 而不是 “window.vue”，因此会出现 vue 未定义的错误。</h6><blockquote>
-<p>幸好，webpack 可以为各种导入形式设置不同名称，设置如下：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">externals: &#123;</span><br><span class="line">    vue: &#123;</span><br><span class="line">        root: &#x27;Vue&#x27;,</span><br><span class="line">        commonjs: &#x27;vue&#x27;,</span><br><span class="line">        commonjs2: &#x27;vue&#x27;,</span><br><span class="line">        amd: &#x27;vue&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>再次打包，你可以发现打包的组件库不管是 script 标签方式还是后端构建，都可以正常工作了。</p>
-</blockquote>
-<blockquote>
-<p>最后，帖一个打包 iView 组件库的 webpack 配置：</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">var path = require(&#x27;path&#x27;);</span><br><span class="line">var webpack = require(&#x27;webpack&#x27;);</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &#123;</span><br><span class="line">        main: &#x27;./src/index.js&#x27;</span><br><span class="line">    &#125;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.resolve(__dirname, &#x27;../dist&#x27;),</span><br><span class="line">        publicPath: &#x27;/dist/&#x27;,</span><br><span class="line">        filename: &#x27;iview.js&#x27;,</span><br><span class="line">        library: &#x27;iview&#x27;,</span><br><span class="line">        libraryTarget: &#x27;umd&#x27;,</span><br><span class="line">        umdNamedDefine: true</span><br><span class="line">    &#125;,</span><br><span class="line">    externals: &#123;</span><br><span class="line">        vue: &#123;</span><br><span class="line">            root: &#x27;Vue&#x27;,</span><br><span class="line">            commonjs: &#x27;vue&#x27;,</span><br><span class="line">            commonjs2: &#x27;vue&#x27;,</span><br><span class="line">            amd: &#x27;vue&#x27;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [&#x27;&#x27;, &#x27;.js&#x27;, &#x27;.vue&#x27;]</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [&#123;</span><br><span class="line">            test: /\.vue$/,</span><br><span class="line">            loader: &#x27;vue&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.js$/,</span><br><span class="line">            loader: &#x27;babel&#x27;,</span><br><span class="line">            exclude: /node_modules/</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.css$/,</span><br><span class="line">            loader: &#x27;style!css!autoprefixer&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.less$/,</span><br><span class="line">            loader: &#x27;style!css!less&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,</span><br><span class="line">            loader: &#x27;url?limit=8192&#x27;</span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            test: /\.(html|tpl)$/,</span><br><span class="line">            loader: &#x27;vue-html&#x27;</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        new webpack.DefinePlugin(&#123;</span><br><span class="line">            &#x27;process.env&#x27;: &#123;</span><br><span class="line">                NODE_ENV: &#x27;&quot;development&quot;&#x27;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+      </div>
     </div>
+  </div>
+</header>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+<!-- Home Page Post List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/five/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/20/five/" class="post-title-link" itemprop="url">React Hooks</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-20 10:27:46" itemprop="dateCreated datePublished" datetime="2019-08-20T10:27:46+08:00">2019-08-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2019/10/31/four/" class="post-title">
+      基于webpack 打包的正确选择
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2019-10-31</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/webpack/">webpack</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h6 id="1-什么是-Hooks"><a href="#1-什么是-Hooks" class="headerlink" title="1.什么是 Hooks"></a>1.什么是 Hooks</h6><h6 id="•-React-一直都提倡使用函数组件，但是有时候需要使用-state-或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有"><a href="#•-React-一直都提倡使用函数组件，但是有时候需要使用-state-或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有" class="headerlink" title="• React 一直都提倡使用函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有"></a>• React 一直都提倡使用函数组件，但是有时候需要使用 state 或者其他一些功能时，只能使用类组件，因为函数组件没有实例，没有生命周期函数，只有类组件才有</h6><h6 id="•-Hooks-是-React-16-8-新增的特性，它可以让你在不编写-class-的情况下使用-state-以及其他的-React-特性"><a href="#•-Hooks-是-React-16-8-新增的特性，它可以让你在不编写-class-的情况下使用-state-以及其他的-React-特性" class="headerlink" title="• Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性"></a>• Hooks 是 React 16.8 新增的特性，它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性</h6><h6 id="•-如果你在编写函数组件并意识到需要向其添加一些-state，以前的做法是必须将其它转化为-class。现在你可以直接在现有的函数组件中使用-Hooks"><a href="#•-如果你在编写函数组件并意识到需要向其添加一些-state，以前的做法是必须将其它转化为-class。现在你可以直接在现有的函数组件中使用-Hooks" class="headerlink" title="• 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks"></a>• 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以直接在现有的函数组件中使用 Hooks</h6><h6 id="•-凡是-use-开头的-React-API-都是-Hooks"><a href="#•-凡是-use-开头的-React-API-都是-Hooks" class="headerlink" title="• 凡是 use 开头的 React API  都是 Hooks"></a>• 凡是 use 开头的 React API  都是 Hooks</h6><h6 id="2-Hooks-解决的问题"><a href="#2-Hooks-解决的问题" class="headerlink" title="2.Hooks 解决的问题"></a>2.Hooks 解决的问题</h6><blockquote>
-<ol>
-<li>类组件的不足</li>
-</ol>
-</blockquote>
-<h6 id="•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护"><a href="#•-状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到-render-props-（渲染属性）或者-HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是-div-元素），导致层级冗余、趋向复杂难以维护" class="headerlink" title="• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护"></a>• 状态逻辑难复用：在组件之间复用状态逻辑很难，可能要用到 render props （渲染属性）或者 HOC（高阶组件），但无论是渲染属性，还是高阶组件，都会在原先的组件外包裹一层父容器（一般都是 div 元素），导致层级冗余、趋向复杂难以维护</h6><h6 id="•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）"><a href="#•-在生命周期函数中混杂不相干的逻辑（如：在-componentDidMount-中注册事件以及其他的逻辑，在-componentWillUnmount-中卸载事件，这样分散不集中的写法，很容易写出-bug-）" class="headerlink" title="• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）"></a>• 在生命周期函数中混杂不相干的逻辑（如：在 componentDidMount 中注册事件以及其他的逻辑，在 componentWillUnmount 中卸载事件，这样分散不集中的写法，很容易写出 bug ）</h6><h6 id="•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"><a href="#•-类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件" class="headerlink" title="• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件"></a>• 类组件中到处都是对状态的访问和处理，导致组件难以拆分成更小的组件</h6><h6 id="•-this-指向问题：父组件给子组件传递函数时，必须绑定-this"><a href="#•-this-指向问题：父组件给子组件传递函数时，必须绑定-this" class="headerlink" title="• this 指向问题：父组件给子组件传递函数时，必须绑定 this"></a>• this 指向问题：父组件给子组件传递函数时，必须绑定 this</h6><h6 id="•-react-中的组件四种绑定-this-方法的区别"><a href="#•-react-中的组件四种绑定-this-方法的区别" class="headerlink" title="• react 中的组件四种绑定 this 方法的区别"></a>• react 中的组件四种绑定 this 方法的区别</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class App extends React.Component&lt;any, any&gt; &#123;</span><br><span class="line">    handleClick2;</span><br><span class="line"></span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state = &#123;</span><br><span class="line">            num: 1,</span><br><span class="line">            title: &#x27; react study&#x27;</span><br><span class="line">        &#125;;</span><br><span class="line">        this.handleClick2 = this.handleClick1.bind(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick1() &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleClick3 = () =&gt; &#123;</span><br><span class="line">        this.setState(&#123;</span><br><span class="line">            num: this.state.num + 1,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (&lt;div&gt;</span><br><span class="line">            &lt;h2&gt;Ann, &#123;this.state.num&#125;&lt;/h2&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick2&#125;&gt;btn1&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick1.bind(this)&#125;&gt;btn2&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;() =&gt; this.handleClick1()&#125;&gt;btn3&lt;/button&gt;</span><br><span class="line">            &lt;button onClick=&#123;this.handleClick3&#125;&gt;btn4&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>子组件内部做了性能优化，如（React.PureComponent）</p>
-</blockquote>
-<h6 id="•-第一种是在构造函数中绑定-this：那么每次父组件刷新的时候，如果传递给子组件其他的-props-值不变，那么子组件就不会刷新；"><a href="#•-第一种是在构造函数中绑定-this：那么每次父组件刷新的时候，如果传递给子组件其他的-props-值不变，那么子组件就不会刷新；" class="headerlink" title="• 第一种是在构造函数中绑定 this：那么每次父组件刷新的时候，如果传递给子组件其他的 props 值不变，那么子组件就不会刷新；"></a>• 第一种是在构造函数中绑定 this：那么每次父组件刷新的时候，如果传递给子组件其他的 props 值不变，那么子组件就不会刷新；</h6><h6 id="•-第二种是在-render-函数里面绑定-this：因为-bind-函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的-props-值不变，子组件每次都会刷新；"><a href="#•-第二种是在-render-函数里面绑定-this：因为-bind-函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的-props-值不变，子组件每次都会刷新；" class="headerlink" title="• 第二种是在 render() 函数里面绑定 this：因为 bind 函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的 props 值不变，子组件每次都会刷新；"></a>• 第二种是在 render() 函数里面绑定 this：因为 bind 函数会返回一个新的函数，所以每次父组件刷新时，都会重新生成一个函数，即使父组件传递给子组件其他的 props 值不变，子组件每次都会刷新；</h6><h6 id="•-第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；"><a href="#•-第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；" class="headerlink" title="• 第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；"></a>• 第三种是使用箭头函数：父组件刷新的时候，即使两个箭头函数的函数体是一样的，都会生成一个新的箭头函数，所以子组件每次都会刷新；</h6><h6 id="•-第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁"><a href="#•-第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁" class="headerlink" title="• 第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁"></a>• 第四种是使用类的静态属性：原理和第一种方法差不多，比第一种更简洁</h6><blockquote>
-<p>综上所述，如果不注意的话，很容易写成第三种写法，导致性能上有所损耗。</p>
-</blockquote>
-<blockquote>
-<ol start="2">
-<li>Hooks 优势</li>
-</ol>
-</blockquote>
-<h6 id="•-能优化类组件的三大问题"><a href="#•-能优化类组件的三大问题" class="headerlink" title="• 能优化类组件的三大问题"></a>• 能优化类组件的三大问题</h6><h6 id="•-能在无需修改组件结构的情况下复用状态逻辑（自定义-Hooks-）"><a href="#•-能在无需修改组件结构的情况下复用状态逻辑（自定义-Hooks-）" class="headerlink" title="• 能在无需修改组件结构的情况下复用状态逻辑（自定义 Hooks ）"></a>• 能在无需修改组件结构的情况下复用状态逻辑（自定义 Hooks ）</h6><h6 id="•-能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）"><a href="#•-能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）" class="headerlink" title="• 能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）"></a>• 能将组件中相互关联的部分拆分成更小的函数（比如设置订阅或请求数据）</h6><h6 id="•-副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如-ajax-请求、访问原生-dom-元素、本地持久化缓存、绑定-解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而-useEffect-在全部渲染完毕后才会执行，useLayoutEffect-会在浏览器-layout-之后，painting-之前执行。"><a href="#•-副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如-ajax-请求、访问原生-dom-元素、本地持久化缓存、绑定-解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而-useEffect-在全部渲染完毕后才会执行，useLayoutEffect-会在浏览器-layout-之后，painting-之前执行。" class="headerlink" title="• 副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如 ajax 请求、访问原生 dom 元素、本地持久化缓存、绑定/解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而 useEffect 在全部渲染完毕后才会执行，useLayoutEffect 会在浏览器 layout 之后，painting 之前执行。"></a>• 副作用的关注点分离：副作用指那些没有发生在数据向视图转换过程中的逻辑，如 ajax 请求、访问原生 dom 元素、本地持久化缓存、绑定/解绑事件、添加订阅、设置定时器、记录日志等。以往这些副作用都是写在类组件生命周期函数中的。而 useEffect 在全部渲染完毕后才会执行，useLayoutEffect 会在浏览器 layout 之后，painting 之前执行。</h6>
-      
+        
+      </div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">webpack 不同的打包模式学习。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/two/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
+<a class="tag" href="/tags/webpack/">webpack</a>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/07/24/two/" class="post-title-link" itemprop="url">CSS盒模型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-07-24 23:27:46" itemprop="dateCreated datePublished" datetime="2018-07-24T23:27:46+08:00">2018-07-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="1-盒模型的概念"><a href="#1-盒模型的概念" class="headerlink" title="1.盒模型的概念"></a>1.盒模型的概念</h5><p>css盒模型是指所有HTML元素都可以做看作是一个盒子，从内到外由内容（content），内边距（padding），边框（border），外边距（margin）组成</p>
-<h5 id="2-盒模型的种类"><a href="#2-盒模型的种类" class="headerlink" title="2.盒模型的种类"></a>2.盒模型的种类</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">box-sizing=conten-box; //标准盒子模型</span><br><span class="line">box-sizing=border-box; //IE盒子模型</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://cdn.nlark.com/yuque/0/2020/jpeg/2311579/1596783142768-cc4728ce-8829-419a-a18c-db9199d608ea.jpeg"><br>• 标准盒模型，设置的width或height是对实际内容（content）的width或height进行设置，内容周围的border和padding另外设置，即盒子模型的width（height）=设置的content的宽高+padding+border+margin<br>注：除内容content外，其他为上下左右都有<br>• IE盒子模型，设置的width或height是对 实际内容（content）+内边距（padding）+边框（border）之和的width和height进行设置的，其盒模型的width（height）=设置的width（height）+外边距margin</p>
-<h5 id="3、box-sizing的应用"><a href="#3、box-sizing的应用" class="headerlink" title="3、box-sizing的应用"></a>3、box-sizing的应用</h5><p>box-sizing 属性允许您以特定的方式定义匹配某个区域的特定元素（个人认为可以理解为指定盒模型的类型，即上述两种类型）<br>• box-sizing值为content-box时：宽度和高度分别应用到元素的内容框，在宽度和高度之外绘制元素的内边距和边框（即标准盒模型）<br>• box-sizing值为border-box时：为元素设定的宽度和高度决定了元素的边框盒，就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制，通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度（即 IE盒模型）<br>• box-sizing值为inherit时：规定应从父元素继承 box-sizing 属性的值</p>
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/06/01/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-06-01 23:27:46" itemprop="dateCreated datePublished" datetime="2018-06-01T23:27:46+08:00">2018-06-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2019/08/20/five/" class="post-title">
+      React Hooks
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2019-08-20</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/react/">react</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">React Hooks学习。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<a class="tag" href="/tags/react-hooks/">react-hooks</a>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       
     </div>
+  </div>
+</div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
-
-
-          </div>
+      
+        <div class="post-item-wrapper">
+  <a href="/2018/07/24/two/" class="post-title">
+      CSS盒模型
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2018-07-24</div>
+      <div class="categories">
+        
           
+
+<a href="/categories/css-%E5%9F%BA%E7%A1%80/">css 基础</a>
+
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">盒模型学习。</div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/CSS/">CSS</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+        <div class="post-item-wrapper">
+  <a href="/2018/06/01/hello-world/" class="post-title">
+      Hello World
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2018-06-01</div>
+      <div class="categories">
+        
+          
+
+<a href="/categories/%E5%8D%9A%E5%AE%A2/">博客</a>
+
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">hexo 博客搭建。</div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/hexo/">hexo</a>
+
+
+      
+    </div>
+  </div>
+</div>
+
+      
+    </div>
+  </div>
+</div>
+
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
+          
+              <li class="previous">
+                <a href="/">
+                  <span class="symbol-left">&lt;</span>
+                  <span>上一页</span>
+                </a>
+              </li>
+          
+          
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">miroku</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">14</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">miroku</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+

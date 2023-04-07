@@ -1,1128 +1,487 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain&#96;t no such thing as tomorrow！">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="miroku">
-<meta property="article:tag" content="Javascript、Nodejs、Native、微信">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://yoursite.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
+  <!-- Site Title -->
   <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
   
 
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
 
 
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</p>
+          <p class="subtitle">谨言、笃行</p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/17/nextjs-SSG/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/17/nextjs-SSG/" class="post-title-link" itemprop="url">nextjs SSG 使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-17 18:00:00 / 修改时间：19:35:33" itemprop="dateCreated datePublished" datetime="2023-03-17T18:00:00+08:00">2023-03-17</time>
-            </span>
-
-          
-
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
         </div>
-      </header>
+      </div>
+    </div>
+  </div>
+</header>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+<!-- Home Page Post List -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
       
-          <p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;在当前需求开发进入测试阶段，新需求还未进入评审阶段，如是想优化一下当前系统，如预渲染机制使用起来，于是就用到了 nextjs 的 SSG（静态生成），使用方式也还算比较简单，参照文档既可进行将现有页面进行改造，这里主要是将过程中遇到的问题进行记录。</font></p>
-<font face="STCAIYUN" size="2">
-<p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 在首页上进行改造，改页面数据几乎不会随意变动，符合SSG 要求;</span><br><span class="line"></span><br><span class="line"># 1. 在首页增加getStaticProps 方法</span><br><span class="line">export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">  let hotList = []</span><br><span class="line">  try &#123;</span><br><span class="line">    const &#123;data&#125; = await getTemplateList(&#123;</span><br><span class="line">      ...params // 接口需要的参数</span><br><span class="line">    &#125;)</span><br><span class="line">    hotList = get(data, &#x27;result.items&#x27;, []) || []</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    console.log(error,&#x27;打印error&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  return &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">      hotList,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 2. 去掉之前在CSR 端获取数据方法</span><br><span class="line"></span><br><span class="line"># 3. 启动本地开发环境，首页可以正常访问，打开调试器，浏览器ajax 中是没有请求了，在node 端打印，可以看到请求派发，</span><br><span class="line">     本地调整完毕，发版测试验证；</span><br><span class="line"></span><br><span class="line">//本地开发环境</span><br></pre></td></tr></table></figure>
-</p>
-</font>
+        <div class="post-item-wrapper">
+  <a href="/2023/03/17/nextjs-SSG/" class="post-title">
+      nextjs SSG 使用
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2023-03-17</div>
+      <div class="categories">
+        
+          
 
-<blockquote>
-<p><font face="STCAIYUN" size="2">发版报错：</font><br><font face="STCAIYUN" size="2"></p>
-</blockquote>
-<p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 1. 带有ajax 请求的代码提交后，部署报错：</span><br><span class="line">  Error occurred prerendering page &quot;/&quot;. Read more: https://nextjs.org/docs/messages/prerender-error</span><br><span class="line">  Error: connect EAFNOSUPPORT ::1:80 - Local (undefined:undefined)</span><br><span class="line">      at internalConnect (net.js:934:16)</span><br><span class="line">      at defaultTriggerAsyncIdScope (internal/async_hooks.js:452:18)</span><br><span class="line">      at net.js:1022:9</span><br><span class="line">      at processTicksAndRejections (internal/process/task_queues.js:77:11)</span><br><span class="line">  [0minfo  - Generating static pages (1/1)</span><br><span class="line">  [91m</span><br><span class="line">  [0m[91m&gt; Build error occurred</span><br><span class="line">  [0m[91mError: Export encountered errors on following paths:</span><br><span class="line">    /</span><br><span class="line">    at /app/node_modules/next/dist/export/index.js:423:19</span><br><span class="line"></span><br><span class="line">  出现这个错误，以为是写入方式有问题，搜索了很多文档，没有类似问题，尝试将其他顶部文件里面的生命周期如getInitialProps 替换getServerSideProps 、</span><br><span class="line">  是否需要配合getStaticPaths （这个是没有仔细阅读文档的猜测，这个是动态路由需要使用的）均未解决</span><br><span class="line"></span><br><span class="line"># 2. 尝试其他方法，不进行 ajax ，直接返回，如下是可以的，部署能成功</span><br><span class="line">  export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">    return &#123; props: &#123; initialState: &#123; lastUpdate: Date.now() &#125; &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"># 3. 接着断点调试，在ajax 处打印config、response 处进行打印，发现是代码里面写了一处throw error 导致部署终端（问题不在这），于是调整了ajax 请求，直接打印错误，报如下问题：</span><br><span class="line">info  - Linting and checking validity of types...</span><br><span class="line">[91mwarn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config</span><br><span class="line">[0m[91mFailed to compile.</span><br><span class="line"></span><br><span class="line">./src/pages/index.tsx:53:10</span><br><span class="line">Type error: Property &#x27;forEach&#x27; does not exist on type &#x27;void | [unknown, unknown]&#x27;.</span><br><span class="line">  Property &#x27;forEach&#x27; does not exist on type &#x27;void&#x27;.</span><br><span class="line"></span><br><span class="line">[0m [90m 51 | [39m  console[33m.[39mlog(values[33m,[39m [32m&#x27;values&#x27;[39m[33m,[39m hotResult[33m,[39m clickResult)[0m</span><br><span class="line">[0m [90m 52 | [39m  [90m// 处理promiseAll 的401[39m[0m</span><br><span class="line"></span><br><span class="line">这个报错是因为拿不到结果，直接对结果进行forEach 导致的，主要问题还是开发环境请求可以成功，build 时发现请求失败，接着排查错误...</span><br><span class="line"></span><br><span class="line"># 4. 验证一下线上的请求配置同本地的请求配置是否一样，对比一下差异点，结果发现baseUrl 在构建的时候丢失，这个同项目搭建有关系，</span><br><span class="line">     项目是打包后再注入环境变量，打包是是没有环境变量的，所以构建时获取不到环境对应的后端接口地址，如是在请求的地方兼容了一下：</span><br><span class="line">// SSG 先build 发送请求是取不到baseUrl</span><br><span class="line">  if(!config.baseURL)&#123;</span><br><span class="line">    config.baseURL = envToHost[process.env.APP_ENV]</span><br><span class="line">  &#125;</span><br><span class="line">// envToHost 为各个环境的枚举</span><br></pre></td></tr></table></figure>
-</p>
-</font>
+<a href="/categories/react/">react</a>
 
-<p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;重新发版，请求成功，数据正常显示，调试查看浏览器ajax 未发，在node 端打包编译时进行了请求，页面切换不会等待数据，提升了部分渲染速度。</font></p>
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">在项目中使用ssg .</div>
+    <!-- Post Tags -->
+    <div class="tags">
+      
+        
+
+<a class="tag" href="/tags/nextjs/">nextjs</a> <a class="tag" href="/tags/ssr/">ssr</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/08/nextjs-v12-upgrade-to-v13/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/08/nextjs-v12-upgrade-to-v13/" class="post-title-link" itemprop="url">nextjs v12 升级到v13 版本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-08 06:00:00" itemprop="dateCreated datePublished" datetime="2023-03-08T06:00:00+08:00">2023-03-08</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-17 18:02:12" itemprop="dateModified" datetime="2023-03-17T18:02:12+08:00">2023-03-17</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2023/03/08/nextjs-v12-upgrade-to-v13/" class="post-title">
+      nextjs v12 升级到v13 版本
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2023-03-08</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/react/">react</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">项目脚手架升级，记录在升级过程中遇到的问题。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font></p>
-<p><font face="STCAIYUN" size="2">待完善</font></p>
+        
+
+<a class="tag" href="/tags/nextjs/">nextjs</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/06/using-cookies-in-nextjs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/06/using-cookies-in-nextjs/" class="post-title-link" itemprop="url">cookie 在nextjs 中的使用</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-03-06 19:30:00" itemprop="dateCreated datePublished" datetime="2023-03-06T19:30:00+08:00">2023-03-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-03-07 21:18:21" itemprop="dateModified" datetime="2023-03-07T21:18:21+08:00">2023-03-07</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2023/03/06/using-cookies-in-nextjs/" class="post-title">
+      cookie 在nextjs 中的使用
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2023-03-06</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/react/">react</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">在无需后端帮忙种植 token 情况下，为了完成业务前端自行处理缓存token。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">实现方式：<br>借助 js-cookie npm 包，进行设置、删除；<br>key: 字符串,这里指要设置的 token；<br>token: 项目使用 token 鉴权，登录后会返回 token；<br>expires: cookie 失效时间，在 js-cookie 中时间是以天为单位开始；</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">1. 页面登录成功后，执行<br>Cookies.set(‘token’,token,{expires:1})<br>在_app.js 的 getInitialProps 中派发 ajax 是，需要使用 token 进行鉴权，此时则可以在<br>appContext.ctx?.req?.cookies?.token 中获取，然后正常使用。</font></p>
-<p><font face="STCAIYUN" size="2">2. 注意事项：退出登录、token 失效时执行退出登录逻辑时，需要将 token 给手动清除掉<br>Cookies.remove(‘token’)</font></p>
-<p><font face="STCAIYUN" size="2">3.expires 是需要设置的，如果不设置会出现一个问题：服务端返回的 token 的失效时间是 24 小时，那么在用户登录后，使用完，不点击退出登录直接关闭浏览器，隔几个小时再次访问页面，此时是直接处于登录态，可以正常使用的，但是手动刷新或者因某些操作触发了页面刷新导致了 getInitialProps 的触发，这个时候 token 是获取不到的，这里涉及一个知识点，就是 cookie 如果不设置失效时间，它的类型为：session，会随浏览器的关闭而清空，如果设置了时间，则会按照时间进行倒计时清空，这里只需要将时间设置为大于等于服务器的时间，因为失效后去访问接口，会提示 token 失效，引导登录。</font></p>
+        
+
+<a class="tag" href="/tags/js-cookie/">js-cookie</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/29/nextjs-modify-host/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/29/nextjs-modify-host/" class="post-title-link" itemprop="url">NextJS 项目配置host、浏览器自动访问链接</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-29 19:30:00 / 修改时间：18:34:38" itemprop="dateCreated datePublished" datetime="2023-01-29T19:30:00+08:00">2023-01-29</time>
-            </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2023/01/29/nextjs-modify-host/" class="post-title">
+      NextJS 项目配置host、浏览器自动访问链接
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2023-01-29</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/react/">react</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">nextjs 项目中手动实现本地开发环境打开浏览器。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <blockquote>
-<p><font face="STCAIYUN" size="2">项目使用 nextjs 框架，一直以来项目启动后，都是手动输入访问链接，而且项目启动后，终端输出的访问链接还是默认的 localhost， 这里就将这 2 个问题一并解决掉，为开发提效…</font></p>
-</blockquote>
-<font face="STCAIYUN" size="2">
-1. 配置正确的host想到该项目里面有部分webpack 的配置，就以为按照webpack 的配置应该就很方便的解决上面的问题，在devServer 处进行了如下修改：<br/>
-  devServer：{host: 'local.meet.cn',open: true}<br/>
-2. 重新启动，无任何反应，以为是配置参数写错误了，打开webpack 文档，核实了参数，重新运行发现无任何反应，通过webpack 这样去修改，是行不通的，于是在各种找.....<br/></font>
+        
 
-<p><font face="STCAIYUN" size="2">打开 nextjs 的开发文档，上面也是没有详细提到这样的配置，转到 github nextjs 仓库查看有无类似的 examples ， 几乎翻完了所有自己认为有的 next.config.js 配置文件的目录，还是没有找到，没有办法了，只能自己搞。</font></p>
- <font face="STCAIYUN" size="2">
-1. 进入node_moduels 下的.bin 目录，找到next 启动文件，查看里面的运行方式，找到这一条：<br/>
-// dev: ()=>Promise.resolve(require('../cli/next-dev').nextDev)<br/>
-2. 进入node_modules 先的next 目录的dist/cli/next-dev.js 文件， 看到了startServer 这个函数在执行:<br/>
-<p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const host = args[&#x27;--hostname&#x27;];</span><br><span class="line">    (0, _startServer).startServer(&#123;</span><br><span class="line">        allowRetry,</span><br><span class="line">        dev: true,</span><br><span class="line">        dir,</span><br><span class="line">        hostname: host,</span><br><span class="line">        isNextDevCommand: true,</span><br><span class="line">        port</span><br><span class="line">    &#125;).then(async (app)=&gt;&#123;</span><br><span class="line">        const appUrl = `http://$&#123;app.hostname&#125;:$&#123;app.port&#125;`;</span><br><span class="line">        (0, _output).startedDevelopmentServer(appUrl, `$&#123;host || &#x27;0.0.0.0&#x27;&#125;:$&#123;app.port&#125;`); // 这里是可以传host 的，那么在需要在哪里传呢？</span><br></pre></td></tr></table></figure>
-</p>
-</font>
+<a class="tag" href="/tags/node-open/">node-open</a>
 
-<blockquote>
-<p><font face="STCAIYUN" size="2">接着再看这个文件，上面验证的是的以下 3 个命令：</font></p>
-</blockquote>
-<font face="STCAIYUN" size="2">
-<p>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"> const validArgs = &#123;</span><br><span class="line">   // Types</span><br><span class="line">   &#x27;--help&#x27;: Boolean,</span><br><span class="line">   &#x27;--port&#x27;: Number,</span><br><span class="line">   &#x27;--hostname&#x27;: String,</span><br><span class="line">   // Aliases</span><br><span class="line">   &#x27;-h&#x27;: &#x27;--help&#x27;,</span><br><span class="line">   &#x27;-p&#x27;: &#x27;--port&#x27;,</span><br><span class="line">   &#x27;-H&#x27;: &#x27;--hostname&#x27;</span><br><span class="line">  &#125;;</span><br><span class="line">   这几个命令可以在启动命令进行测试，将 package.json 里面的启动命令改成如下测试：</span><br><span class="line">   &quot;start&quot;: &quot;next start -p 8000 -h&quot;,</span><br><span class="line">   此时重新启动，终端不会执行，执行到 help 后就结束了，打印如下：</span><br><span class="line"></span><br><span class="line">Options</span><br><span class="line">--port, -p A port number on which to start the application</span><br><span class="line">--hostname, -H Hostname on which to start the application (default: 0.0.0.0)</span><br><span class="line">--help, -h Displays this message</span><br><span class="line"></span><br><span class="line">从这里可以看出，增加 host 在这里可以用--hostname 的方式，实际项目启动脚本修改如下：</span><br><span class="line">&quot;next&quot;: &quot;node scripts/setEnv.js &amp;&amp; next -p 8000 --hostname=local.meet.cn&quot;</span><br><span class="line">再次启动, 发现终端的打印不在是 0.0.0.0 和 localhost 了， 变成 started server on local.meet.cn:8000 和</span><br><span class="line">url333: http://local.meet.cn:8000</span><br><span class="line">// url333 是为了测试后面的自动打开浏览器的断点调试，原本打印的是 url:</span><br><span class="line">至此，第一个问题修改 hostname 已经完成了，至少在项目启动后，手动去点击这个地方，也总比去地址栏手动输入要快一些。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</p>
-</font>
-
-
-<blockquote>
-<p><font face="STCAIYUN" size="2">接下来解决第二个问题：</font></p>
-</blockquote>
-<font face="STCAIYUN" size="2">
-<p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">刚开始在 node_moduels 下面去搜 url: 没有搜到，于是就想在自定义 server 那块看能不能实现， </span><br><span class="line">上面的启动是走的 next 内置的 server, 当时为了使用 https 项目里面也进行了自定义 server 的支持，里面是手动进行输出：</span><br><span class="line">  console.log(`&gt; Ready on https://local.meet.cn:$&#123;port&#125;`) // 在终端输出就是这个，很明显打开浏览器是需要手动实现</span><br></pre></td></tr></table></figure>
-</p>
-</font>
-
-<font face="STCAIYUN" size="2">
-<p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在自定义 server 的基础上手动实现打开浏览器</span><br><span class="line">  按照 node 环境打开浏览器的第三方库 yarn add open --save-dev</span><br><span class="line">  增加命令：open(`https://local.meet.cn:$&#123;port&#125;`, &#123;app: &#123;name: &#x27;firefox&#x27;&#125;&#125;) // 第二个参数去掉，就使用电脑默认设置的浏览器进行打开</span><br><span class="line">  // 在自定义 server 的启动命令上执行，项目启动后，浏览器会自动新开 tab 自动进行链接的访问</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</p>
-</font>
-
-
-<blockquote>
-<p><font face="STCAIYUN" size="2">继续解决不使用自定义server 启动命令，就是next 自带启动命令，如何打开呢？在 node_modules/next/dist/server/lib/start-server.js 下面是next 维护的一份启动配置：    </font><br><img src="/images/nextjs-modify-host-1.png"></p>
-</blockquote>
-<blockquote>
-<p><font face="STCAIYUN" size="2">于是再将url: 进行了搜索，发现vscode 上有一个筛选条件被使用，去掉，就搜索出来了，有多个，333 是为了验证执行的文件：    </font><br><img src="/images/nextjs-modify-host-2.png"></p>
-</blockquote>
-<p> <font face="STCAIYUN" size="2">其实，到这里就可以看出，通过next内置的启动方式，是无法进行浏览器自动自动打开的，因为nextjs 框架没有去做这个事，而我们的项目里面也一直都是采用https 的方式（nextjs 开启需自定义server.js ）,那就在server.js 里面手动去打开浏览器吧。<br></font></p>
-<p><font face="STCAIYUN" size="4"><p>~~ 完毕！！！</p></font></p>
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/01/28/my-flat/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/01/28/my-flat/" class="post-title-link" itemprop="url">数组扁平化</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-01-28 19:30:00 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2023-01-28T19:30:00+08:00">2023-01-28</time>
-            </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2023/01/28/my-flat/" class="post-title">
+      数组扁平化
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2023-01-28</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">数组扁平化常规处理方式。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="2">新年伊始，第一天上班，依旧打卡比较早，习惯性的看看文章，于是看到了这样一篇文章《手写—数组扁平化》，过年在家休息了 10 多天，也想看看自己忘记了没有，于是将自己当时看到这篇文章时，自己的个人想法记录下来。</font></p>
-<p><font face="STCAIYUN" size="2">遇到这样的题目时，首先不能基于就想方法解题，方法可能会有多种，但是出题者的目的是什么也可以稍微思考一下，然后在根据自己的思考，进行解答，我当时的理解就是首先要考的就是对常用 API 的使用和理解，其次就是不用 API 自己实现，最后就是如果出现多种实现方式，对不同实现方式的一个理解。</font></p>
-<p><font face="STCAIYUN" size="4"><p>试题：[1, [2, [3, [4, 5]]]] ，将其扁平化输出[1,2,3,4,5]</p></font></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">1. 从常用API 的使用来解：</span><br><span class="line">首选es6 自带的flat 方法，flat(depth) 方法会按照一个可指定的递归深度递归遍历数组，</span><br><span class="line">并将所有的元素与遍历的子数组中的元素进行合并，最后返回一个新的数组；</span><br><span class="line">const arr = [1, [2, [3, [4, 5]]]];</span><br><span class="line">arr.flat(4)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">depth 是可选参数，默认为1层，指要提取嵌套数组的结构深度；</span><br><span class="line"></span><br><span class="line">arr.flat()</span><br><span class="line">输出：[1,2,[3,[4,5]]]</span><br><span class="line"></span><br><span class="line">如果数组深度未知，那么可以使用关键字进行无限递归，Infinity</span><br><span class="line">arr.flat(Infinity)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br><span class="line">2. 手写数组扁平化</span><br><span class="line">function myFlat(arr,depth)&#123;</span><br><span class="line">  let result = [];</span><br><span class="line">  if(!arr.length )&#123;</span><br><span class="line">    return result;</span><br><span class="line">  &#125;</span><br><span class="line">  for(let i = 0; i&lt;arr.length;i++)&#123;</span><br><span class="line">    if(Array.isArray(arr[i]) &amp;&amp; depth&gt;0 )&#123;</span><br><span class="line">      result = result.concat(myFlat(arr[i],depth-1))</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(arr[i])</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result;</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat(arr,4);</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line">思考：这里如何去实现Infinity</span><br><span class="line"></span><br><span class="line">3.使用非递归的方式实现：</span><br><span class="line">function myFlat2(arr)&#123;</span><br><span class="line">  if(!arr.length)&#123;</span><br><span class="line">    return []</span><br><span class="line">  &#125;</span><br><span class="line">  const result = [];</span><br><span class="line">  let stack = [...arr]</span><br><span class="line">  while(stack.length)&#123;</span><br><span class="line">    const next = stack.pop();</span><br><span class="line">    if(Array.isArray(next))&#123;</span><br><span class="line">      stack.push(...next);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      result.push(next);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  return result.reverse();</span><br><span class="line">&#125;</span><br><span class="line">const res = myFlat2(arr)</span><br><span class="line">输出：[1,2,3,4,5]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
 
-<p><font face="STCAIYUN" size="2">在上面的解法中，我们使用了常用的递归与迭代循环，二者的区别是：<br>编程之美：“迭代是人，递归是神！”</p>
-<p>递归：重复调用函数自身实现循环；<br>迭代：利用变量的原值推出新值，或着说迭代是函数内某段代码实现循环。<br>递推：是一种用若干步可重复的简运算（规律）来描述复杂问题的方法</p>
-<p>我理解迭代和递推是一样的</p>
-<p>递归实际上是不断地深层调用函数，直到函数有返回才会逐层的返回。递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域，因此，递归涉及到运行时的堆栈开销（参数必须压入堆栈保存，直到该层函数调用返回为止，才出栈），所以有可能导致堆栈溢出的错误；但是递归编程所体现的思想正是人们追求简洁、将问题交给计算机，以及将大问题分解为相同小问题从而解决大问题的动机。</p>
-<p>迭代大部分时候需要人为的对问题进行剖析，分析问题的规律所在，将问题转变为一次次的迭代来逼近答案。迭代不像递归那样对堆栈有一定的要求，另外一旦问题剖析完毕，就可以很容易的通过循环加以实现。迭代的效率高，但却不太容易理解，当遇到数据结构的设计时，比如图表、二叉树、网格等问题时，使用就比较困难，而是用递归就能省掉人工思考解法的过程，只需要不断的将问题分解直到返回就可以了。</p>
-<p>两者关系：所有的迭代可以转换为递归，但递归不一定可以转换成迭代。</font></p>
-<table>
-    <th>
-        </th><td>定义</td>
-        <td>优点</td>
-        <td>缺点</td>
-    </th>
-    <tr>
-        <td>递归</td>
-        <td>重复调用函数自身实现循环</td>
-        <td> 1.用有限的循环语句实现无限集合；<br> 2.易读。</td>
-        <td> 1.递归不断调用函数，浪费空间；<br> 2.容易造成堆栈溢出。</td>
-    </tr>
-    <tr>
-        <td>迭代</td>
-        <td>利用变量的原值推出新值<br>函数内某段代码实现循环</td>
-        <td>1.效率高，运行时间值随循环的增加而增加；<br>2.无额外的开销。</td>
-        <td>1.代码难理解；<br>2.不如递归简洁。</td>
-    </tr>
-    <tr>
-        <td>二者关系</td>
-        <td colspan="4"> 1.递归中一定有迭代，迭代中不一定有递归；大部分都可以相互转换；<br>2.相对递归的缺点来说，能用迭代不用递归（不断调用函数，浪费空间，容易造成堆栈溢出）。</td>
-    </tr>
-</table>
+<a class="tag" href="/tags/JS/">JS</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/20/electron1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/20/electron1/" class="post-title-link" itemprop="url">Electron 开发第一篇：启动不同环境及打包不同环境</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-20 11:29:00" itemprop="dateCreated datePublished" datetime="2021-01-20T11:29:00+08:00">2021-01-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2021/01/20/electron1/" class="post-title">
+      Electron 开发第一篇：启动不同环境及打包不同环境
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2021-01-20</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/%E6%A1%8C%E9%9D%A2%E7%AB%AF/">桌面端</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">桌面端优化调试不同环境启动命令、及打包构建命令。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="2">最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。</font></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">未修改时可能存在的问题：<br>1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；<br>  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果出现多个变量，那就呵呵了🙃；<br>  3.太不智能,不够自动化。</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">1.解决办法就是在package.json 里面去设置不同环境的命令，来针对不同的环境来执行不同的命令，如下：</font></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &quot;concurrently \&quot;yarn build:main\&quot; \&quot;yarn build:renderer\&quot;&quot;,</span><br><span class="line">    &quot;build:main&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.main.prod.babel.js&quot;,</span><br><span class="line">    &quot;build:renderer&quot;: &quot;cross-env NODE_ENV=production webpack --config ./.erb/configs/webpack.config.renderer.prod.babel.js&quot;,</span><br><span class="line">    &quot;rebuild&quot;: &quot;electron-rebuild --parallel --types prod,dev,optional --module-dir src&quot;,</span><br><span class="line">    &quot;lint&quot;: &quot;cross-env NODE_ENV=development eslint . --cache --ext .js,.jsx,.ts,.tsx&quot;,</span><br><span class="line">    &quot;package&quot;: &quot;yarn build &amp;&amp; electron-builder build --publish never&quot;,</span><br><span class="line">    &quot;package:dev&quot;: &quot;cross-env ENV=dev yarn package&quot;,</span><br><span class="line">    &quot;package:test&quot;: &quot;cross-env ENV=test yarn package&quot;,</span><br><span class="line">    &quot;package:test2&quot;: &quot;cross-env ENV=test2 yarn package&quot;,</span><br><span class="line">    &quot;package:pre&quot;: &quot;cross-env ENV=pre yarn package&quot;,</span><br><span class="line">    &quot;package:product&quot;: &quot;cross-env ENV=product yarn package&quot;,</span><br><span class="line">    &quot;postinstall&quot;: &quot;node -r @babel/register .erb/scripts/CheckNativeDep.js &amp;&amp; electron-builder install-app-deps &amp;&amp; yarn cross-env NODE_ENV=development webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.babel.js &amp;&amp; opencollective-postinstall &amp;&amp; yarn-deduplicate yarn.lock&quot;,</span><br><span class="line">    &quot;base&quot;: &quot;node -r @babel/register ./.erb/scripts/CheckPortInUse.js &amp;&amp; cross-env yarn start:renderer&quot;,</span><br><span class="line">    &quot;start:dev&quot;: &quot;cross-env ENV=dev yarn base&quot;,</span><br><span class="line">    &quot;start:test&quot;: &quot;cross-env ENV=test yarn base&quot;,</span><br><span class="line">    &quot;start:test2&quot;: &quot;cross-env ENV=test2 yarn base&quot;,</span><br><span class="line">    &quot;start:pre&quot;: &quot;cross-env ENV=pre yarn base&quot;,</span><br><span class="line">    &quot;start:product&quot;: &quot;cross-env ENV=product yarn base&quot;,</span><br><span class="line">    &quot;start:main&quot;: &quot;cross-env NODE_ENV=development electron -r ./.erb/scripts/BabelRegister ./src/main.dev.ts&quot;,</span><br><span class="line">    &quot;start:renderer&quot;: &quot;cross-env NODE_ENV=development webpack serve --config ./.erb/configs/webpack.config.renderer.dev.babel.js&quot;,</span><br><span class="line">    &quot;test&quot;: &quot;jest&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+        
 
+<a class="tag" href="/tags/Electron/">Electron</a>
 
-
-<p><font face="STCAIYUN" size="2">在修改过程中发生的问题：<br>1.node 环境下可以正常拿到环境变量，在electron 中是拿不到的</font></p>
-<p><img src="/images/electron1.png"></p>
-<p><font face="STCAIYUN" size="2">2.方法1可以看出写了很多相同的代码，下面就借助inquirer 命令行工具进行简化，可以针对不同的环境进行选择不同的启动命令，如下：</font></p>
-<blockquote>
-<font face="STCAIYUN" size="2">
-1.启动或者打包；   <br/>
-2."inquirer":"TYPE=development node ./scripts/inquirer.js",<br/>
-3."inquirer:package":"TYPE=production node ./scripts/inquirer.js",</font>
-</blockquote>
-<br/>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//inquirer.js</span><br><span class="line">const inquirer = require(&#x27;inquirer&#x27;);</span><br><span class="line">const spawn = require(&#x27;cross-spawn&#x27;);</span><br><span class="line">const promptList = [</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择一种环境:&#x27;,</span><br><span class="line">    name: &#x27;fruit&#x27;,</span><br><span class="line">    choices: [&#x27;dev&#x27;, &#x27;test&#x27;, &#x27;test2&#x27;, &#x27;pre&#x27;, &#x27;product&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择打包平台:&#x27;,</span><br><span class="line">    name: &#x27;platform&#x27;,</span><br><span class="line">    choices: [&#x27;--win&#x27;, &#x27;--mac&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">if(process.env.TYPE === &#x27;development&#x27;)&#123;</span><br><span class="line">  promptList.pop();</span><br><span class="line">&#125;</span><br><span class="line">inquirer.prompt(promptList).then((answers) =&gt; &#123;</span><br><span class="line">  const spawnType = process.env.TYPE === &#x27;development&#x27;?&#x27;start&#x27;:&#x27;package&#x27;;</span><br><span class="line">  const args = process.env.TYPE ===&#x27;development&#x27;?[spawnType]:[spawnType,answers.platform];</span><br><span class="line">  console.log(args,&#x27;args&#x27;)</span><br><span class="line">  spawn(`yarn`,args, &#123;</span><br><span class="line">    stdio: &#x27;inherit&#x27;,</span><br><span class="line">    // 仅在当前运行环境为 Windows 时，才使用 shell</span><br><span class="line">    shell: [&#x27;win32&#x27;,&#x27;win64&#x27;].includes(process.platform) ,</span><br><span class="line">    env:&#123;</span><br><span class="line">      ...process.env,</span><br><span class="line">      ENV:answers.fruit</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  console.log(answers); // 返回的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/element-rate/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/19/element-rate/" class="post-title-link" itemprop="url">Element-UI Rate 评分使用自定义icon</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-19 22:20:00" itemprop="dateCreated datePublished" datetime="2020-11-19T22:20:00+08:00">2020-11-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2020/11/19/element-rate/" class="post-title">
+      Element-UI Rate 评分使用自定义icon
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2020-11-19</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/vue/">vue</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">抹平Element 评分组件与Antd 评分组件样式差异。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="3">项目里面使用了React 与 Vue 进行同时开发，React 对应的使用的是Antd,Vue 则是用Element 这些组件库进行开发，在同一个项目下使用这2种框架，本身就依赖了vuera 来进行相互协作，无论是React 嵌入到Vue 里面，还是Vue 嵌入到React 里面，本来Vue 写得不多，所以这边就没有使用vuera 来完成，一个查看评分功能，在React 模块下用antd 的Rate 完成，在Vue 下用Element 的Rate 进行开发，想加深一下Vue 的开发。但是最终导致的结果是，查看评分的弹框，里面的星星大小颜色都不一样，需要统一一下。</font></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">解决思路：<br>1.通过自定义icon ,让星星大小、样色一样 ,<br>  2.antd 的 Rate 使用character、element 的 Rate 使用icon-classes，<br>  3.使用iconfont 配合完成</font></p>
-</blockquote>
-  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">antd Rate：</span><br><span class="line">  // 非自定义：&lt;Rate value=&#123;subItem.value&#125; disabled count=&#123;item.name === &#x27;增值评分&#x27;?3:5&#125;/&gt;</span><br><span class="line">  &lt;Rate value=&#123;subItem.value&#125; disabled count=&#123;item.name === &#x27;增值评分&#x27;?3:5&#125; character=&#123;()=&gt;&lt;IconSvg type=&quot;iconstar&quot; style=&#123;&#123; color: &#x27;#ffc300&#x27; &#125;&#125; /&gt;&#125; /&gt;</span><br><span class="line"></span><br><span class="line">  // IconSvg 解析 阿里iconfont </span><br><span class="line">  const IconSvg = (props:&#123; type: string, className?:string, style?:any&#125;) =&gt; &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;svg className=&#123;`icon $&#123;props.className || &#x27;&#x27;&#125;`&#125; aria-hidden=&quot;true&quot; style=&#123;props.style&#125;&gt;</span><br><span class="line">        &lt;use xlinkHref=&#123;`#$&#123;props.type&#125;`&#125;&gt;&lt;/use&gt;</span><br><span class="line">      &lt;/svg&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  export default IconSvg</span><br><span class="line"></span><br><span class="line">element Rate:</span><br><span class="line">  // 非自定义：&lt;el-rate v-model=&quot;subItem.value&quot; disabled :max=&quot;item.name === &#x27;增值评分&#x27;?3:5&quot;&gt;&lt;/el-rate&gt;</span><br><span class="line">  &lt;el-rate v-model=&quot;subItem.value&quot; disabled :max=&quot;item.name === &#x27;增值评分&#x27;?3:5&quot; :icon-classes=&quot;iconClasses&quot; void-icon-class=&quot;icon-rate-face-off&quot; :colors=&quot;colors&quot;&gt;</span><br><span class="line">  &lt;/el-rate&gt;</span><br><span class="line"></span><br><span class="line">  // javascript</span><br><span class="line">  name: &#x27;check-rate&#x27;,</span><br><span class="line">  props: [&#x27;rate&#x27;, &#x27;mark&#x27;],</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      iconClasses: [&#x27;icon iconfont iconstar&#x27;,&#x27;icon iconfont iconstar&#x27;,&#x27;icon iconfont iconstar&#x27;],</span><br><span class="line">      colors:[&#x27;#FFC300&#x27;,&#x27;#FFC300&#x27;,&#x27;#FFC300&#x27;]</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+        
 
-<p><font face="STCAIYUN" size="3">antd 的改造很顺利就完成了，但是element 的星星一直不出来，遇到的问题就是iconfont icon 引入后，没有展示出来：</font></p>
-<p><font face="STCAIYUN" size="3">主要是在iconfont 的使用上，先进行引入，如下图，将css js 文件分别在模板html 中进行引入</font></p>
-<p><img src="/images/iconfont.png"></p>
-<p><font face="STCAIYUN" size="3">注意的点是iconClasses 这个里面填入的name 不要是在iconfont 网站上复制得到的，这是显示不出来的,它得到的是：iconstar  ，与at.alicnd.com 引用的对应有欠缺，所以导致显示不出来，它里面实际对应的是 icon iconfont iconstar ，类型+name 的一个组合</font></p>
-<p><img src="/images/star.png"></p>
-<p><img src="/images/name.png"></p>
-<p><font face="STCAIYUN" size="3">对比方式是在iconfont 网站上点击下载本地，打开demo_index.html 后就可以看到span 标签里面的class 就是实际可显示的。</font></p>
+<a class="tag" href="/tags/Element/">Element</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/29/download/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/29/download/" class="post-title-link" itemprop="url">download 下载方式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-29 19:15:00" itemprop="dateCreated datePublished" datetime="2020-10-29T19:15:00+08:00">2020-10-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2020/10/29/download/" class="post-title">
+      download 下载方式
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2020-10-29</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">window.open 在cookie 与token 鉴权下有不同的表现形式。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="3">今天在于后端调试一个下载接口是，遇到一个下载不成功，提示’无权限‘操作，绕了一圈发现是此接口做了权限效验，草率了…</font></p>
-<p><img src="/images/download.png"></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">原因分析：<br>1.后端提供一个下载接口，接口鉴权走中间件middlewoare ,<br>  2.前端为了方便，使用window.open 直接拼装了链接，进行了下载，<br>  3.2个系统，同一个接口，同一份代码，在a 端就可以正常下载，在b 端就下载不了</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">导致在2端出现不同的现象是，a 端鉴权使用Cookie ,b 端鉴权使用 token ,Cookie 情况下无论使用ajax ,还是 window.open 在header 里面默认就被添加，而token 这种就做不到，所以就会导致同样的代码，在不同的鉴权下就现象不同。</font></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">解决方法：</span><br><span class="line">const downloadOriginalText = useCallback(() =&gt; &#123;</span><br><span class="line">    // 接口</span><br><span class="line">    exportDownloadApi(&#123; ct_id:ctId, task_id:taskId, ca_id:caId &#125;).then((&#123; data &#125;) =&gt; &#123;</span><br><span class="line">      const url = window.URL.createObjectURL(data);</span><br><span class="line">      let a = document.createElement(&#x27;a&#x27;);</span><br><span class="line">      document.body.appendChild(a);</span><br><span class="line">      // 可以将 a 标签display 设为none ,以免有所影响</span><br><span class="line">      a.href = url;</span><br><span class="line">      a.click();</span><br><span class="line">      window.URL.revokeObjectURL(url);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;, [ctId, taskId, caId])</span><br></pre></td></tr></table></figure>
+        
 
-<blockquote>
-<p><font face="STCAIYUN" size="2">上述方法可能会出现的问题：<br>1.设置responseType ,拿使用axios exportDownloadApi 这个接口的地方要设置responseType ,它是跟Header 同级</font></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export async function exportDownloadApi (data) &#123;</span><br><span class="line">  return requestHelper.get(&#x27;/exportxxxxxx00000000&#x27;, &#123; params: data, responseType: &#x27;blob&#x27; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><font face="STCAIYUN" size="2">2.在公共处理请求的地方，在header 里面设置token</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">如果不设就会出现，点击下载，浏览器会出现一个下载行为，文件也下载下载下来了，就是无法打开，告知被损坏，正常下载是没有这个下载行为的，直接就打开了（有待验证）</font></p>
-<p><font face="STCAIYUN" size="2">在调试过程中还发生这样一个问题：<br>问题：设置了responseType 也设置了token ,但是修改了Response Header 里面的Content-Type: application/octet-stream,下载下来的也是损坏的，下载动作会有。此时 Response Header 里面是：<br>Content-Disposition: attachment; filename=”translation-55980.zip”<br>Content-Type: application/octet-stream，没有具体去分析，感觉问题是出现在这里，于是又让后端设置为：<br>Content-Type: application/zip，一把过。</font></p>
+<a class="tag" href="/tags/JS/">JS</a>
+
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/28/let/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/28/let/" class="post-title-link" itemprop="url">从Babel 编译理解let const</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-28 23:59:46" itemprop="dateCreated datePublished" datetime="2020-08-28T23:59:46+08:00">2020-08-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2020/08/28/let/" class="post-title">
+      从Babel 编译理解let const
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2020-08-28</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">学习let 变量。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p><font face="STCAIYUN" size="3">首先let 和 const 是es6 出的，这里就要了解一下，为什么要出新语法，一般是新事物带替旧事物，必然是旧事物满足不了当前，梳理一下es5 里面的变量声明会存在哪些不足，然后再从let 和 const 上去了解他们的优点。</font></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">es5 变量声明，也就是var 会存在的问题</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">1.内层变量可能会覆盖外层变量</font><br><font face="STCAIYUN" size="2">2.循环中的计数变量可能会泄漏成为全局变量</font></p>
-<blockquote>
-<p><font face="STCAIYUN" size="2">那么立足es5 本身有没有什么办法去解决呢？或者是做个块级作用域，想到作用域，js 里面只有函数存在作用域，那么就可以利用函数来实现</font></p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var a = 1;</span><br><span class="line">(function IIFE()&#123;</span><br><span class="line">  var a = 2;</span><br><span class="line">  console.log(a); //2</span><br><span class="line">&#125;)()</span><br><span class="line">console.log(a);//1</span><br></pre></td></tr></table></figure>
+        
 
-<blockquote>
-<p><font face="STCAIYUN" size="2">当在es6 中引入了块级作用域，也就是在花括号里面存在let 或者是const 时，花括号所在的区域内就是属于块级作用域了，它的优点是：</font></p>
-</blockquote>
-<p><font face="STCAIYUN" size="2">1.外层作用域无法读取内层作用的变量，也就是es5 的缺点1就不复存在了</font><br><font face="STCAIYUN" size="2">2.外层声明的变量名可以与内层的相同，互不干扰，不用当心会被修改</font><br><font face="STCAIYUN" size="2">3.用函数来模拟或者是立即执行函数就不在需要了</font></p>
-<p><font face="STCAIYUN" size="2">下面来看一组源码示例：</font></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var x = 1;</span><br><span class="line">let y = 1;</span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  let y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br><span class="line">console.log(y); // 1</span><br></pre></td></tr></table></figure>
+<a class="tag" href="/tags/JS/">JS</a>
 
-<p><font face="STCAIYUN" size="2">被babel 编译解析后的示例：</font></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">var x = 1;</span><br><span class="line">var y = 1;</span><br><span class="line"> </span><br><span class="line">if (true) &#123;</span><br><span class="line">  var x = 2;</span><br><span class="line">  var _y = 2;</span><br><span class="line">&#125;</span><br><span class="line">console.log(x); // 2</span><br></pre></td></tr></table></figure>
-
-<p><font face="STCAIYUN" size="2">上面的示例可以看出2个问题：</font><br><font face="STCAIYUN" size="2">1.由于 let 使花括号提升为块级作用域，使得即使声明了相同的变量名 y 也互不干扰。<br>2.为了实现此效果，Babel 重命名了块级作用域内 let 声明的变量名，也就是可以理解为babel 在解析let 语法糖的时候就是将变量名重命名了。</font></p>
-<p><font face="STCAIYUN" size="2">参照:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/weixin_34290390/article/details/87986287?utm_medium=distribute.pc_relevant.none-task-blog-title-1&amp;spm=1001.2101.3001.4242</a></font></p>
 
       
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  </div>
+</div>
 
       
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/25/one/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="miroku">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/25/one/" class="post-title-link" itemprop="url">JSON.stringify的魔法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-25 23:27:46" itemprop="dateCreated datePublished" datetime="2020-08-25T23:27:46+08:00">2020-08-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-28 17:46:49" itemprop="dateModified" datetime="2023-01-28T17:46:49+08:00">2023-01-28</time>
-              </span>
-
+        <div class="post-item-wrapper">
+  <a href="/2020/08/25/one/" class="post-title">
+      JSON.stringify的魔法
+  </a>
+  <div class="post-excerpt">
+    <!-- Post Date and Categories -->
+    <div class="date-and-category">
+      <div class="date">2020-08-25</div>
+      <div class="categories">
+        
           
 
-        </div>
-      </header>
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+        
+      </div>
+    </div>
+    <!-- Post Excerpt -->
+    <div class="excerpt typo">深入学习 JSON.stringify。</div>
+    <!-- Post Tags -->
+    <div class="tags">
       
-          <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
-<h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth = &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#x27;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  name:&#x27;yy&#x27;</span><br><span class="line">&#125;</span><br><span class="line">//存入</span><br><span class="line">localStorage.setItem(&#x27;auth&#x27;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">const currentAuth = JSON.parse(localStorage.getItem(&#x27;auth&#x27;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
 
-<h6 id="2-判断数组中是否包含某个对象"><a href="#2-判断数组中是否包含某个对象" class="headerlink" title="2.判断数组中是否包含某个对象"></a>2.判断数组中是否包含某个对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const data = [</span><br><span class="line">  &#123;type:&#x27;javascript&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;html&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;css&#x27;&#125;</span><br><span class="line">];</span><br><span class="line">JSON.stringify(data).includes(JSON.stringify(&#123;type:&#x27;css&#x27;&#125;));//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<a class="tag" href="/tags/JS/">JS</a>
 
-<h6 id="3-判断数组-对象是否相等"><a href="#3-判断数组-对象是否相等" class="headerlink" title="3.判断数组/对象是否相等"></a>3.判断数组/对象是否相等</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">const b = [1,2,3];</span><br><span class="line">JSON.stringify(a) == JSON.stringify(b);//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h6 id="4-数据深拷贝"><a href="#4-数据深拷贝" class="headerlink" title="4.数据深拷贝"></a>4.数据深拷贝</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">const b = JSON.parse(JSON.stringify(a));</span><br><span class="line">b[0] = 0;</span><br><span class="line">console.log(a,b);//[1,2,3] [0,2,3]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h6 id="5-数据处理"><a href="#5-数据处理" class="headerlink" title="5.数据处理"></a>5.数据处理</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">//处理前的对象</span><br><span class="line">const todayILearn = &#123;</span><br><span class="line">  _id: 1,</span><br><span class="line">  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">  created_at: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  updated_at: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">&#125;;</span><br><span class="line">//处理后的对象</span><br><span class="line">const todayILearn = &#123;</span><br><span class="line">  id: 1,</span><br><span class="line">  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//实现方法</span><br><span class="line">1.创建新的对象 + 遍历实现</span><br><span class="line">// 多一个变量存储</span><br><span class="line">const todayILearnTemp = &#123;&#125;;</span><br><span class="line">for (const [key, value] of Object.entries(todayILearn)) &#123;</span><br><span class="line">  if (key === &quot;_id&quot;) todayILearnTemp[&quot;id&quot;] = value;</span><br><span class="line">  else if (key === &quot;created_at&quot;) todayILearnTemp[&quot;createdAt&quot;] = value;</span><br><span class="line">  else if (key === &quot;updatedAt&quot;) todayILearnTemp[&quot;updatedAt&quot;] = value;</span><br><span class="line">  else todayILearnTemp[key] = value;</span><br><span class="line">&#125;</span><br><span class="line">console.log(todayILearnTemp);</span><br><span class="line">// 结果：</span><br><span class="line">// &#123; id: 1,</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updated_at: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">// &#125;</span><br><span class="line">缺点：多声明了一个变量，加了层循环，多个if else 判断</span><br><span class="line"></span><br><span class="line">2.先delete 属性，再增加属性</span><br><span class="line">todayILearn.id = todayILearn._id;</span><br><span class="line">todayILearn.createdAt = todayILearn.created_at;</span><br><span class="line">todayILearn.updatedAt = todayILearn.updated_at;</span><br><span class="line">delete todayILearn._id;</span><br><span class="line">delete todayILearn.created_at;</span><br><span class="line">delete todayILearn.updated_at;</span><br><span class="line">console.log(todayILearn);</span><br><span class="line">//     太暴力😢</span><br><span class="line">//&#123;</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  id: 1,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">//&#125;</span><br><span class="line">缺点：属性的顺序发生了改变</span><br><span class="line"></span><br><span class="line">3.序列化 + replace</span><br><span class="line">const mapObj = &#123;</span><br><span class="line">  _id: &quot;id&quot;,</span><br><span class="line">  created_at: &quot;createdAt&quot;,</span><br><span class="line">  updated_at: &quot;updatedAt&quot;</span><br><span class="line">&#125;;</span><br><span class="line">JSON.parse(</span><br><span class="line">  JSON.stringify(todayILearn).replace(</span><br><span class="line">    /_id|created_at|updated_at/gi,</span><br><span class="line">    matched =&gt; mapObj[matched])</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">// &#123;</span><br><span class="line">// id: 1,</span><br><span class="line">//  content: &#x27;今天学习 JSON.stringify()，我很开心！&#x27;,</span><br><span class="line">//  createdAt: &#x27;Mon Nov 25 2019 14:03:55 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">//  updatedAt: &#x27;Mon Nov 25 2019 16:03:55 GMT+0800 (中国标准时间)&#x27;</span><br><span class="line">// &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h5 id="JSON-stringify-与-toString-的区别"><a href="#JSON-stringify-与-toString-的区别" class="headerlink" title="JSON.stringify 与 toString 的区别"></a>JSON.stringify 与 toString 的区别</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a = [1,2,3];</span><br><span class="line">console.log(JSON.stringify(a));//&quot;[1,2,3]&quot;</span><br><span class="line">console.log(a.toString());//&quot;1,2,3&quot;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>二者虽然都是转成了字符串，但是本质上还是有区别的，JSON.stringify 主要是将javascript 对象转换成字符串，偏向于操作对象类型，而toString 更偏向于数字类型转换为字符串类型</p>
-</blockquote>
-<blockquote>
-<p>下面来看看JSON.stringify 的几大特性</p>
-</blockquote>
-<h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data = &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#x27;dd&#x27;)])  // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#x27;a&#x27;)&#125;)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(Symbol(&#x27;dd&#x27;))</span><br><span class="line">// undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
+  </div>
+</div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+      
+    </div>
+  </div>
+</div>
 
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
+<!-- Pagination -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-md-10 col-md-offset-1">
+      <ul class="pagination">
           
+          
+            <li class="next">
+              <a href="/page/2/">
+                <span>下一页</span>
+                <span class="symbol-right">&gt;</span>
+              </a>
+            </li>
+          
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
     });
-  }
+  });
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">miroku</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">14</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-  </nav>
-</div>
-
-
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2023</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">miroku</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+
