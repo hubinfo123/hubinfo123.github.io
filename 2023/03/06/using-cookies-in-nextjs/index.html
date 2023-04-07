@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="cookie 在nextjs 中的使用"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">cookie 在nextjs 中的使用</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By miroku</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2023-03-06</span>
+            <span class="time">23:00:33</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/react/">react</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/js-cookie/">#js-cookie</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font></p>
+<blockquote>
+<p><font face="STCAIYUN" size="2">实现方式：<br>借助 js-cookie npm 包，进行设置、删除；<br>key: 字符串,这里指要设置的 token；<br>token: 项目使用 token 鉴权，登录后会返回 token；<br>expires: cookie 失效时间，在 js-cookie 中时间是以天为单位开始；</font></p>
+</blockquote>
+<p><font face="STCAIYUN" size="2">1. 页面登录成功后，执行<br>Cookies.set(‘token’,token,{expires:1})<br>在_app.js 的 getInitialProps 中派发 ajax 是，需要使用 token 进行鉴权，此时则可以在<br>appContext.ctx?.req?.cookies?.token 中获取，然后正常使用。</font></p>
+<p><font face="STCAIYUN" size="2">2. 注意事项：退出登录、token 失效时执行退出登录逻辑时，需要将 token 给手动清除掉<br>Cookies.remove(‘token’)</font></p>
+<p><font face="STCAIYUN" size="2">3.expires 是需要设置的，如果不设置会出现一个问题：服务端返回的 token 的失效时间是 24 小时，那么在用户登录后，使用完，不点击退出登录直接关闭浏览器，隔几个小时再次访问页面，此时是直接处于登录态，可以正常使用的，但是手动刷新或者因某些操作触发了页面刷新导致了 getInitialProps 的触发，这个时候 token 是获取不到的，这里涉及一个知识点，就是 cookie 如果不设置失效时间，它的类型为：session，会随浏览器的关闭而清空，如果设置了时间，则会按照时间进行倒计时清空，这里只需要将时间设置为大于等于服务器的时间，因为失效后去访问接口，会提示 token 失效，引导登录。</font></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+
