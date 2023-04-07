@@ -1,7 +1,9 @@
 ---
 title: download 下载方式
 date: 2020-10-29 19:15
-tags:
+tags: [JS]
+categories: js 基础
+excerpt: window.open 在cookie 与token 鉴权下有不同的表现形式。
 ---
 
 <font face="STCAIYUN" size="3">今天在于后端调试一个下载接口是，遇到一个下载不成功，提示’无权限‘操作，绕了一圈发现是此接口做了权限效验，草率了...</font>

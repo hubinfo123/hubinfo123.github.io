@@ -1,7 +1,9 @@
 ---
 title: cookie 在nextjs 中的使用
 date: 2023-03-06 19:30
-tags:
+tags: [js-cookie]
+categories: react
+excerpt: 在无需后端帮忙种植 token 情况下，为了完成业务前端自行处理缓存token。
 ---
 
 <font face="STCAIYUN" size="2">&ensp; &ensp; &ensp;项目优化项利用 nextjs 的服务端渲染，做一些请求，如 userInfo 信息、权限、主体等一些业务逻辑接口，但是由于这些接口需要 token 验证，在不借助后端帮忙的情况下，前端需要处理在服务端拿到 token , 就只能借助 cookie 传递。</font>

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
+<<<<<<< HEAD
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<<<<<<< HEAD
-<meta name="generator" content="Hexo 5.1.1">
-=======
 <meta name="generator" content="Hexo 5.4.2">
->>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -62,103 +60,104 @@
 </script>
 
   <title>Electron 开发第一篇：启动不同环境及打包不同环境 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+=======
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="Electron 开发第一篇：启动不同环境及打包不同环境"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
   
 
+  <!-- Site Title -->
+  <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
 
 
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
 
 
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">Electron 开发第一篇：启动不同环境及打包不同环境</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
+</header>
 
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
           
+<<<<<<< HEAD
 
           <div class="content post posts-expand">
             
@@ -216,18 +215,37 @@
 >>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
+=======
+            <!-- Author -->
+            <span class="author info">By miroku</span>
           
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2021-01-20</span>
+            <span class="time">23:00:33</span>
+          </span>
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
+<a href="/categories/%E6%A1%8C%E9%9D%A2%E7%AB%AF/">桌面端</a>
+</span>
+          
         </div>
-      </header>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<a class="tag" href="/tags/Electron/">#Electron</a>
 
-      
-        <p><font face="STCAIYUN" size="2">最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。</font></p>
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><font face="STCAIYUN" size="2">最近在开发桌面端应用，昨天第一个版本上线完，今天没有什么紧急的事要做，把桌面端项目的调试环境与打包环境修改了一番，更方便，灵活性更高，相应的提高了一些开发能效。</font></p>
 <blockquote>
 <p><font face="STCAIYUN" size="2">未修改时可能存在的问题：<br>1.多人协作时，改了BASE_URL 在提交时就要一直记住再改回去，不小心提交了别人合并时得看半天，担心合并错误；<br>  2.打包时，如果测试需要测试不同环境的包时，要来回的改BASE_URL，这个还是一个变量，如果出现多个变量，那就呵呵了🙃；<br>  3.太不智能,不够自动化。</font></p>
 </blockquote>
@@ -256,63 +274,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">//inquirer.js</span><br><span class="line">const inquirer = require(&#x27;inquirer&#x27;);</span><br><span class="line">const spawn = require(&#x27;cross-spawn&#x27;);</span><br><span class="line">const promptList = [</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择一种环境:&#x27;,</span><br><span class="line">    name: &#x27;fruit&#x27;,</span><br><span class="line">    choices: [&#x27;dev&#x27;, &#x27;test&#x27;, &#x27;test2&#x27;, &#x27;pre&#x27;, &#x27;product&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    type: &#x27;list&#x27;,</span><br><span class="line">    message: &#x27;请选择打包平台:&#x27;,</span><br><span class="line">    name: &#x27;platform&#x27;,</span><br><span class="line">    choices: [&#x27;--win&#x27;, &#x27;--mac&#x27;],</span><br><span class="line">    filter: function (val) &#123;</span><br><span class="line">      // 使用filter将回答变为小写</span><br><span class="line">      return val.toLowerCase();</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">if(process.env.TYPE === &#x27;development&#x27;)&#123;</span><br><span class="line">  promptList.pop();</span><br><span class="line">&#125;</span><br><span class="line">inquirer.prompt(promptList).then((answers) =&gt; &#123;</span><br><span class="line">  const spawnType = process.env.TYPE === &#x27;development&#x27;?&#x27;start&#x27;:&#x27;package&#x27;;</span><br><span class="line">  const args = process.env.TYPE ===&#x27;development&#x27;?[spawnType]:[spawnType,answers.platform];</span><br><span class="line">  console.log(args,&#x27;args&#x27;)</span><br><span class="line">  spawn(`yarn`,args, &#123;</span><br><span class="line">    stdio: &#x27;inherit&#x27;,</span><br><span class="line">    // 仅在当前运行环境为 Windows 时，才使用 shell</span><br><span class="line">    shell: [&#x27;win32&#x27;,&#x27;win64&#x27;].includes(process.platform) ,</span><br><span class="line">    env:&#123;</span><br><span class="line">      ...process.env,</span><br><span class="line">      ENV:answers.fruit</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  console.log(answers); // 返回的结果</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 
-    </div>
-
-    
-    
-    
-
-      <footer class="post-footer">
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/11/19/element-rate/" rel="prev" title="Element-UI Rate 评分使用自定义icon">
-      <i class="fa fa-chevron-left"></i> Element-UI Rate 评分使用自定义icon
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/01/28/my-flat/" rel="next" title="数组扁平化">
-      数组扁平化 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
-  </article>
-  
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
         </div>
+<<<<<<< HEAD
           
   
   <div class="toggle sidebar-toggle">
@@ -365,9 +328,11 @@
 
 
 
+=======
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
       </div>
-
     </div>
+<<<<<<< HEAD
   </aside>
   <div id="sidebar-dimmer"></div>
 
@@ -399,58 +364,43 @@
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+=======
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
   </div>
-
-        
-
+</article>
 
 
 
-
-
-
-
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
       </div>
-    </footer>
+    </div>
   </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+</footer>
 
 
-<script src="/js/schemes/pisces.js"></script>
+    <!-- After Footer Scripts -->
 
+<script src="/js/highlight.pack.js"></script>
 
-<script src="/js/next-boot.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+

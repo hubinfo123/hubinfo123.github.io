@@ -1,7 +1,9 @@
 ---
 title: 基于webpack 打包的正确选择
 date: 2019-10-31 13:27:46
-tags:
+tags: [webpack]
+categories: webpack
+excerpt: webpack 不同的打包模式学习。
 ---
 为了方便其他开发者使用组件库，开发的 Vue 组件库在发布之前需要对其打包。本文基于 Webpack 讨论打包 Vue 组件库的正确方法。
 

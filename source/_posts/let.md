@@ -1,7 +1,9 @@
 ---
 title: 从Babel 编译理解let const 
 date: 2020-08-28 23:59:46
-tags:
+tags: [JS]
+categories: js 基础
+excerpt: 学习let 变量。
 ---
 
 

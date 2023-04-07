@@ -1,7 +1,9 @@
 ---
 title: Element-UI Rate 评分使用自定义icon
 date: 2020-11-19 22:20
-tags:
+tags: [Element]
+categories: vue
+excerpt: 抹平Element 评分组件与Antd 评分组件样式差异。
 ---
 
 

@@ -1168,39 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background: #cb0dc8;
-=======
-  background: #009ab8;
->>>>>>> 05ff5d000756f4e87bbf08003e53cbac24c42438
-=======
-  background: #2fccc1;
->>>>>>> adf8272aac804d6cb983e70db1d40f72f770f20a
-=======
-  background: #ff81cc;
->>>>>>> 1c0d1f4c93785241e9ee9258fb30ed70802edcc1
-=======
-  background: #1ff778;
->>>>>>> 8f4b68f38752419ed982747047d7ff741f2f8d4b
-=======
-  background: #bec3f2;
->>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
-=======
-  background: #7004da;
->>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
-=======
-  background: #ffffc9;
->>>>>>> bb8a7fa8378839d1314607fcb88fcd6057714ce7
-=======
   background: #fffa60;
->>>>>>> 2cd7d4b0955bc7e2e8e8132c912c710e9968b2e2
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2472,4 +2440,8 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-blogroll-item {
   padding: 0;
+}
+
+.post-item-wrapper{
+  border:1px solid red!important;
 }

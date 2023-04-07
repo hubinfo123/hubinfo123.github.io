@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html>
+  <!-- Html Head Tag-->
+  <head>
   <meta charset="UTF-8">
+<<<<<<< HEAD
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<<<<<<< HEAD
-<meta name="generator" content="Hexo 5.1.1">
-=======
 <meta name="generator" content="Hexo 5.4.2">
->>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -67,103 +65,104 @@
 </script>
 
   <title>JSON.stringify的魔法 | tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+=======
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="JSON.stringify的魔法"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
   
 
+  <!-- Site Title -->
+  <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
 
 
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
 
 
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">JSON.stringify的魔法</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
+</header>
 
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">谨言、笃行</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
           
+<<<<<<< HEAD
 
           <div class="content post posts-expand">
             
@@ -225,16 +224,33 @@
 >>>>>>> cbc8c8e75d8fa0ad090dda25bbe3cf02e5635c87
               </span>
 
+=======
+            <!-- Author -->
+            <span class="author info">By miroku</span>
           
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2020-08-25</span>
+            <span class="time">23:00:33</span>
+          </span>
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
 
+<a href="/categories/js-%E5%9F%BA%E7%A1%80/">js 基础</a>
+</span>
+          
         </div>
-      </header>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+<a class="tag" href="/tags/JS/">#JS</a>
 
+
+<<<<<<< HEAD
       
         <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
 <<<<<<< HEAD
@@ -250,6 +266,13 @@
 
 <h5 id="JSON-stringify-与-toString-的区别"><a href="#JSON-stringify-与-toString-的区别" class="headerlink" title="JSON.stringify 与 toString 的区别"></a>JSON.stringify 与 toString 的区别</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const a &#x3D; [1,2,3];</span><br><span class="line">console.log(JSON.stringify(a));&#x2F;&#x2F;&quot;[1,2,3]&quot;</span><br><span class="line">console.log(a.toString());&#x2F;&#x2F;&quot;1,2,3&quot;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
 =======
+=======
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p>JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；</p>
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
 <h5 id="日常工作中常用的场合如下："><a href="#日常工作中常用的场合如下：" class="headerlink" title="日常工作中常用的场合如下："></a>日常工作中常用的场合如下：</h5><h6 id="1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"><a href="#1-在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象" class="headerlink" title="1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象"></a>1.在使用浏览器缓存的时候，先要将缓存的对象转换成JSON字符串，取出的时候再将字符串转换为对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const auth = &#123;</span><br><span class="line">	id:001,</span><br><span class="line">  create_time:&#x27;Wed Dec 11 2019 23:19:57 GMT+0800 (中国标准时间)&#x27;,</span><br><span class="line">  name:&#x27;yy&#x27;</span><br><span class="line">&#125;</span><br><span class="line">//存入</span><br><span class="line">localStorage.setItem(&#x27;auth&#x27;,JSON.stringify(auth));</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">const currentAuth = JSON.parse(localStorage.getItem(&#x27;auth&#x27;));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h6 id="2-判断数组中是否包含某个对象"><a href="#2-判断数组中是否包含某个对象" class="headerlink" title="2.判断数组中是否包含某个对象"></a>2.判断数组中是否包含某个对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const data = [</span><br><span class="line">  &#123;type:&#x27;javascript&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;html&#x27;&#125;,</span><br><span class="line">  &#123;type:&#x27;css&#x27;&#125;</span><br><span class="line">];</span><br><span class="line">JSON.stringify(data).includes(JSON.stringify(&#123;type:&#x27;css&#x27;&#125;));//true</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -273,6 +296,7 @@
 <h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data &#x3D; &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); &#x2F;&#x2F; 输出：？</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#39;dd&#39;)])  &#x2F;&#x2F; 输出：？</span><br><span class="line"></span><br><span class="line">  &#x2F;&#x2F; &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#39;a&#39;)&#125;)</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line">JSON.stringify(Symbol(&#39;dd&#39;))</span><br><span class="line">&#x2F;&#x2F; undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 =======
 <h6 id="特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果"><a href="#特性1：对于undefined-任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON-stringify-将返回不同的结果" class="headerlink" title="特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果"></a>特性1：对于undefined,任意类型函数，symbol类型的数据，分别作为对象的属性，数组中的元素，单独的值时，JSON.stringify 将返回不同的结果</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">a.作为对象属性值存在，JSON.stringify 将跳过（忽略）他们，然后进行序列化</span><br><span class="line">  const data = &#123;</span><br><span class="line">    a: &quot;aaa&quot;,</span><br><span class="line">    b: undefined,</span><br><span class="line">    c: Symbol(&quot;dd&quot;),</span><br><span class="line">    fn: function() &#123;</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  JSON.stringify(data); // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;&#123;&quot;a&quot;:&quot;aaa&quot;&#125;&quot;</span><br><span class="line"></span><br><span class="line">b.作为数组元素存在，JSON.stringify 将他们序列化为null</span><br><span class="line">  JSON.stringify([&quot;aaa&quot;, undefined, function aa() &#123;</span><br><span class="line">      return true</span><br><span class="line">    &#125;, Symbol(&#x27;dd&#x27;)])  // 输出：？</span><br><span class="line"></span><br><span class="line">  // &quot;[&quot;aaa&quot;,null,null,null]&quot;</span><br><span class="line"></span><br><span class="line">c.单独序列化的转换结果？？？</span><br><span class="line">JSON.stringify(function a ()&#123;console.log(&#x27;a&#x27;)&#125;)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(undefined)</span><br><span class="line">// undefined</span><br><span class="line">JSON.stringify(Symbol(&#x27;dd&#x27;))</span><br><span class="line">// undefined</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<<<<<<< HEAD
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
     </div>
 
@@ -422,9 +446,12 @@
 
 
 
+=======
+        </div>
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
       </div>
-
     </div>
+<<<<<<< HEAD
   </aside>
   <div id="sidebar-dimmer"></div>
 
@@ -456,58 +483,43 @@
 >>>>>>> 21e65c0c474b618f1f60c02e94014db3df50099f
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+=======
+>>>>>>> 3b22ec1f8e3bb90fdbd07d4cac3f0a7deaec535e
   </div>
-
-        
-
+</article>
 
 
 
-
-
-
-
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
       </div>
-    </footer>
+    </div>
   </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+</footer>
 
 
-<script src="/js/schemes/pisces.js"></script>
+    <!-- After Footer Scripts -->
 
+<script src="/js/highlight.pack.js"></script>
 
-<script src="/js/next-boot.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
 
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
+  </body>
 </html>
+

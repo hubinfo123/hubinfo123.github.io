@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <!-- Html Head Tag-->
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="miroku">
+  <!-- Open Graph Data -->
+  <meta property="og:title" content="nextjs SSG 使用"/>
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="http://yoursite.com"/>
+  
+    <link rel="alternate" href="/atom.xml" title="tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <!-- Site Title -->
+  <title>tomorrow tomorrow tomorrow，ain`t no such thing as tomorrow！</title>
+
+  <!-- Bootstrap CSS -->
+  
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  
+  
+<link rel="stylesheet" href="/css/style.light.css">
+
+
+  <!-- Google Analytics -->
+  
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+  <body>
+    <!-- Page Header -->
+
+
+<header class="site-header header-background" style="background-image: url(/img/banner.jpg)">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="page-title with-background-image">
+          <p class="title">nextjs SSG 使用</p>
+          <p class="subtitle"></p>
+        </div>
+        <div class="site-menu with-background-image">
+          <ul>
+            
+              <li>
+                <a href="/">
+                  
+                  首页
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  
+                  归档
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://github.com/miroku-y">
+                  
+                  Github
+                  
+                </a>
+              </li>
+            
+              <li>
+                <a href="/15967115901m0@sina.cn">
+                  
+                  Email
+                  
+                </a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<article>
+  <div class="container typo">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-info text-muted">
+          
+            <!-- Author -->
+            <span class="author info">By miroku</span>
+          
+          <!-- Date -->
+          <span class="date-time info">On
+            <span class="date">2023-03-17</span>
+            <span class="time">23:00:33</span>
+          </span>
+          
+          <!--  Categories  -->
+            <span class="categories info">Under 
+
+<a href="/categories/react/">react</a>
+</span>
+          
+        </div>
+        <!-- Tags -->
+        
+          <div class="post-tags text-muted">
+            Tags: 
+
+<a class="tag" href="/tags/nextjs/">#nextjs</a> <a class="tag" href="/tags/ssr/">#ssr</a>
+
+
+          </div>
+        
+        <!-- Post Main Content -->
+        <div class="post-content">
+          <p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;在当前需求开发进入测试阶段，新需求还未进入评审阶段，如是想优化一下当前系统，如预渲染机制使用起来，于是就用到了 nextjs 的 SSG（静态生成），使用方式也还算比较简单，参照文档既可进行将现有页面进行改造，这里主要是将过程中遇到的问题进行记录。</font></p>
+<font face="STCAIYUN" size="2">
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 在首页上进行改造，改页面数据几乎不会随意变动，符合SSG 要求;</span><br><span class="line"></span><br><span class="line"># 1. 在首页增加getStaticProps 方法</span><br><span class="line">export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">  let hotList = []</span><br><span class="line">  try &#123;</span><br><span class="line">    const &#123;data&#125; = await getTemplateList(&#123;</span><br><span class="line">      ...params // 接口需要的参数</span><br><span class="line">    &#125;)</span><br><span class="line">    hotList = get(data, &#x27;result.items&#x27;, []) || []</span><br><span class="line">  &#125; catch (error) &#123;</span><br><span class="line">    console.log(error,&#x27;打印error&#x27;)</span><br><span class="line">  &#125;</span><br><span class="line">  return &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">      hotList,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># 2. 去掉之前在CSR 端获取数据方法</span><br><span class="line"></span><br><span class="line"># 3. 启动本地开发环境，首页可以正常访问，打开调试器，浏览器ajax 中是没有请求了，在node 端打印，可以看到请求派发，</span><br><span class="line">     本地调整完毕，发版测试验证；</span><br><span class="line"></span><br><span class="line">//本地开发环境</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<blockquote>
+<p><font face="STCAIYUN" size="2">发版报错：</font><br><font face="STCAIYUN" size="2"></p>
+</blockquote>
+<p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"># 1. 带有ajax 请求的代码提交后，部署报错：</span><br><span class="line">  Error occurred prerendering page &quot;/&quot;. Read more: https://nextjs.org/docs/messages/prerender-error</span><br><span class="line">  Error: connect EAFNOSUPPORT ::1:80 - Local (undefined:undefined)</span><br><span class="line">      at internalConnect (net.js:934:16)</span><br><span class="line">      at defaultTriggerAsyncIdScope (internal/async_hooks.js:452:18)</span><br><span class="line">      at net.js:1022:9</span><br><span class="line">      at processTicksAndRejections (internal/process/task_queues.js:77:11)</span><br><span class="line">  [0minfo  - Generating static pages (1/1)</span><br><span class="line">  [91m</span><br><span class="line">  [0m[91m&gt; Build error occurred</span><br><span class="line">  [0m[91mError: Export encountered errors on following paths:</span><br><span class="line">    /</span><br><span class="line">    at /app/node_modules/next/dist/export/index.js:423:19</span><br><span class="line"></span><br><span class="line">  出现这个错误，以为是写入方式有问题，搜索了很多文档，没有类似问题，尝试将其他顶部文件里面的生命周期如getInitialProps 替换getServerSideProps 、</span><br><span class="line">  是否需要配合getStaticPaths （这个是没有仔细阅读文档的猜测，这个是动态路由需要使用的）均未解决</span><br><span class="line"></span><br><span class="line"># 2. 尝试其他方法，不进行 ajax ，直接返回，如下是可以的，部署能成功</span><br><span class="line">  export const getStaticProps = async () =&gt; &#123;</span><br><span class="line">    return &#123; props: &#123; initialState: &#123; lastUpdate: Date.now() &#125; &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"># 3. 接着断点调试，在ajax 处打印config、response 处进行打印，发现是代码里面写了一处throw error 导致部署终端（问题不在这），于是调整了ajax 请求，直接打印错误，报如下问题：</span><br><span class="line">info  - Linting and checking validity of types...</span><br><span class="line">[91mwarn  - The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/basic-features/eslint#migrating-existing-config</span><br><span class="line">[0m[91mFailed to compile.</span><br><span class="line"></span><br><span class="line">./src/pages/index.tsx:53:10</span><br><span class="line">Type error: Property &#x27;forEach&#x27; does not exist on type &#x27;void | [unknown, unknown]&#x27;.</span><br><span class="line">  Property &#x27;forEach&#x27; does not exist on type &#x27;void&#x27;.</span><br><span class="line"></span><br><span class="line">[0m [90m 51 | [39m  console[33m.[39mlog(values[33m,[39m [32m&#x27;values&#x27;[39m[33m,[39m hotResult[33m,[39m clickResult)[0m</span><br><span class="line">[0m [90m 52 | [39m  [90m// 处理promiseAll 的401[39m[0m</span><br><span class="line"></span><br><span class="line">这个报错是因为拿不到结果，直接对结果进行forEach 导致的，主要问题还是开发环境请求可以成功，build 时发现请求失败，接着排查错误...</span><br><span class="line"></span><br><span class="line"># 4. 验证一下线上的请求配置同本地的请求配置是否一样，对比一下差异点，结果发现baseUrl 在构建的时候丢失，这个同项目搭建有关系，</span><br><span class="line">     项目是打包后再注入环境变量，打包是是没有环境变量的，所以构建时获取不到环境对应的后端接口地址，如是在请求的地方兼容了一下：</span><br><span class="line">// SSG 先build 发送请求是取不到baseUrl</span><br><span class="line">  if(!config.baseURL)&#123;</span><br><span class="line">    config.baseURL = envToHost[process.env.APP_ENV]</span><br><span class="line">  &#125;</span><br><span class="line">// envToHost 为各个环境的枚举</span><br></pre></td></tr></table></figure>
+</p>
+</font>
+
+<p><font face="STCAIYUN" size="2">&nbsp;&nbsp;&nbsp;&nbsp;重新发版，请求成功，数据正常显示，调试查看浏览器ajax 未发，在node 端打包编译时进行了请求，页面切换不会等待数据，提升了部分渲染速度。</font></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+    <!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <p class="copyright text-muted">
+          @2018-2023
+        </p>
+        <p class="copyright text-muted">
+          让花成花 让树成树
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- After Footer Scripts -->
+
+<script src="/js/highlight.pack.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var codeBlocks = Array.prototype.slice.call(document.getElementsByTagName('pre'))
+    codeBlocks.forEach(function(block, index) {
+      hljs.highlightBlock(block);
+    });
+  });
+</script>
+
+  </body>
+</html>
+

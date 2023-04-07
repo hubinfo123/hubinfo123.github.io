@@ -1,7 +1,9 @@
 ---
 title: NextJS 项目配置host、浏览器自动访问链接
 date: 2023-01-29 19:30
-tags:
+tags: [node-open]
+categories: react
+excerpt: nextjs 项目中手动实现本地开发环境打开浏览器。
 ---
 
 > <font face="STCAIYUN" size="2">项目使用 nextjs 框架，一直以来项目启动后，都是手动输入访问链接，而且项目启动后，终端输出的访问链接还是默认的 localhost， 这里就将这 2 个问题一并解决掉，为开发提效...</font>

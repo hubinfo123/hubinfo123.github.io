@@ -1,7 +1,9 @@
 ---
 title: JSON.stringify的魔法
 date: 2020-08-25 23:27:46
-tags:
+tags: [JS]
+categories: js 基础
+excerpt: 深入学习 JSON.stringify。
 ---
 JSON.stringify 是将javascript对象转换成JSON字符串;对应的还有一个JSON.parse,它是将JSON字符串转换为javascript对象，取到互补的作用；
 
